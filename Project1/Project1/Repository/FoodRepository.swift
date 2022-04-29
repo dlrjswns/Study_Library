@@ -12,11 +12,14 @@ protocol FoodRepository {
 }
 
 enum FoodError: Error {
+    case customError(String)
     case urlError
     case decodeError
     
     var errorMessage: String {
         switch self {
+            case .customError(let str):
+                return str
             case .decodeError:
                 return "Decode error occured"
             case .urlError:

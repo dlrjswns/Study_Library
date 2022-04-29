@@ -23,12 +23,15 @@ class FoodRepositoryImpl: FoodRepository {
         }
         print("url = \(url)")
         return session.rx.data(request: URLRequest(url: url)).map { data in
+            print("dfasfadfsasfㄹㅇㄴㅁㄹ")
             do {
                 let foodEntities = try JSONDecoder().decode([FoodEntity].self, from: data)
+                print("fl;dsafjas;lfj")
                 return .success(foodEntities)
             }
             catch {
                 let error = FoodError.decodeError
+                print("제발뭐야 대체")
                 return .failure(error)
             }
         }

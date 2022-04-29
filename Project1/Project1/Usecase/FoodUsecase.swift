@@ -18,4 +18,12 @@ class FoodUsecase {
     func fetchFood() -> Observable<Result<[FoodEntity], FoodError>> {
         return repository.fetchFood()
     }
+    
+    func createMock() -> Observable<[FoodEntity]> {
+        Observable.create { event in
+            event.onNext([FoodEntity(foodImageID: nil, foodStoreID: nil, foodStoreName: "교촌치킨", resionName: "서울", menuID: nil, foodImageString: nil), FoodEntity(foodImageID: nil, foodStoreID: nil, foodStoreName: "BBQ", resionName: "서울", menuID: nil, foodImageString: nil), FoodEntity(foodImageID: nil, foodStoreID: nil, foodStoreName: "페리카나", resionName: "서울", menuID: nil, foodImageString: nil), FoodEntity(foodImageID: nil, foodStoreID: nil, foodStoreName: "슈프림치킨", resionName: "서울", menuID: nil, foodImageString: nil)])
+            event.onCompleted()
+            return Disposables.create()
+        }
+    }
 }

@@ -24,6 +24,15 @@ struct FoodEntity: Decodable {
         case foodImageString = "음식이미지(URL)"
     }
     
+    init(foodImageID: Int?, foodStoreID: String?, foodStoreName: String?, resionName: String?, menuID: Int?, foodImageString: String?) {
+        self.foodImageID = foodImageID
+        self.foodStoreID = foodStoreID
+        self.foodStoreName = foodStoreName
+        self.resionName = resionName
+        self.menuID = menuID
+        self.foodImageString = foodImageString
+    }
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         

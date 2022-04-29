@@ -18,6 +18,8 @@
 		70CA5EAB281AA88100BDF9AF /* FoodUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CA5EAA281AA88100BDF9AF /* FoodUsecase.swift */; };
 		70CA5EAE281AA94B00BDF9AF /* FoodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CA5EAD281AA94B00BDF9AF /* FoodViewModel.swift */; };
 		70CA5EB0281AA95400BDF9AF /* FoodViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CA5EAF281AA95400BDF9AF /* FoodViewModelType.swift */; };
+		70CA5EB4281BA03100BDF9AF /* FoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CA5EB3281BA03100BDF9AF /* FoodCell.swift */; };
+		70CA5EB6281BDE7000BDF9AF /* SnapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CA5EB5281BDE7000BDF9AF /* SnapViewController.swift */; };
 		FD36D03C3909416DF6E8BD79 /* Pods_Project1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 448277E32070EB98790DE6CB /* Pods_Project1.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +39,8 @@
 		70CA5EAA281AA88100BDF9AF /* FoodUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodUsecase.swift; sourceTree = "<group>"; };
 		70CA5EAD281AA94B00BDF9AF /* FoodViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewModel.swift; sourceTree = "<group>"; };
 		70CA5EAF281AA95400BDF9AF /* FoodViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewModelType.swift; sourceTree = "<group>"; };
+		70CA5EB3281BA03100BDF9AF /* FoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCell.swift; sourceTree = "<group>"; };
+		70CA5EB5281BDE7000BDF9AF /* SnapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapViewController.swift; sourceTree = "<group>"; };
 		C80CB3FE9504BECD9559F9AF /* Pods-Project1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project1.debug.xcconfig"; path = "Target Support Files/Pods-Project1/Pods-Project1.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,6 +77,7 @@
 		70CA5E89281A9A1A00BDF9AF /* Project1 */ = {
 			isa = PBXGroup;
 			children = (
+				70CA5EB1281BA02800BDF9AF /* View */,
 				70CA5EAC281AA94400BDF9AF /* ViewModel */,
 				70CA5EA9281AA87300BDF9AF /* Usecase */,
 				70CA5EA4281A9FE100BDF9AF /* Entity */,
@@ -91,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				70CA5E9F281A9A7E00BDF9AF /* FoodViewController.swift */,
+				70CA5EB5281BDE7000BDF9AF /* SnapViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -127,6 +133,22 @@
 				70CA5EAF281AA95400BDF9AF /* FoodViewModelType.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		70CA5EB1281BA02800BDF9AF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				70CA5EB2281BA02B00BDF9AF /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		70CA5EB2281BA02B00BDF9AF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				70CA5EB3281BA03100BDF9AF /* FoodCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		91D1E9264097D82356C588EA /* Frameworks */ = {
@@ -262,10 +284,12 @@
 				70CA5EB0281AA95400BDF9AF /* FoodViewModelType.swift in Sources */,
 				70CA5E8B281A9A1A00BDF9AF /* AppDelegate.swift in Sources */,
 				70CA5EA3281A9AD700BDF9AF /* FoodRepositoryImpl.swift in Sources */,
+				70CA5EB6281BDE7000BDF9AF /* SnapViewController.swift in Sources */,
 				70CA5EAE281AA94B00BDF9AF /* FoodViewModel.swift in Sources */,
 				70CA5EA6281A9FE800BDF9AF /* FoodEntity.swift in Sources */,
 				70CA5EA8281AA7BC00BDF9AF /* FoodRepository.swift in Sources */,
 				70CA5EA0281A9A7E00BDF9AF /* FoodViewController.swift in Sources */,
+				70CA5EB4281BA03100BDF9AF /* FoodCell.swift in Sources */,
 				70CA5EAB281AA88100BDF9AF /* FoodUsecase.swift in Sources */,
 				70CA5E8D281A9A1A00BDF9AF /* SceneDelegate.swift in Sources */,
 			);
