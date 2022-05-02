@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		702BFBC7281E711B0018BE8C /* RxSwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702BFBC6281E711B0018BE8C /* RxSwiftViewController.swift */; };
 		70CA5E8B281A9A1A00BDF9AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CA5E8A281A9A1A00BDF9AF /* AppDelegate.swift */; };
 		70CA5E8D281A9A1A00BDF9AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CA5E8C281A9A1A00BDF9AF /* SceneDelegate.swift */; };
 		70CA5E94281A9A1C00BDF9AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70CA5E93281A9A1C00BDF9AF /* Assets.xcassets */; };
@@ -20,12 +21,14 @@
 		70CA5EB0281AA95400BDF9AF /* FoodViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CA5EAF281AA95400BDF9AF /* FoodViewModelType.swift */; };
 		70CA5EB4281BA03100BDF9AF /* FoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CA5EB3281BA03100BDF9AF /* FoodCell.swift */; };
 		70CA5EB6281BDE7000BDF9AF /* SnapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CA5EB5281BDE7000BDF9AF /* SnapViewController.swift */; };
+		70CA5EB8281C577E00BDF9AF /* AlamofireRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CA5EB7281C577E00BDF9AF /* AlamofireRouter.swift */; };
 		FD36D03C3909416DF6E8BD79 /* Pods_Project1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 448277E32070EB98790DE6CB /* Pods_Project1.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		448277E32070EB98790DE6CB /* Pods_Project1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51E07DFC944E93FACD44EFE9 /* Pods-Project1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project1.release.xcconfig"; path = "Target Support Files/Pods-Project1/Pods-Project1.release.xcconfig"; sourceTree = "<group>"; };
+		702BFBC6281E711B0018BE8C /* RxSwiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwiftViewController.swift; sourceTree = "<group>"; };
 		70CA5E87281A9A1A00BDF9AF /* Project1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70CA5E8A281A9A1A00BDF9AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		70CA5E8C281A9A1A00BDF9AF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +44,7 @@
 		70CA5EAF281AA95400BDF9AF /* FoodViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewModelType.swift; sourceTree = "<group>"; };
 		70CA5EB3281BA03100BDF9AF /* FoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCell.swift; sourceTree = "<group>"; };
 		70CA5EB5281BDE7000BDF9AF /* SnapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapViewController.swift; sourceTree = "<group>"; };
+		70CA5EB7281C577E00BDF9AF /* AlamofireRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireRouter.swift; sourceTree = "<group>"; };
 		C80CB3FE9504BECD9559F9AF /* Pods-Project1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project1.debug.xcconfig"; path = "Target Support Files/Pods-Project1/Pods-Project1.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,6 +101,7 @@
 			children = (
 				70CA5E9F281A9A7E00BDF9AF /* FoodViewController.swift */,
 				70CA5EB5281BDE7000BDF9AF /* SnapViewController.swift */,
+				702BFBC6281E711B0018BE8C /* RxSwiftViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -106,6 +111,7 @@
 			children = (
 				70CA5EA2281A9AD700BDF9AF /* FoodRepositoryImpl.swift */,
 				70CA5EA7281AA7BC00BDF9AF /* FoodRepository.swift */,
+				70CA5EB7281C577E00BDF9AF /* AlamofireRouter.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -288,8 +294,10 @@
 				70CA5EAE281AA94B00BDF9AF /* FoodViewModel.swift in Sources */,
 				70CA5EA6281A9FE800BDF9AF /* FoodEntity.swift in Sources */,
 				70CA5EA8281AA7BC00BDF9AF /* FoodRepository.swift in Sources */,
+				702BFBC7281E711B0018BE8C /* RxSwiftViewController.swift in Sources */,
 				70CA5EA0281A9A7E00BDF9AF /* FoodViewController.swift in Sources */,
 				70CA5EB4281BA03100BDF9AF /* FoodCell.swift in Sources */,
+				70CA5EB8281C577E00BDF9AF /* AlamofireRouter.swift in Sources */,
 				70CA5EAB281AA88100BDF9AF /* FoodUsecase.swift in Sources */,
 				70CA5E8D281A9A1A00BDF9AF /* SceneDelegate.swift in Sources */,
 			);

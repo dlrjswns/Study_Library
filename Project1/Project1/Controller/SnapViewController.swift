@@ -42,6 +42,15 @@ class SnapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        do {
+            let r = try Router.get(["query": "이건준사랑"]).asURLRequest().url
+            print("r = \(r!)")
+        }
+        catch {
+            
+        }
+        
+        
         view.backgroundColor = .systemBackground
         
         blueView.isUserInteractionEnabled = true
