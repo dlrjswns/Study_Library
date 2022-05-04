@@ -79,10 +79,6 @@ class BeerRepositoryImpl: BeerRepository {
     }
 }
 
-//https://api.punkapi.com/v2/beers/1
-//https://api.punkapi.com/v2/beers/random
-//https://api.punkapi.com/v2/beers
-
 enum BeerAPIType {
     case beer
     case beers
@@ -116,13 +112,13 @@ enum Router: URLRequestConvertible {
         switch self {
             case .oneBeer:
                 return request
-            case let .beerList:
+            case .beerList:
 //                request = try JSONParameterEncoder().encode(parameters, into: request)
                   return request
             case.randomBeer:
                 return request
         }
         
-        return request
+//        return request
     }
 }

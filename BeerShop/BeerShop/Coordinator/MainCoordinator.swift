@@ -23,6 +23,8 @@ class MainCoordinator: Coordinator {
     
     func start() {
         let beerListVC = beerListControllerFactory()
+        beerListVC.title = "Beer List"
+        beerListVC.navigationItem.largeTitleDisplayMode = .always
         navigationController?.setViewControllers([beerListVC], animated: true)
     }
     

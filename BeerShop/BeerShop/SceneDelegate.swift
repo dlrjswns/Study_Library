@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navigationController = UINavigationController()
         coordinator.navigationController = navigationController
         coordinator.start()
-        window?.rootViewController = navigationController
+        window?.rootViewController = MainTabbarController()
         window?.makeKeyAndVisible()
     }
 

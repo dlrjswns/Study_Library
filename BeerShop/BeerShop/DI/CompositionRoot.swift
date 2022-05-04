@@ -15,7 +15,10 @@ extension AppDenpency {
     static func resolve() -> AppDenpency {
         
         let beerListControllerFactory: () -> BeerListController = {
-            return .init()
+            let repository = BeerRepositoryImpl()
+            let usecase = BeerUsecaseImpl(repository: repository)
+            let viewModel = BeerListViewModel(usecase: usecase)
+            return .init(viewModel: viewModel)
         }
         
         let mainCoordinator: MainCoordinator = .init(dependency: .init(beerListControllerFactory: beerListControllerFactory))
