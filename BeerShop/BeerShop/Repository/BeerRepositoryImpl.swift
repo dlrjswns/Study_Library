@@ -9,9 +9,72 @@ import Alamofire
 import RxSwift
 
 class BeerRepositoryImpl: BeerRepository {
-    func fetchOneBeer() {
-        AF.request(Router.oneBeer).responseDecodable(of: [Beer].self) { data in
-            print("data = \(data)")
+    
+    public func fetchOneBeer() -> Observable<Result<[Beer], BeerError>> {
+        return Observable.create { [weak self] emitter -> Disposable in
+            self?.fetchPunkBeer(type: .beer) { result in
+                switch result {
+                    case .success(let oneBeer):
+                        emitter.onNext(.success(oneBeer))
+                        emitter.onCompleted()
+                    case .failure(let error):
+                        emitter.onError(error)
+                }
+            }
+            return Disposables.create()
+        }
+    }
+    
+    public func fetchBeers() -> Observable<Result<[Beer], BeerError>> {
+        return Observable.create { [weak self] emitter -> Disposable in
+            self?.fetchPunkBeer(type: .beers) { result in
+                switch result {
+                    case .success(let beers):
+                        emitter.onNext(.success(beers))
+                        emitter.onCompleted()
+                    case .failure(let error):
+                        emitter.onError(error)
+                }
+            }
+            return Disposables.create()
+        }
+    }
+    
+    public func fetchRandomBeer() -> Observable<Result<[Beer], BeerError>> {
+        return Observable.create { [weak self] emitter -> Disposable in
+            self?.fetchPunkBeer(type: .randomBeer) { result in
+                switch result {
+                    case .success(let randomBeer):
+                        emitter.onNext(.success(randomBeer))
+                        emitter.onCompleted()
+                    case .failure(let error):
+                        emitter.onError(error)
+                }
+            }
+            return Disposables.create()
+        }
+    }
+    
+    private func fetchPunkBeer(type: BeerAPIType, completion: @escaping (Result<[Beer], BeerError>) -> Void) {
+        let router: URLRequestConvertible
+        switch type {
+            case .beer:
+                router = Router.oneBeer
+            case .beers:
+                router = Router.beerList
+            case .randomBeer:
+                router = Router.randomBeer
+        }
+        
+        AF.request(router).responseDecodable(of: [Beer].self) { response in
+            if response.error != nil {
+                let error = BeerError.decodeError
+                completion(.failure(error))
+            }
+            
+            if let oneBeer = response.value {
+                completion(.success(oneBeer))
+            }
         }
     }
 }
@@ -20,8 +83,14 @@ class BeerRepositoryImpl: BeerRepository {
 //https://api.punkapi.com/v2/beers/random
 //https://api.punkapi.com/v2/beers
 
+enum BeerAPIType {
+    case beer
+    case beers
+    case randomBeer
+}
+
 enum Router: URLRequestConvertible {
-    case oneBeer, beerList([String: String]), randomBeer
+    case oneBeer, beerList, randomBeer
     
     var baseURL: URL {
         return URL(string: "https://api.punkapi.com")!
@@ -47,8 +116,9 @@ enum Router: URLRequestConvertible {
         switch self {
             case .oneBeer:
                 return request
-            case let .beerList(parameters):
-                request = try JSONParameterEncoder().encode(parameters, into: request)
+            case let .beerList:
+//                request = try JSONParameterEncoder().encode(parameters, into: request)
+                  return request
             case.randomBeer:
                 return request
         }

@@ -19,6 +19,7 @@
 		702BFBF5281F64ED0018BE8C /* BeerRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702BFBF4281F64ED0018BE8C /* BeerRepositoryImpl.swift */; };
 		702BFBF7281F64FC0018BE8C /* BeerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702BFBF6281F64FC0018BE8C /* BeerRepository.swift */; };
 		702BFBFA281F6AB10018BE8C /* Beer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702BFBF9281F6AB10018BE8C /* Beer.swift */; };
+		702BFBFE28221E1B0018BE8C /* BeerUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702BFBFD28221E1B0018BE8C /* BeerUsecase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		702BFBF4281F64ED0018BE8C /* BeerRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerRepositoryImpl.swift; sourceTree = "<group>"; };
 		702BFBF6281F64FC0018BE8C /* BeerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerRepository.swift; sourceTree = "<group>"; };
 		702BFBF9281F6AB10018BE8C /* Beer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer.swift; sourceTree = "<group>"; };
+		702BFBFD28221E1B0018BE8C /* BeerUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerUsecase.swift; sourceTree = "<group>"; };
 		761199EE0D1D8BDACFEB7F93 /* Pods-BeerShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeerShop.debug.xcconfig"; path = "Target Support Files/Pods-BeerShop/Pods-BeerShop.debug.xcconfig"; sourceTree = "<group>"; };
 		E5842D62D8548F19ADF7EF38 /* Pods-BeerShop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeerShop.release.xcconfig"; path = "Target Support Files/Pods-BeerShop/Pods-BeerShop.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,6 +84,7 @@
 		702BFBD3281F55FB0018BE8C /* BeerShop */ = {
 			isa = PBXGroup;
 			children = (
+				702BFBFC28221E140018BE8C /* Usecase */,
 				702BFBF8281F6A840018BE8C /* Entity */,
 				702BFBF3281F64D90018BE8C /* Repository */,
 				702BFBF0281F62440018BE8C /* DI */,
@@ -99,7 +102,7 @@
 		702BFBE8281F564A0018BE8C /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				702BFBE9281F565A0018BE8C /* BeerListController.swift */,
+				702BFBFB28221E010018BE8C /* Controller */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -136,6 +139,22 @@
 				702BFBF9281F6AB10018BE8C /* Beer.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		702BFBFB28221E010018BE8C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				702BFBE9281F565A0018BE8C /* BeerListController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		702BFBFC28221E140018BE8C /* Usecase */ = {
+			isa = PBXGroup;
+			children = (
+				702BFBFD28221E1B0018BE8C /* BeerUsecase.swift */,
+			);
+			path = Usecase;
 			sourceTree = "<group>";
 		};
 		7C7AF98D2759E57FB8AF58CD /* Frameworks */ = {
@@ -265,6 +284,7 @@
 				702BFBD5281F55FB0018BE8C /* AppDelegate.swift in Sources */,
 				702BFBED281F568F0018BE8C /* MainCoordinator.swift in Sources */,
 				702BFBEF281F56A00018BE8C /* Coordinator.swift in Sources */,
+				702BFBFE28221E1B0018BE8C /* BeerUsecase.swift in Sources */,
 				702BFBF5281F64ED0018BE8C /* BeerRepositoryImpl.swift in Sources */,
 				702BFBF7281F64FC0018BE8C /* BeerRepository.swift in Sources */,
 				702BFBEA281F565A0018BE8C /* BeerListController.swift in Sources */,

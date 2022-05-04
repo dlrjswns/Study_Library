@@ -8,10 +8,11 @@
 import UIKit
 
 class BeerListController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let rp = BeerRepositoryImpl()
-        rp.fetchOneBeer()
+//        rp.fetchOneBeer()
         configureUI()
     }
     
