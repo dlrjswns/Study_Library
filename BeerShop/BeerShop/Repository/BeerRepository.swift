@@ -15,4 +15,14 @@ protocol BeerRepository {
 
 enum BeerError: Error {
     case decodeError
+    case customError(String)
+    
+    var errorMessage: String {
+        switch self {
+        case .decodeError:
+            return "Repository decode error occured"
+        case .customError(let errorMessage):
+            return errorMessage
+        }
+    }
 }

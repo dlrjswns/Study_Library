@@ -112,6 +112,7 @@ enum Router: URLRequestConvertible {
         
         switch self {
             case .oneBeer:
+                print("request = \(request)")
                 return request
             case .beerList:
 //                request = try JSONParameterEncoder().encode(parameters, into: request)

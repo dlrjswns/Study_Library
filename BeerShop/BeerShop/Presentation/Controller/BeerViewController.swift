@@ -46,12 +46,12 @@ class BeerViewController: UIViewController {
         return imageView
     }()
     
-    private let tagLabel: UILabel = {
+    private let beerTagLabel: UILabel = {
        let label = UILabel()
         return label
     }()
     
-    private let descriptionLabel: UILabel = {
+    private let beerDescriptionLabel: UILabel = {
        let label = UILabel()
         return label
     }()
@@ -69,9 +69,62 @@ class BeerViewController: UIViewController {
     private func bind() {
         searchBar.rx.text.orEmpty.bind(to: viewModel.searchIdInput)
             .disposed(by: disposeBag)
+        
+        viewModel.beerErrorOutput.emit(onNext: { beerError in
+            print("BeerErrorOutput occured = \(beerError.errorMessage)")
+        }).disposed(by: disposeBag)
+        
+        viewModel.beerModelOutput.withUnretained(self).emit(onNext: { owner, beers in
+            owner.configureUI(with: beers)
+        }).disposed(by: disposeBag)
     }
     
     private func configureUI() {
+        view.addSubview(beerIdLabel)
+        view.addSubview(beerNameLabel)
+        view.addSubview(beerTagLabel)
+        view.addSubview(beerDescriptionLabel)
         
+        beerIdLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(10)
+        }
+        
+        beerNameLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(beerIdLabel.snp.bottom).offset(10)
+        }
+        
+        beerTagLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(beerNameLabel.snp.bottom).offset(10)
+        }
+        
+        beerDescriptionLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(beerTagLabel.snp.bottom).offset(10)
+        }
+    }
+    
+    private func configureUI(with model: [Beer]) {
+        guard model.count == 1 else {
+            print("BeerViewController configureUI occured")
+            return
+        }
+        _ = model.map { beer in
+            guard let id = beer.id,
+                  let name = beer.name,
+                  let tagline = beer.tagline,
+                  let description = beer.description,
+                  let imageString = beer.imageUrl else {
+                        return
+                  }
+            
+            beerIdLabel.text = "\(id)"
+            beerNameLabel.text = name
+            beerTagLabel.text = tagline
+            beerDescriptionLabel.text = description
+            beerImageView.setImage(with: imageString)
+        }
     }
 }
