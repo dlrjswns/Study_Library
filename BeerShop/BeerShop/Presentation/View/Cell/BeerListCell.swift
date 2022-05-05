@@ -20,6 +20,11 @@ class BeerListCell: UITableViewCell {
         return imageView
     }()
     
+    private let beerIdLabel: UILabel = {
+       let label = UILabel()
+        return label
+    }()
+    
     private let beerNameLabel: UILabel = {
        let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .medium)
@@ -54,17 +59,24 @@ class BeerListCell: UITableViewCell {
     
     private func configureCell() {
         contentView.addSubview(beerImageView)
+        contentView.addSubview(beerIdLabel)
         contentView.addSubview(beerNameLabel)
         contentView.addSubview(beerTagLabel)
+        
         beerImageView.snp.makeConstraints { make in
             make.left.top.bottom.equalToSuperview()
             make.width.height.equalTo(contentView.snp.height)
         }
         
+        beerIdLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(contentView.frame.height / 4)
+            make.left.equalTo(beerImageView.snp.right)
+        }
+        
         beerNameLabel.snp.makeConstraints { make in
             make.left.equalTo(beerImageView.snp.right)
 //            make.centerY.equalTo(contentView.frame.height / 4)
-            make.top.equalTo(contentView.snp.top).offset(contentView.frame.height / 4 * 2)
+            make.top.equalTo(beerIdLabel.snp.top).offset(contentView.frame.height / 4 * 2)
         }
         
         beerTagLabel.snp.makeConstraints { make in
@@ -81,6 +93,7 @@ class BeerListCell: UITableViewCell {
         beerImageView.setImage(with: model.imageUrl)
         beerNameLabel.text = name
         beerTagLabel.text = tagline
+        beerIdLabel.text = "\(model.id!)"
         self.accessoryType = .disclosureIndicator
     }
 }

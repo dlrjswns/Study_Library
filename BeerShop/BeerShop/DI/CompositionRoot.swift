@@ -14,14 +14,21 @@ struct AppDenpency {
 extension AppDenpency {
     static func resolve() -> AppDenpency {
         
-        let beerListControllerFactory: () -> BeerListController = {
+        let beerListViewControllerFactory: () -> BeerListViewController = {
             let repository = BeerRepositoryImpl()
             let usecase = BeerUsecaseImpl(repository: repository)
             let viewModel = BeerListViewModel(usecase: usecase)
             return .init(viewModel: viewModel)
         }
         
-        let mainCoordinator: MainCoordinator = .init(dependency: .init(beerListControllerFactory: beerListControllerFactory))
+        let beerViewControllerFactory: () -> BeerViewController = {
+            let repository = BeerRepositoryImpl()
+            let usecase = BeerUsecaseImpl(repository: repository)
+            let viewModel = BeerViewModel(usecase: usecase)
+            return .init(viewModel: viewModel)
+        }
+        
+        let mainCoordinator: MainCoordinator = .init(dependency: .init(beerListViewControllerFactory: beerListViewControllerFactory, beerViewControllerFactory: beerViewControllerFactory))
         
         return .init(mainCoordinator: mainCoordinator)
     }

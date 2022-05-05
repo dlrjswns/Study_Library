@@ -10,9 +10,9 @@ import RxSwift
 
 class BeerRepositoryImpl: BeerRepository {
     
-    public func fetchOneBeer() -> Observable<Result<[Beer], BeerError>> {
+    public func fetchOneBeer(id: String) -> Observable<Result<[Beer], BeerError>> {
         return Observable.create { [weak self] emitter -> Disposable in
-            self?.fetchPunkBeer(type: .beer) { result in
+            self?.fetchPunkBeer(id: id, type: .beer) { result in
                 switch result {
                     case .success(let oneBeer):
                         emitter.onNext(.success(oneBeer))
@@ -55,11 +55,12 @@ class BeerRepositoryImpl: BeerRepository {
         }
     }
     
-    private func fetchPunkBeer(type: BeerAPIType, completion: @escaping (Result<[Beer], BeerError>) -> Void) {
+    private func fetchPunkBeer(id: String = "1", type: BeerType, completion: @escaping (Result<[Beer], BeerError>) -> Void) {
+
         let router: URLRequestConvertible
         switch type {
             case .beer:
-                router = Router.oneBeer
+                router = Router.oneBeer(id)
             case .beers:
                 router = Router.beerList
             case .randomBeer:
@@ -79,14 +80,14 @@ class BeerRepositoryImpl: BeerRepository {
     }
 }
 
-enum BeerAPIType {
-    case beer
-    case beers
-    case randomBeer
+enum BeerType: Int {
+    case beer = 0
+    case beers = 1
+    case randomBeer = 2
 }
 
 enum Router: URLRequestConvertible {
-    case oneBeer, beerList, randomBeer
+    case oneBeer(String), beerList, randomBeer
     
     var baseURL: URL {
         return URL(string: "https://api.punkapi.com")!
@@ -98,7 +99,7 @@ enum Router: URLRequestConvertible {
     
     var path: String {
         switch self {
-            case .oneBeer: return "/v2/beers/1"
+            case .oneBeer(let id): return "/v2/beers/\(id)"
             case .beerList: return "/v2/beers"
             case .randomBeer: return "/v2/beers/random"
         }

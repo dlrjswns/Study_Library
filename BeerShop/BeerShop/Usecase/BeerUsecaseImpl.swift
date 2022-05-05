@@ -15,8 +15,8 @@ class BeerUsecaseImpl: BeerUsecase {
         self.repository = repository
     }
     
-    func fetchOneBeer() -> Observable<Result<[Beer], BeerError>> {
-        return repository.fetchOneBeer()
+    func fetchOneBeer(id: String) -> Observable<Result<[Beer], BeerError>> {
+        return repository.fetchOneBeer(id: id)
     }
     
     func fetchBeers() -> Observable<Result<[Beer], BeerError>> {

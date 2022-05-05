@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
-class BeerListController: UIViewController {
+class BeerListViewController: UIViewController {
     
     private let viewModel: BeerListViewModelType
     
@@ -33,10 +33,20 @@ class BeerListController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        setNavigationBar()
+        setTableView()
+        bind()
+    }
+    
+    private func setNavigationBar() {
+        title = "Beer List"
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.barTintColor = .systemPink
+    }
+    
+    private func setTableView() {
         tableView.register(BeerListCell.self, forCellReuseIdentifier: BeerListCell.identifier)
         tableView.delegate = self
-        bind()
     }
     
     private func bind() {
@@ -55,7 +65,7 @@ class BeerListController: UIViewController {
     }
 }
 
-extension BeerListController: UITableViewDelegate {
+extension BeerListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

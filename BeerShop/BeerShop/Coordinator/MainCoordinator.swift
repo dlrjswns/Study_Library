@@ -10,22 +10,31 @@ import UIKit
 class MainCoordinator: Coordinator {
     
     var navigationController: UINavigationController?
+    var tabbarController: MainTabbarController?
     
     struct Dependency {
-        let beerListControllerFactory: () -> BeerListController
+        let beerListViewControllerFactory: () -> BeerListViewController
+        let beerViewControllerFactory: () -> BeerViewController
     }
     
     init(dependency: Dependency) {
-        beerListControllerFactory = dependency.beerListControllerFactory
+        beerListViewControllerFactory = dependency.beerListViewControllerFactory
+        beerViewControllerFactory = dependency.beerViewControllerFactory
     }
     
-    let beerListControllerFactory: () -> BeerListController
+    let beerListViewControllerFactory: () -> BeerListViewController
+    let beerViewControllerFactory: () -> BeerViewController
     
     func start() {
-        let beerListVC = beerListControllerFactory()
-        beerListVC.title = "Beer List"
-        beerListVC.navigationItem.largeTitleDisplayMode = .always
-        navigationController?.setViewControllers([beerListVC], animated: true)
+        let beerListVC = beerListViewControllerFactory()
+        let beerVC = beerViewControllerFactory()
+        let navBeerListVC = UINavigationController(rootViewController: beerListVC)
+        let navBeerVC = UINavigationController(rootViewController: beerVC)
+//        navBeerListVC.title = "Beer List"
+        navBeerListVC.navigationItem.largeTitleDisplayMode = .always
+//        navBeerVC.title = "Search Beer"
+        navBeerVC.navigationItem.largeTitleDisplayMode = .always
+        tabbarController?.setViewControllers([navBeerListVC, navBeerVC], animated: true)
     }
     
 }
