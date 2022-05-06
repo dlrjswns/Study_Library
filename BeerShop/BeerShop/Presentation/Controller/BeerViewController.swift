@@ -29,6 +29,14 @@ class BeerViewController: UIViewController {
         return searchBar
     }()
     
+    private let scrollView: UIScrollView = {
+       let scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = true
+        scrollView.alwaysBounceVertical = true
+//        scrollView.verticalScrollIndicatorInsets = .init(top: 10, left: 10, bottom: 10, right: 10)
+        return scrollView
+    }()
+    
     private let beerIdLabel: UILabel = {
        let label = UILabel()
         return label
@@ -36,6 +44,7 @@ class BeerViewController: UIViewController {
     
     private let beerNameLabel: UILabel = {
        let label = UILabel()
+        label.font = .systemFont(ofSize: 18, weight: .bold)
         return label
     }()
     
@@ -48,13 +57,19 @@ class BeerViewController: UIViewController {
     
     private let beerTagLabel: UILabel = {
        let label = UILabel()
+        label.font = .systemFont(ofSize: 16, weight: .medium)
         return label
     }()
     
     private let beerDescriptionLabel: UILabel = {
        let label = UILabel()
+        label.font = .systemFont(ofSize: 13, weight: .thin)
+        label.numberOfLines = .max
         return label
     }()
+    
+    private let loadingView = LoadingView()
+    private let emptyView = EmptyView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,8 +81,19 @@ class BeerViewController: UIViewController {
         navigationItem.titleView = searchBar
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        beerImageView.snp.updateConstraints { make in
+            make.width.height.equalTo(view.frame.width - 100)
+        }
+    }
+    
     private func bind() {
-        searchBar.rx.text.orEmpty.bind(to: viewModel.searchIdInput)
+        searchBar.rx.text.orEmpty
+            .debounce(.seconds(1), scheduler: ConcurrentDispatchQueueScheduler.init(qos: .default))
+            .distinctUntilChanged()
+            .bind(to: viewModel.searchIdInput)
             .disposed(by: disposeBag)
         
         viewModel.beerErrorOutput.emit(onNext: { beerError in
@@ -77,22 +103,55 @@ class BeerViewController: UIViewController {
         viewModel.beerModelOutput.withUnretained(self).emit(onNext: { owner, beers in
             owner.configureUI(with: beers)
         }).disposed(by: disposeBag)
+        
+        viewModel.loadingCheckOutput.drive(onNext: { [weak self] loading in
+            self?.loadingView.isHidden = !loading
+        }).disposed(by: disposeBag)
+        
+        viewModel.emptyCheckOutput.drive(onNext: { [weak self] empty in
+            self?.emptyView.isHidden = !empty
+        }).disposed(by: disposeBag)
     }
     
     private func configureUI() {
-        view.addSubview(beerIdLabel)
-        view.addSubview(beerNameLabel)
-        view.addSubview(beerTagLabel)
-        view.addSubview(beerDescriptionLabel)
+        view.addSubview(scrollView)
+        view.addSubview(loadingView)
+        view.addSubview(emptyView)
+        scrollView.addSubview(beerIdLabel)
+        scrollView.addSubview(beerImageView)
+        scrollView.addSubview(beerNameLabel)
+        scrollView.addSubview(beerTagLabel)
+        scrollView.addSubview(beerDescriptionLabel)
+        
+        scrollView.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
+            make.width.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-70)
+        }
+        
+        loadingView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        emptyView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         
         beerIdLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(10)
+            make.top.equalTo(scrollView.snp.top).offset(10)
+        }
+        
+        beerImageView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(beerIdLabel.snp.bottom)
+            make.width.height.equalTo(view.frame.width - 60)
         }
         
         beerNameLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(beerIdLabel.snp.bottom).offset(10)
+            make.top.equalTo(beerImageView.snp.bottom)
+//            make.width.height.equalTo(view.frame.width - 40)
         }
         
         beerTagLabel.snp.makeConstraints { make in
@@ -101,8 +160,9 @@ class BeerViewController: UIViewController {
         }
         
         beerDescriptionLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
+            make.centerX.bottom.equalToSuperview()
             make.top.equalTo(beerTagLabel.snp.bottom).offset(10)
+            make.width.equalToSuperview()
         }
     }
     

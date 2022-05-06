@@ -17,6 +17,8 @@ protocol BeerViewModelType {
     // Output
     var beerModelOutput: Signal<[Beer]> { get }
     var beerErrorOutput: Signal<BeerError> { get }
+    var loadingCheckOutput: Driver<Bool> { get }
+    var emptyCheckOutput: Driver<Bool> { get }
 }
 
 class BeerViewModel: BeerViewModelType {
@@ -29,6 +31,8 @@ class BeerViewModel: BeerViewModelType {
     // Output
     let beerModelOutput: Signal<[Beer]>
     let beerErrorOutput: Signal<BeerError>
+    let loadingCheckOutput: Driver<Bool>
+    let emptyCheckOutput: Driver<Bool>
     
     init(usecase: BeerUsecase) {
         self.usecase = usecase
@@ -36,17 +40,31 @@ class BeerViewModel: BeerViewModelType {
         let searchIdChanged = PublishSubject<String>()
         let beerModelRelay = PublishRelay<[Beer]>()
         let beerErrorMessage = PublishRelay<BeerError>()
+        let loadingCheck = BehaviorSubject<Bool>(value: false)
+        let emptyCheck = BehaviorSubject<Bool>(value: true)
         
         searchIdInput = searchIdChanged.asObserver()
         beerModelOutput = beerModelRelay.asSignal(onErrorJustReturn: [])
         beerErrorOutput = beerErrorMessage.asSignal(onErrorJustReturn: .customError("BeerViewModel beerErrorMessage onErrorJustReturn"))
+        loadingCheckOutput = loadingCheck.asDriver(onErrorJustReturn: false)
+        emptyCheckOutput = emptyCheck.asDriver(onErrorJustReturn: true)
         
-        let searchBeerWithId = searchIdChanged.flatMapLatest(usecase.fetchOneBeer(id:))
+        
+        let searchBeerWithId = searchIdChanged
+            .filter{ $0.count != 0 }
+            .do(onNext: { _ in
+                loadingCheck.onNext(true)
+            })
+            .flatMapLatest(usecase.fetchOneBeer(id:))
+            .do(onNext: { _ in
+                loadingCheck.onNext(false)
+            })
+                
         let searchResult = searchBeerWithId.map { result -> [Beer]? in
             guard case .success(let beers) = result else {
                 return nil
             }
-            
+            emptyCheck.onNext(false)
             return beers
         }
         
