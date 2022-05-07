@@ -21,6 +21,14 @@ class BeerListViewController: UIViewController {
         return tableView
     }()
     
+    private let floatingButton: FloatingButton = {
+       let button = FloatingButton()
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 25
+        button.isHidden = true
+        return button
+    }()
+    
     init(viewModel: BeerListViewModelType) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -59,8 +67,16 @@ class BeerListViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         view.addSubview(tableView)
+        view.addSubview(floatingButton)
+        
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+        
+        floatingButton.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-70)
+            make.right.equalToSuperview().offset(-20)
+            make.width.height.equalTo(50)
         }
     }
 }
@@ -70,7 +86,12 @@ extension BeerListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if tableView
     }
 }

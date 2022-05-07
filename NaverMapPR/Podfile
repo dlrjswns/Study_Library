@@ -6,6 +6,6 @@ target 'NaverMapPR' do
   use_frameworks!
 
   # Pods for NaverMapPR
-  pod 'NMapsMap'
+  pod 'NMapsMap','3.15.0'
 
 end
