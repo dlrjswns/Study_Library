@@ -80,7 +80,8 @@
 * Naver Maps
 	1. NMFMapView
 		1. NMFMapView는 단순히 네이버에서 제공하는 지도만은 보기위한 객체
-		2. 코드 
+		2. 만약에 개발자가 해당 View를 커스텀하기위한다면 이를 사용해야한다
+		3. 코드 
 		```Swift
 		let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: 37.5666102, lng: 126.9783881)) // 첫 지도 위치초기화
 		cameraUpdate.reason = 3
@@ -102,6 +103,15 @@
 		}
 		marker.mapView = mapView; // 지정해준 NMFMarker를 NJFMapView에 찍어주는 코드
 		```
-		
+		```Swift
+		mapView.mapType = .basic // NMFMapView는 보여주는 type을 지정하여 지도를 표현해줄 수 있다, NMFNaverMapView에는 없음
+		mapView.mapType = .hybrid
+		mapView.mapType = .navi
+		mapView.mapType = .none
+		mapView.mapType = .satellite
+		mapView.mapType = .terrain
+		```
+				
 	2. NMFNaverMapView
 		1. NMFNaverMapView는 NMFMapView와 동일하지만 해당 지도를 다룰 수 있는 몇가지 기능이 추가되어진다
+		2. 허나 해당 View는 기존에 해당 객체에 제공되어지는 인터페이스만을 사용하기에 커스텀할 수 없다는 단점이 존재한다
