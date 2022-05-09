@@ -37,7 +37,7 @@ extension UIImageView {
                 
                 if let data = data,
                    let image = UIImage(data: data){
-                    print("dd?")
+            
                     DispatchQueue.main.async {
                         self.image = image
                     }

@@ -14,6 +14,8 @@ class BeerListViewController: UIViewController {
     
     private let viewModel: BeerListViewModelType
     
+    var coordinator: MainCoordinator?
+    
     var disposeBag = DisposeBag()
     
     private let tableView: UITableView = {
@@ -21,11 +23,13 @@ class BeerListViewController: UIViewController {
         return tableView
     }()
     
-    private let floatingButton: FloatingButton = {
-       let button = FloatingButton()
+    private let floatingButton: UIButton = {
+       let button = UIButton()
         button.clipsToBounds = true
         button.layer.cornerRadius = 25
-        button.isHidden = true
+        button.isHidden = false
+        button.backgroundColor = .systemMint
+        button.setImage(UIImage(systemName: "arrow.up"), for: .normal)
         return button
     }()
     
@@ -44,6 +48,11 @@ class BeerListViewController: UIViewController {
         setNavigationBar()
         setTableView()
         bind()
+        floatingButton.addTarget(self, action: #selector(didTappdFloatingButton), for: .touchUpInside)
+    }
+    
+    @objc private func didTappdFloatingButton() {
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
     
     private func setNavigationBar() {
@@ -78,6 +87,8 @@ class BeerListViewController: UIViewController {
             make.right.equalToSuperview().offset(-20)
             make.width.height.equalTo(50)
         }
+        
+        
     }
 }
 
@@ -85,13 +96,20 @@ extension BeerListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        guard let cell = tableView.cellForRow(at: indexPath) as? BeerListCell,
+              let beer = cell.currentBeer else {
+            return
+        }
+        
+        coordinator?.cellTapped(with: beer)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if tableView
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        print("cell = \(cell)")
+        print("indexpath = \(indexPath)")
     }
 }

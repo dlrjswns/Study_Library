@@ -12,6 +12,8 @@ class BeerListCell: UITableViewCell {
     
     static let identifier = "BeerListCell"
     
+    var currentBeer: Beer?
+    
     private let beerImageView: UIImageView = {
        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -55,6 +57,7 @@ class BeerListCell: UITableViewCell {
         beerImageView.image = nil
         beerNameLabel.text = nil
         beerTagLabel.text = nil
+        beerIdLabel.text = nil
     }
     
     private func configureCell() {
@@ -90,6 +93,7 @@ class BeerListCell: UITableViewCell {
               let tagline = model.tagline else {
             return
         }
+        currentBeer = model
         beerImageView.setImage(with: model.imageUrl)
         beerNameLabel.text = name
         beerTagLabel.text = tagline

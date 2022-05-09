@@ -25,9 +25,9 @@ class BeerRepositoryImpl: BeerRepository {
         }
     }
     
-    public func fetchBeers() -> Observable<Result<[Beer], BeerError>> {
+    public func fetchBeers(page: String) -> Observable<Result<[Beer], BeerError>> {
         return Observable.create { [weak self] emitter -> Disposable in
-            self?.fetchPunkBeer(type: .beers) { result in
+            self?.fetchPunkBeer(page: page, type: .beers) { result in
                 switch result {
                     case .success(let beers):
                         emitter.onNext(.success(beers))
@@ -55,14 +55,14 @@ class BeerRepositoryImpl: BeerRepository {
         }
     }
     
-    private func fetchPunkBeer(id: String = "1", type: BeerType, completion: @escaping (Result<[Beer], BeerError>) -> Void) {
+    private func fetchPunkBeer(id: String = "1", page: String = "1", type: BeerType, completion: @escaping (Result<[Beer], BeerError>) -> Void) {
 
         let router: URLRequestConvertible
         switch type {
             case .beer:
                 router = Router.oneBeer(id)
             case .beers:
-                router = Router.beerList
+            router = Router.beerList(["page": page, "per_page": "25"])
             case .randomBeer:
                 router = Router.randomBeer
         }
@@ -87,7 +87,7 @@ enum BeerType: Int {
 }
 
 enum Router: URLRequestConvertible {
-    case oneBeer(String), beerList, randomBeer
+    case oneBeer(String), beerList([String: String]), randomBeer
     
     var baseURL: URL {
         return URL(string: "https://api.punkapi.com")!
@@ -104,7 +104,7 @@ enum Router: URLRequestConvertible {
             case .randomBeer: return "/v2/beers/random"
         }
     }
-    
+//    ?page=2&per_page=80
     func asURLRequest() throws -> URLRequest {
         let url = baseURL.appendingPathComponent(path)
         var request = URLRequest(url: url)
@@ -114,9 +114,9 @@ enum Router: URLRequestConvertible {
             case .oneBeer:
                 print("request = \(request)")
                 return request
-            case .beerList:
-//                request = try JSONParameterEncoder().encode(parameters, into: request)
-                  return request
+            case .beerList(let parameters):
+                request = try URLEncodedFormParameterEncoder().encode(parameters, into: request)
+                return request
             case.randomBeer:
                 return request
         }

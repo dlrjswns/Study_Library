@@ -15,26 +15,37 @@ class MainCoordinator: Coordinator {
     struct Dependency {
         let beerListViewControllerFactory: () -> BeerListViewController
         let beerViewControllerFactory: () -> BeerViewController
+        let beerDetailViewControllerFactory: (Beer) -> BeerDetailViewController
     }
     
     init(dependency: Dependency) {
         beerListViewControllerFactory = dependency.beerListViewControllerFactory
         beerViewControllerFactory = dependency.beerViewControllerFactory
+        beerDetailViewControllerFactory = dependency.beerDetailViewControllerFactory
     }
     
     let beerListViewControllerFactory: () -> BeerListViewController
     let beerViewControllerFactory: () -> BeerViewController
+    let beerDetailViewControllerFactory: (Beer) -> BeerDetailViewController
     
     func start() {
         let beerListVC = beerListViewControllerFactory()
         let beerVC = beerViewControllerFactory()
         let navBeerListVC = UINavigationController(rootViewController: beerListVC)
         let navBeerVC = UINavigationController(rootViewController: beerVC)
-//        navBeerListVC.title = "Beer List"
+        
+        beerListVC.coordinator = self
         navBeerListVC.navigationItem.largeTitleDisplayMode = .always
-//        navBeerVC.title = "Search Beer"
         navBeerVC.navigationItem.largeTitleDisplayMode = .always
+//        navigationController?.setViewControllers([beerListVC, beerVC], animated: true)
+        navigationController. 
         tabbarController?.setViewControllers([navBeerListVC, navBeerVC], animated: true)
+    }
+    
+    func cellTapped(with model: Beer) {
+        let beerDetailVC = beerDetailViewControllerFactory(model)
+        
+        
     }
     
 }

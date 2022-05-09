@@ -35,7 +35,7 @@ class BeerListViewModel: BeerListViewModelType {
         beerListModelOutput = beerListModel.asDriver(onErrorJustReturn: [])
         beerListErrorOutput = beerListError.asObservable()
         
-        usecase.fetchBeers().subscribe(onNext: { result in
+        usecase.fetchBeers(page: "1").subscribe(onNext: { result in
             switch result {
                 case .success(let beers):
                     beerListModel.accept(beers)
