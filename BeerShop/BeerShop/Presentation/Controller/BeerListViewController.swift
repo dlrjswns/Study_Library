@@ -100,8 +100,9 @@ extension BeerListViewController: UITableViewDelegate {
               let beer = cell.currentBeer else {
             return
         }
-        
-        coordinator?.cellTapped(with: beer)
+        let detailVC = BeerDetailViewController(dependency: .init(selectedBeer: beer))
+        self.navigationController?.pushViewController(detailVC, animated: true)
+//        coordinator?.cellTapped(where: self, with: beer)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

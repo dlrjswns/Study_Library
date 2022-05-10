@@ -38,7 +38,6 @@ class MainCoordinator: Coordinator {
         navBeerListVC.navigationItem.largeTitleDisplayMode = .always
         navBeerVC.navigationItem.largeTitleDisplayMode = .always
 //        navigationController?.setViewControllers([beerListVC, beerVC], animated: true)
-        navigationController. 
         tabbarController?.setViewControllers([navBeerListVC, navBeerVC], animated: true)
     }
     
