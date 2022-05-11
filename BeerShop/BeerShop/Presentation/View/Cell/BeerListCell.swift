@@ -100,4 +100,11 @@ class BeerListCell: UITableViewCell {
         beerIdLabel.text = "\(model.id!)"
         self.accessoryType = .disclosureIndicator
     }
+    
+    public func createMock() {
+        beerIdLabel.text = "1"
+        beerNameLabel.text = "생맥주"
+        beerTagLabel.text = "Tag Label"
+        beerImageView.image = UIImage(systemName: "heart.fill")
+    }
 }

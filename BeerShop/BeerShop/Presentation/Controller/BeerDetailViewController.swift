@@ -12,28 +12,43 @@ class BeerDetailViewController: UIViewController {
     
     private let selectedBeer: Beer
     
+    private let scrollView: UIScrollView = {
+       let scrollView = UIScrollView()
+        scrollView.alwaysBounceVertical = true
+        return scrollView
+    }()
+    
     private let beerIdLabel: UILabel = {
        let label = UILabel()
+        label.font = .systemFont(ofSize: 25)
         return label
     }()
     
     private let beerImageView: UIImageView = {
        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
         return imageView
     }()
     
     private let beerNameLabel: UILabel = {
        let label = UILabel()
+        label.font = .systemFont(ofSize: 30, weight: .bold)
+        label.numberOfLines = 1
+        label.lineBreakMode = .byTruncatingTail
         return label
     }()
     
     private let beerTagLineLabel: UILabel = {
        let label = UILabel()
+        label.font = .systemFont(ofSize: 25, weight: .regular)
         return label
     }()
     
     private let beerDescriptionLabel: UILabel = {
        let label = UILabel()
+        label.numberOfLines = .max
+        label.font = .systemFont(ofSize: 20, weight: .thin)
         return label
     }()
     
@@ -54,18 +69,27 @@ class BeerDetailViewController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
+//        createMockData()
     }
     
-    public func configureUI(with model: Beer) {
-        print("BeerDetailVC - model = \(model)")
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        beerImageView.snp.updateConstraints { make in
+            make.width.height.equalTo(view.frame.width - 80)
+        }
     }
     
     private func configureUI() {
-        view.addSubview(beerIdLabel)
-        view.addSubview(beerImageView)
-        view.addSubview(beerNameLabel)
-        view.addSubview(beerTagLineLabel)
-        view.addSubview(beerDescriptionLabel)
+        view.addSubview(scrollView)
+        scrollView.addSubview(beerIdLabel)
+        scrollView.addSubview(beerImageView)
+        scrollView.addSubview(beerNameLabel)
+        scrollView.addSubview(beerTagLineLabel)
+        scrollView.addSubview(beerDescriptionLabel)
+        
+        scrollView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         
         beerIdLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -75,6 +99,7 @@ class BeerDetailViewController: UIViewController {
         beerImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(beerIdLabel.snp.bottom).offset(10)
+            make.width.height.equalTo(view.frame.width - 80)
         }
         
         beerNameLabel.snp.makeConstraints { make in
@@ -90,8 +115,15 @@ class BeerDetailViewController: UIViewController {
         beerDescriptionLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(beerTagLineLabel.snp.bottom).offset(10)
-            make.bottom.equalToSuperview().offset(-10)
+            make.bottom.equalToSuperview().offset(-80)
+            make.left.right.equalToSuperview().inset(20)
         }
+        
+        beerIdLabel.text = "\(selectedBeer.id!)"
+        beerImageView.setImage(with: selectedBeer.imageUrl)
+        beerNameLabel.text = selectedBeer.name
+        beerDescriptionLabel.text = selectedBeer.description
+        beerTagLineLabel.text = selectedBeer.tagline
     }
     
 }
