@@ -117,7 +117,6 @@ class MainTabbarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        
     }
     
     private func configureUI() {
@@ -153,6 +152,7 @@ class MainTabbarController: UITabBarController {
                 beerTabbar.beerListButton.isSelected = false
                 beerTabbar.beerButton.isSelected = false
                 beerTabbar.beerRandomButton.isSelected = true
+                selectedIndex = 2
             default:
                 print("didTappeButton called - Button의 tag번호를 확인해주세요")
         }

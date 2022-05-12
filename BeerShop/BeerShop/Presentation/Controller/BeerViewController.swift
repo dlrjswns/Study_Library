@@ -39,12 +39,16 @@ class BeerViewController: UIViewController {
     
     private let beerIdLabel: UILabel = {
        let label = UILabel()
+        label.font = .systemFont(ofSize: 23)
         return label
     }()
     
     private let beerNameLabel: UILabel = {
        let label = UILabel()
-        label.font = .systemFont(ofSize: 18, weight: .bold)
+        label.font = .systemFont(ofSize: 25, weight: .bold)
+        label.isUserInteractionEnabled = true
+        label.numberOfLines = 1
+        label.textAlignment = .center
         return label
     }()
     
@@ -57,13 +61,14 @@ class BeerViewController: UIViewController {
     
     private let beerTagLabel: UILabel = {
        let label = UILabel()
-        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.font = .systemFont(ofSize: 18, weight: .medium)
+        label.textAlignment = .center
         return label
     }()
     
     private let beerDescriptionLabel: UILabel = {
        let label = UILabel()
-        label.font = .systemFont(ofSize: 13, weight: .thin)
+        label.font = .systemFont(ofSize: 20, weight: .thin)
         label.numberOfLines = .max
         return label
     }()
@@ -79,6 +84,13 @@ class BeerViewController: UIViewController {
         title = "Search Beer"
 //        navigationController?.navigationItem.titleView = searchBar
         navigationItem.titleView = searchBar
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(didTappdNameLabel))
+        beerNameLabel.addGestureRecognizer(gesture)
+    }
+    
+    @objc func didTappdNameLabel() {
+        beerNameLabel.numberOfLines = .max
     }
     
     override func viewDidLayoutSubviews() {
@@ -151,18 +163,21 @@ class BeerViewController: UIViewController {
         beerNameLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(beerImageView.snp.bottom)
+            make.left.right.equalToSuperview().inset(10)
 //            make.width.height.equalTo(view.frame.width - 40)
         }
         
         beerTagLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(beerNameLabel.snp.bottom).offset(10)
+            make.left.right.equalToSuperview().inset(10)
         }
         
         beerDescriptionLabel.snp.makeConstraints { make in
             make.centerX.bottom.equalToSuperview()
             make.top.equalTo(beerTagLabel.snp.bottom).offset(10)
-            make.width.equalToSuperview()
+//            make.width.equalToSuperview()
+            make.left.right.equalToSuperview().inset(10)
         }
     }
     

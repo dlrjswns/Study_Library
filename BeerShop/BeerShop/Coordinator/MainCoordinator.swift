@@ -16,29 +16,34 @@ class MainCoordinator: Coordinator {
         let beerListViewControllerFactory: () -> BeerListViewController
         let beerViewControllerFactory: () -> BeerViewController
         let beerDetailViewControllerFactory: (Beer) -> BeerDetailViewController
+        let beerRandomViewControllerFactory: () -> BeerRandomViewController
     }
     
     init(dependency: Dependency) {
         beerListViewControllerFactory = dependency.beerListViewControllerFactory
         beerViewControllerFactory = dependency.beerViewControllerFactory
         beerDetailViewControllerFactory = dependency.beerDetailViewControllerFactory
+        beerRandomViewControllerFactory = dependency.beerRandomViewControllerFactory
     }
     
     let beerListViewControllerFactory: () -> BeerListViewController
     let beerViewControllerFactory: () -> BeerViewController
     let beerDetailViewControllerFactory: (Beer) -> BeerDetailViewController
+    let beerRandomViewControllerFactory: () -> BeerRandomViewController
     
     func start() {
         let beerListVC = beerListViewControllerFactory()
         let beerVC = beerViewControllerFactory()
+        let beerRandomVC = beerRandomViewControllerFactory()
         let navBeerListVC = UINavigationController(rootViewController: beerListVC)
         let navBeerVC = UINavigationController(rootViewController: beerVC)
+        let navBeerRandomVC = UINavigationController(rootViewController: beerRandomVC)
         
         beerListVC.coordinator = self
         navBeerListVC.navigationItem.largeTitleDisplayMode = .always
         navBeerVC.navigationItem.largeTitleDisplayMode = .always
 //        navigationController?.setViewControllers([beerListVC, beerVC], animated: true)
-        tabbarController?.setViewControllers([navBeerListVC, navBeerVC], animated: true)
+        tabbarController?.setViewControllers([navBeerListVC, navBeerVC, navBeerRandomVC], animated: true)
     }
     
     func cellTapped(with model: Beer) {

@@ -32,6 +32,7 @@
 		702BFC9B2826B0CF0018BE8C /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702BFC9A2826B0CF0018BE8C /* FloatingButton.swift */; };
 		70807AFB2827852E001E0A57 /* Pods_BeerShop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B65BFCDA43CA82F061819A84 /* Pods_BeerShop.framework */; };
 		70B5ADB228289630008CFE72 /* BeerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5ADB128289630008CFE72 /* BeerDetailViewController.swift */; };
+		70CB8895282CD19E00C4293A /* BeerRandomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CB8894282CD19E00C4293A /* BeerRandomViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		702BFC1628252C4E0018BE8C /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		702BFC9A2826B0CF0018BE8C /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		70B5ADB128289630008CFE72 /* BeerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailViewController.swift; sourceTree = "<group>"; };
+		70CB8894282CD19E00C4293A /* BeerRandomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerRandomViewController.swift; sourceTree = "<group>"; };
 		800FBBAC0D55B16669BE8E9C /* Pods-BeerShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeerShop.debug.xcconfig"; path = "Target Support Files/Pods-BeerShop/Pods-BeerShop.debug.xcconfig"; sourceTree = "<group>"; };
 		823CBD4435BB85885CB93B21 /* Pods-BeerShop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeerShop.release.xcconfig"; path = "Target Support Files/Pods-BeerShop/Pods-BeerShop.release.xcconfig"; sourceTree = "<group>"; };
 		B65BFCDA43CA82F061819A84 /* Pods_BeerShop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeerShop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,6 +186,7 @@
 				702BFC0B2822846D0018BE8C /* MainTabbarController.swift */,
 				702BFC0D2823FD8F0018BE8C /* BeerViewController.swift */,
 				70B5ADB128289630008CFE72 /* BeerDetailViewController.swift */,
+				70CB8894282CD19E00C4293A /* BeerRandomViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				702BFC0A282270A20018BE8C /* CacheManager.swift in Sources */,
 				702BFBED281F568F0018BE8C /* MainCoordinator.swift in Sources */,
 				702BFBEF281F56A00018BE8C /* Coordinator.swift in Sources */,
+				70CB8895282CD19E00C4293A /* BeerRandomViewController.swift in Sources */,
 				702BFBFE28221E1B0018BE8C /* BeerUsecaseImpl.swift in Sources */,
 				702BFBF5281F64ED0018BE8C /* BeerRepositoryImpl.swift in Sources */,
 				702BFBF7281F64FC0018BE8C /* BeerRepository.swift in Sources */,

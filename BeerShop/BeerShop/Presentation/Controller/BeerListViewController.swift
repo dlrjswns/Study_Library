@@ -18,8 +18,6 @@ class BeerListViewController: UIViewController {
     
     var disposeBag = DisposeBag()
     
-    var lastBeerIndexPath: IndexPath?
-    
     private let tableView: UITableView = {
        let tableView = UITableView()
         return tableView
@@ -29,7 +27,6 @@ class BeerListViewController: UIViewController {
        let button = UIButton()
         button.clipsToBounds = true
         button.layer.cornerRadius = 25
-        button.isHidden = true
         button.backgroundColor = .systemMint
         button.setImage(UIImage(systemName: "arrow.up"), for: .normal)
         return button
@@ -55,7 +52,7 @@ class BeerListViewController: UIViewController {
     
     @objc private func didTappdFloatingButton() {
         tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
-        floatingButton.isHidden = true
+//        floatingButton.isHidden = true
     }
     
     private func setNavigationBar() {
@@ -72,12 +69,11 @@ class BeerListViewController: UIViewController {
     private func bind() {
         viewModel.beerListModelOutput.asObservable().bind(to: tableView.rx.items(cellIdentifier: BeerListCell.identifier, cellType: BeerListCell.self)) { index, item, cell in
             cell.configureCell(with: item)
-//            cell.createMock()
         }.disposed(by: disposeBag)
         
-        viewModel.currentBeerCountOutput.subscribe(onNext: { [weak self] lastBeerIndexPath in
-            self?.lastBeerIndexPath = lastBeerIndexPath
-        }).disposed(by: disposeBag)
+//        viewModel.currentBeerCountOutput.subscribe(onNext: { [weak self] lastBeerIndexPath in
+//            self?.lastBeerIndexPath = lastBeerIndexPath
+//        }).disposed(by: disposeBag)
     }
     
     private func configureUI() {
@@ -119,15 +115,8 @@ extension BeerListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
-//        guard beerCount != 0 else {
-//            return
-//        }
         print("index = \(indexPath)")
-//        if indexPath.row == beerCount - 1 {
-//            floatingButton.isHidden = false
-//        } else {
-//            floatingButton.isHidden = true
-//        }
+        
     }
     
 }

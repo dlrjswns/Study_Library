@@ -32,7 +32,11 @@ extension AppDenpency {
             return .init(dependency: .init(selectedBeer: beer))
         }
         
-        let mainCoordinator: MainCoordinator = .init(dependency: .init(beerListViewControllerFactory: beerListViewControllerFactory, beerViewControllerFactory: beerViewControllerFactory, beerDetailViewControllerFactory: beerDetailViewControllerFactory))
+        let beerRandomViewControllerFactory: () -> BeerRandomViewController = {
+            return .init()
+        }
+        
+        let mainCoordinator: MainCoordinator = .init(dependency: .init(beerListViewControllerFactory: beerListViewControllerFactory, beerViewControllerFactory: beerViewControllerFactory, beerDetailViewControllerFactory: beerDetailViewControllerFactory, beerRandomViewControllerFactory: beerRandomViewControllerFactory))
         
         return .init(mainCoordinator: mainCoordinator)
     }
