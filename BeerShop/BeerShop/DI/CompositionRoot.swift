@@ -14,15 +14,15 @@ struct AppDenpency {
 extension AppDenpency {
     static func resolve() -> AppDenpency {
         
+        let repository: BeerRepository = BeerRepositoryImpl()
+        
         let beerListViewControllerFactory: () -> BeerListViewController = {
-            let repository = BeerRepositoryImpl()
             let usecase = BeerUsecaseImpl(repository: repository)
             let viewModel = BeerListViewModel(usecase: usecase)
             return .init(viewModel: viewModel)
         }
         
         let beerViewControllerFactory: () -> BeerViewController = {
-            let repository = BeerRepositoryImpl()
             let usecase = BeerUsecaseImpl(repository: repository)
             let viewModel = BeerViewModel(usecase: usecase)
             return .init(viewModel: viewModel)
@@ -33,7 +33,9 @@ extension AppDenpency {
         }
         
         let beerRandomViewControllerFactory: () -> BeerRandomViewController = {
-            return .init()
+            let usecase = BeerUsecaseImpl(repository: repository)
+            let viewModel = BeerRandomViewModel(usecase: usecase)
+            return .init(viewModel: viewModel)
         }
         
         let mainCoordinator: MainCoordinator = .init(dependency: .init(beerListViewControllerFactory: beerListViewControllerFactory, beerViewControllerFactory: beerViewControllerFactory, beerDetailViewControllerFactory: beerDetailViewControllerFactory, beerRandomViewControllerFactory: beerRandomViewControllerFactory))

@@ -9,9 +9,9 @@ import UIKit
 import Lottie
 import SnapKit
 
-class EmptyView: UIView {
+class NoSearchView: UIView {
     
-    private let emptyView: AnimationView = {
+    private let noSearchView: AnimationView = {
         let vw = AnimationView(name: "emptyScreen")
         vw.contentMode = .scaleAspectFit
         vw.loopMode = .loop
@@ -22,8 +22,8 @@ class EmptyView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(emptyView)
-        emptyView.snp.makeConstraints { make in
+        addSubview(noSearchView)
+        noSearchView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }

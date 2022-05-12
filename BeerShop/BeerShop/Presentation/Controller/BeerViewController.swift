@@ -74,7 +74,7 @@ class BeerViewController: UIViewController {
     }()
     
     private let loadingView = LoadingView()
-    private let emptyView = EmptyView()
+    private let emptyView = NoSearchView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
