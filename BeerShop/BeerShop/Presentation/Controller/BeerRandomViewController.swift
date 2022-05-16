@@ -86,7 +86,7 @@ class BeerRandomViewController: UIViewController {
         configureUI()
         bind()
         
-        randomButton.rx.tap.throttle(.seconds(3), scheduler: MainScheduler.instance).bind(to: viewModel.randomBeerButtonTapped)
+        randomButton.rx.tap.throttle(.seconds(1), scheduler: MainScheduler.instance).bind(to: viewModel.randomBeerButtonTapped)
             .disposed(by: disposeBag)
         
         

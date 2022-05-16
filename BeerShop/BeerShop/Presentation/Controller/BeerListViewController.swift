@@ -23,6 +23,11 @@ class BeerListViewController: UIViewController {
         return tableView
     }()
     
+    private let noNetworkView: NoNetworkView = {
+       let vw = NoNetworkView()
+        return vw
+    }()
+    
     private let floatingButton: UIButton = {
        let button = UIButton()
         button.clipsToBounds = true
@@ -71,6 +76,14 @@ class BeerListViewController: UIViewController {
             cell.configureCell(with: item)
         }.disposed(by: disposeBag)
         
+        viewModel.beerListErrorOutput.subscribe(onNext: { error in
+            
+        }).disposed(by: disposeBag)
+        
+        viewModel.beerNetworkOutput.drive(onNext: { [weak self] networking in
+            self?.noNetworkView.isHidden = networking
+        }).disposed(by: disposeBag)
+        
 //        viewModel.currentBeerCountOutput.subscribe(onNext: { [weak self] lastBeerIndexPath in
 //            self?.lastBeerIndexPath = lastBeerIndexPath
 //        }).disposed(by: disposeBag)
@@ -81,6 +94,7 @@ class BeerListViewController: UIViewController {
         
         view.addSubview(tableView)
         view.addSubview(floatingButton)
+        view.addSubview(noNetworkView)
         
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -92,7 +106,9 @@ class BeerListViewController: UIViewController {
             make.width.height.equalTo(50)
         }
         
-        
+        noNetworkView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
 }
 
