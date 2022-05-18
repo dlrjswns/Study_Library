@@ -25,6 +25,7 @@ class BeerListViewController: UIViewController {
     
     private let noNetworkView: NoNetworkView = {
        let vw = NoNetworkView()
+        vw.isHidden = true
         return vw
     }()
     
