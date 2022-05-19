@@ -5,16 +5,23 @@
 //  Created by 이건준 on 2022/05/16.
 //
 
-import Foundation
 import UIKit
 
 extension DateFormatter {
     static let dayformatter: DateFormatter = {
        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY-MM-dd"
-        dateFormatter.timeZone = .current
-        dateFormatter.locale = .current
-        return dateFormatter
+       dateFormatter.dateFormat = "YYYY-MM-dd"
+       dateFormatter.timeZone = .current
+       dateFormatter.locale = .current
+       return dateFormatter
+    }()
+    
+    static let prettyformatter: DateFormatter = {
+       let dateFormatter = DateFormatter()
+       dateFormatter.dateStyle = .medium
+       dateFormatter.timeZone = .current
+       dateFormatter.locale = Locale(identifier: "en_US")
+       return dateFormatter
     }()
 }
 
