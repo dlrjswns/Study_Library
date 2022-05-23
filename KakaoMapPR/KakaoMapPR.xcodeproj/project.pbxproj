@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		70CB89392839F8C300C4293A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CB89382839F8C300C4293A /* AppDelegate.swift */; };
 		70CB893B2839F8C300C4293A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CB893A2839F8C300C4293A /* SceneDelegate.swift */; };
-		70CB893D2839F8C300C4293A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CB893C2839F8C300C4293A /* ViewController.swift */; };
-		70CB89402839F8C300C4293A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70CB893E2839F8C300C4293A /* Main.storyboard */; };
 		70CB89422839F8C600C4293A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70CB89412839F8C600C4293A /* Assets.xcassets */; };
 		70CB89452839F8C600C4293A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70CB89432839F8C600C4293A /* LaunchScreen.storyboard */; };
 		70CB89732839F98E00C4293A /* map_pinup_custom@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70CB894E2839F98E00C4293A /* map_pinup_custom@3x.png */; };
@@ -76,14 +74,20 @@
 		70CB89E22839FFE700C4293A /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 70CB89DE2839FF3B00C4293A /* libc++.tbd */; };
 		70CB89E32839FFF200C4293A /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 70CB89DF2839FF4300C4293A /* libxml2.tbd */; };
 		70CB89E42839FFFB00C4293A /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 70CB89E02839FF4B00C4293A /* libsqlite3.tbd */; };
+		70CB89E7283B0B0D00C4293A /* KakaoMapRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CB89E6283B0B0D00C4293A /* KakaoMapRepositoryImpl.swift */; };
+		70CB89EA283B10B700C4293A /* KakaoMapEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CB89E9283B10B700C4293A /* KakaoMapEntity.swift */; };
+		70CB89ED283B1A9700C4293A /* KakaoMapUsecaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CB89EC283B1A9700C4293A /* KakaoMapUsecaseImpl.swift */; };
+		70CB89F0283B1B4200C4293A /* KakaoMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CB89EF283B1B4200C4293A /* KakaoMapViewModel.swift */; };
+		70CB89F5283B4E3700C4293A /* KakaoMapSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CB89F4283B4E3700C4293A /* KakaoMapSearchViewController.swift */; };
+		70CB89F8283B711500C4293A /* KakaoMapTabViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CB89F7283B711500C4293A /* KakaoMapTabViewCell.swift */; };
+		C13F623DF8E1FBF44E7905EE /* Pods_KakaoMapPR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B95F2D7E1D806CC5B76B50D6 /* Pods_KakaoMapPR.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0CB78B527A2C52CD8844B131 /* Pods-KakaoMapPR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KakaoMapPR.release.xcconfig"; path = "Target Support Files/Pods-KakaoMapPR/Pods-KakaoMapPR.release.xcconfig"; sourceTree = "<group>"; };
 		70CB89352839F8C300C4293A /* KakaoMapPR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KakaoMapPR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70CB89382839F8C300C4293A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		70CB893A2839F8C300C4293A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		70CB893C2839F8C300C4293A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		70CB893F2839F8C300C4293A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		70CB89412839F8C600C4293A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		70CB89442839F8C600C4293A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		70CB89462839F8C600C4293A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -168,6 +172,14 @@
 		70CB89DE2839FF3B00C4293A /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		70CB89DF2839FF4300C4293A /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		70CB89E02839FF4B00C4293A /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		70CB89E6283B0B0D00C4293A /* KakaoMapRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoMapRepositoryImpl.swift; sourceTree = "<group>"; };
+		70CB89E9283B10B700C4293A /* KakaoMapEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoMapEntity.swift; sourceTree = "<group>"; };
+		70CB89EC283B1A9700C4293A /* KakaoMapUsecaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoMapUsecaseImpl.swift; sourceTree = "<group>"; };
+		70CB89EF283B1B4200C4293A /* KakaoMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoMapViewModel.swift; sourceTree = "<group>"; };
+		70CB89F4283B4E3700C4293A /* KakaoMapSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoMapSearchViewController.swift; sourceTree = "<group>"; };
+		70CB89F7283B711500C4293A /* KakaoMapTabViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoMapTabViewCell.swift; sourceTree = "<group>"; };
+		B95F2D7E1D806CC5B76B50D6 /* Pods_KakaoMapPR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KakaoMapPR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6A396EE070DD190EEEE9B0F /* Pods-KakaoMapPR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KakaoMapPR.debug.xcconfig"; path = "Target Support Files/Pods-KakaoMapPR/Pods-KakaoMapPR.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,18 +196,29 @@
 				70CB89E32839FFF200C4293A /* libxml2.tbd in Frameworks */,
 				70CB89D92839FF1D00C4293A /* SystemConfiguration.framework in Frameworks */,
 				70CB89D72839FD3500C4293A /* Metal.framework in Frameworks */,
+				C13F623DF8E1FBF44E7905EE /* Pods_KakaoMapPR.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1207DFD30C1FB11F508ABB6F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F6A396EE070DD190EEEE9B0F /* Pods-KakaoMapPR.debug.xcconfig */,
+				0CB78B527A2C52CD8844B131 /* Pods-KakaoMapPR.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		70CB892C2839F8C300C4293A = {
 			isa = PBXGroup;
 			children = (
 				70CB89372839F8C300C4293A /* KakaoMapPR */,
 				70CB89362839F8C300C4293A /* Products */,
 				70CB89D32839FCE000C4293A /* Frameworks */,
+				1207DFD30C1FB11F508ABB6F /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -210,10 +233,14 @@
 		70CB89372839F8C300C4293A /* KakaoMapPR */ = {
 			isa = PBXGroup;
 			children = (
+				70CB89F6283B4F4F00C4293A /* Cell */,
+				70CB89F3283B4E2B00C4293A /* ViewController */,
+				70CB89EE283B1B3800C4293A /* ViewModel */,
+				70CB89EB283B1A8F00C4293A /* Usecase */,
+				70CB89E8283B10B100C4293A /* Entity */,
+				70CB89E5283B0AEF00C4293A /* Repository */,
 				70CB89382839F8C300C4293A /* AppDelegate.swift */,
 				70CB893A2839F8C300C4293A /* SceneDelegate.swift */,
-				70CB893C2839F8C300C4293A /* ViewController.swift */,
-				70CB893E2839F8C300C4293A /* Main.storyboard */,
 				70CB89412839F8C600C4293A /* Assets.xcassets */,
 				70CB89432839F8C600C4293A /* LaunchScreen.storyboard */,
 				70CB89462839F8C600C4293A /* Info.plist */,
@@ -353,8 +380,57 @@
 				70CB89D82839FF1D00C4293A /* SystemConfiguration.framework */,
 				70CB89D62839FD3500C4293A /* Metal.framework */,
 				70CB89D42839FCE000C4293A /* OpenGLES.framework */,
+				B95F2D7E1D806CC5B76B50D6 /* Pods_KakaoMapPR.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		70CB89E5283B0AEF00C4293A /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				70CB89E6283B0B0D00C4293A /* KakaoMapRepositoryImpl.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		70CB89E8283B10B100C4293A /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				70CB89E9283B10B700C4293A /* KakaoMapEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		70CB89EB283B1A8F00C4293A /* Usecase */ = {
+			isa = PBXGroup;
+			children = (
+				70CB89EC283B1A9700C4293A /* KakaoMapUsecaseImpl.swift */,
+			);
+			path = Usecase;
+			sourceTree = "<group>";
+		};
+		70CB89EE283B1B3800C4293A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				70CB89EF283B1B4200C4293A /* KakaoMapViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		70CB89F3283B4E2B00C4293A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				70CB89F4283B4E3700C4293A /* KakaoMapSearchViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		70CB89F6283B4F4F00C4293A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				70CB89F7283B711500C4293A /* KakaoMapTabViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,9 +440,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 70CB89492839F8C600C4293A /* Build configuration list for PBXNativeTarget "KakaoMapPR" */;
 			buildPhases = (
+				60DED9A88D6B906DEA6E209F /* [CP] Check Pods Manifest.lock */,
 				70CB89312839F8C300C4293A /* Sources */,
 				70CB89322839F8C300C4293A /* Frameworks */,
 				70CB89332839F8C300C4293A /* Resources */,
+				161C67471714E694F129F0E7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -467,7 +545,6 @@
 				70CB89C02839F9E600C4293A /* map_pin_red@3x.png in Resources */,
 				70CB89752839F98E00C4293A /* shadow_balloon.png in Resources */,
 				70CB89422839F8C600C4293A /* Assets.xcassets in Resources */,
-				70CB89402839F8C300C4293A /* Main.storyboard in Resources */,
 				70CB89CE2839F9E600C4293A /* map_present_background_update.png in Resources */,
 				70CB89CA2839F9E600C4293A /* map_present_direction.png in Resources */,
 				70CB898C2839F98E00C4293A /* daum_th_line.png in Resources */,
@@ -477,13 +554,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		161C67471714E694F129F0E7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KakaoMapPR/Pods-KakaoMapPR-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KakaoMapPR/Pods-KakaoMapPR-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KakaoMapPR/Pods-KakaoMapPR-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		60DED9A88D6B906DEA6E209F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KakaoMapPR-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		70CB89312839F8C300C4293A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70CB893D2839F8C300C4293A /* ViewController.swift in Sources */,
+				70CB89ED283B1A9700C4293A /* KakaoMapUsecaseImpl.swift in Sources */,
+				70CB89F5283B4E3700C4293A /* KakaoMapSearchViewController.swift in Sources */,
+				70CB89EA283B10B700C4293A /* KakaoMapEntity.swift in Sources */,
+				70CB89F8283B711500C4293A /* KakaoMapTabViewCell.swift in Sources */,
+				70CB89F0283B1B4200C4293A /* KakaoMapViewModel.swift in Sources */,
 				70CB89392839F8C300C4293A /* AppDelegate.swift in Sources */,
+				70CB89E7283B0B0D00C4293A /* KakaoMapRepositoryImpl.swift in Sources */,
 				70CB893B2839F8C300C4293A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -491,14 +615,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		70CB893E2839F8C300C4293A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				70CB893F2839F8C300C4293A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		70CB89432839F8C600C4293A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -626,6 +742,7 @@
 		};
 		70CB894A2839F8C600C4293A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6A396EE070DD190EEEE9B0F /* Pods-KakaoMapPR.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -640,7 +757,6 @@
 				INFOPLIST_FILE = KakaoMapPR/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -659,6 +775,7 @@
 		};
 		70CB894B2839F8C600C4293A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0CB78B527A2C52CD8844B131 /* Pods-KakaoMapPR.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -673,7 +790,6 @@
 				INFOPLIST_FILE = KakaoMapPR/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
