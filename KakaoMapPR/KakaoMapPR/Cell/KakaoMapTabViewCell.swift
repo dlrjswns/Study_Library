@@ -7,9 +7,20 @@
 
 import UIKit
 
+protocol KakaoMapTabViewCelldelegate: AnyObject {
+    func didTappdCell()
+}
+
+struct MapLocation {
+    let latitude: Double
+    let longitude: Double
+}
+
 class KakaoMapTabViewCell: UICollectionViewCell {
     
     static let identifier = "KakaoMapTabViewCell"
+    
+    weak var delegate: KakaoMapTabViewCelldelegate?
     
     private let imageView: UIImageView = {
        let imageView = UIImageView()
@@ -21,17 +32,25 @@ class KakaoMapTabViewCell: UICollectionViewCell {
     
     private let label: UILabel = {
        let label = UILabel()
-        label.font = .systemFont(ofSize: 20, weight: .semibold)
+        label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.backgroundColor = .systemYellow
         label.textColor = .white
-        label.text = "내 집"
         label.textAlignment = .center
         return label
+    }()
+    
+    let highlightView: UIView = {
+       let vw = UIView()
+        vw.backgroundColor = .black
+        vw.isHidden = true
+        return vw
     }()
     
     override var isSelected: Bool {
         didSet {
             label.textColor = isSelected ? .black : .white
+            highlightView.isHidden = isSelected ? false : true
+            delegate?.didTappdCell()
         }
     }
     
@@ -40,6 +59,9 @@ class KakaoMapTabViewCell: UICollectionViewCell {
         backgroundColor = .systemPink
         contentView.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
+        
+        contentView.addSubview(highlightView)
+        highlightView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     override func layoutSubviews() {
@@ -49,9 +71,18 @@ class KakaoMapTabViewCell: UICollectionViewCell {
         label.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
         label.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        
+        highlightView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        highlightView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        highlightView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        highlightView.heightAnchor.constraint(equalToConstant: 10).isActive = true
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    public func configureCell(with model: String) {
+        label.text = model
     }
 }

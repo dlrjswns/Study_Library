@@ -15,6 +15,13 @@ class KakaoMapSearchViewController: UIViewController {
     
     let tabLabelNames = ["My Home", "My School", "My GYM", "Jamsil Station"]
     
+    let tabMapLocations = [
+        MapLocation(latitude: 37.50129, longitude: 127.12865),
+        MapLocation(latitude: 37.64816, longitude: 127.06216),
+        MapLocation(latitude: 37.66641, longitude: 127.07222),
+        MapLocation(latitude: 37.51491, longitude: 127.10408)
+    ]
+    
     init(viewModel: KakaoMapViewModelType) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -23,6 +30,12 @@ class KakaoMapSearchViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private let highlightView: UIView = {
+       let vw = UIView()
+        vw.backgroundColor = .black
+        return vw
+    }()
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -62,10 +75,11 @@ class KakaoMapSearchViewController: UIViewController {
         collectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         collectionView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        mapView.topAnchor.constraint(equalTo: collectionView.bottomAnchor).isActive = true
+        mapView.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 10).isActive = true
         mapView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         mapView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(view.frame.height / 3)).isActive = true
+        
     }
     
     override func viewDidLoad() {
@@ -73,18 +87,33 @@ class KakaoMapSearchViewController: UIViewController {
         view.backgroundColor = .systemBackground
         view.addSubview(mapView)
         mapView.translatesAutoresizingMaskIntoConstraints = false
+        
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
+//        view.addSubview(highlightView)
+//        highlightView.translatesAutoresizingMaskIntoConstraints = false
+        
         myPoint.mapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: 37.50129, longitude: 127.12865))
         mapView.addPOIItems([myPoint])
-        mapView.setMapCenter(MTMapPoint(geoCoord: MTMapPointGeo(latitude: 37.50129, longitude: 127.12865)), zoomLevel: 4, animated: true)
-        
+        mapView.setMapCenter(MTMapPoint(geoCoord: MTMapPointGeo(latitude: 40.50129, longitude: 127.12865)), zoomLevel: 4, animated: true)
+    
         self.navigationItem.titleView = searchBar
         collectionView.delegate = self
         collectionView.dataSource = self
-        
+        initialTappdCollectionView()
         bind()
+    }
+    
+    private func setMarker(markerName: String, mapLocation: MapLocation) {
+        myPoint.itemName = markerName
+        mapView.setMapCenter(MTMapPoint(geoCoord: .init(latitude: mapLocation.latitude, longitude: mapLocation.longitude)), animated: true)
+    }
+    
+    private func initialTappdCollectionView() {
+        let indexPath = IndexPath(item: 0, section: 0) // First Tab
+        collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+        setMarker(markerName: tabLabelNames[0], mapLocation: tabMapLocations[0])
     }
     
     private func bind() {
@@ -104,7 +133,8 @@ extension KakaoMapSearchViewController: UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KakaoMapTabViewCell.identifier, for: indexPath) as! KakaoMapTabViewCell
         
-        
+        let model = tabLabelNames[indexPath.row]
+        cell.configureCell(with: model)
         return cell
     }
     
@@ -120,4 +150,14 @@ extension KakaoMapSearchViewController: UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: collectionView.frame.width / 5 / 6, bottom: 0, right: 0)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let mapLocation = tabMapLocations[indexPath.row]
+        let markerName = tabLabelNames[indexPath.row]
+        setMarker(markerName: markerName, mapLocation: mapLocation)
+//        let mapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: mapLocation.latitude, longitude: mapLocation.longitude))
+//        mapView.setMapCenter(mapPoint, animated: true)
+    }
 }
+
+
