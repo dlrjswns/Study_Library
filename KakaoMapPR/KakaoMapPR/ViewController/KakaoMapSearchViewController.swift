@@ -13,6 +13,8 @@ class KakaoMapSearchViewController: UIViewController {
     
     private let viewModel: KakaoMapViewModelType
     
+    var disposeBag = DisposeBag()
+    
     let tabLabelNames = ["My Home", "My School", "My GYM", "Jamsil Station"]
     
     let tabMapLocations = [
@@ -117,7 +119,12 @@ class KakaoMapSearchViewController: UIViewController {
     }
     
     private func bind() {
+        searchBar.rx.text.orEmpty.debounce(.seconds(1), scheduler: ConcurrentDispatchQueueScheduler.init(qos: .default)).bind(to: viewModel.querySearch)
+            .disposed(by: disposeBag)
         
+        viewModel.searchResultOutput.drive(onNext: { result in
+            print("result = \(result)")
+        }).disposed(by: disposeBag)
     }
 }
 

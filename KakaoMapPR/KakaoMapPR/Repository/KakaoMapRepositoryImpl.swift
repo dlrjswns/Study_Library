@@ -9,7 +9,7 @@ import RxSwift
 import RxCocoa
 
 protocol KakaoMapRepository {
-    func fetchLocationWithKeyword(query: String) -> Observable<Result<KakaoMapLocations, KakaoMapError>>
+    func fetchLocationWithKeyword(query: String) -> Observable<Result<[KakaoMapLocation], KakaoMapError>>
 }
 
 class KakaoMapRepositoryImpl: KakaoMapRepository {
@@ -24,7 +24,7 @@ class KakaoMapRepositoryImpl: KakaoMapRepository {
 //        static let kakaoMapSearchURL = "https://dapi.kakao.com/v2/local/search/address.json"
 //    }
     
-    func fetchLocationWithKeyword(query: String) -> Observable<Result<KakaoMapLocations, KakaoMapError>> {
+    func fetchLocationWithKeyword(query: String) -> Observable<Result<[KakaoMapLocation], KakaoMapError>> {
         guard let url = getKakaoMapSearchURLComponents(query: query).url else {
             return Observable.just(.failure(KakaoMapError.urlError))
         }
@@ -37,7 +37,8 @@ class KakaoMapRepositoryImpl: KakaoMapRepository {
         return session.rx.data(request: request).map { data in
             do {
                 let kakoMapLocations = try JSONDecoder().decode(KakaoMapLocations.self, from: data)
-                return .success(kakoMapLocations)
+                print("resssss = \(kakoMapLocations.documents)")
+                return .success(kakoMapLocations.documents)
             }
             catch {
                 return .failure(KakaoMapError.decodeError)
@@ -55,7 +56,7 @@ extension KakaoMapRepositoryImpl {
     struct KakaoMapAPI {
         static let scheme = "https"
         static let host = "dapi.kakao.com"
-        static let path = "/v2/local/search/address.json"
+        static let path = "/v2/local/search/keyword.json"
     }
     
     private func getKakaoMapSearchURLComponents(query: String) -> URLComponents {

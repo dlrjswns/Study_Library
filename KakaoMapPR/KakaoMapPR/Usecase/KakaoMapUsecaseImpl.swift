@@ -8,7 +8,7 @@
 import RxSwift
 
 protocol KakaoMapUsecase {
-    func fetchLocationWithKeyword(query: String) -> Observable<Result<KakaoMapLocations, KakaoMapError>>
+    func fetchLocationWithKeyword(query: String) -> Observable<Result<[KakaoMapLocation], KakaoMapError>>
 }
 
 class KakaoMapUsecaseImpl: KakaoMapUsecase {
@@ -19,7 +19,7 @@ class KakaoMapUsecaseImpl: KakaoMapUsecase {
         self.repository = repository
     }
     
-    func fetchLocationWithKeyword(query: String) -> Observable<Result<KakaoMapLocations, KakaoMapError>> {
+    func fetchLocationWithKeyword(query: String) -> Observable<Result<[KakaoMapLocation], KakaoMapError>> {
         return repository.fetchLocationWithKeyword(query: query)
     }
     
