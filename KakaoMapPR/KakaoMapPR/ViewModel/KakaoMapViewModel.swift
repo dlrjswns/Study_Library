@@ -11,6 +11,7 @@ import RxCocoa
 protocol KakaoMapViewModelType {
     //Ouput
     var searchResultOutput: Driver<[KakaoMapLocation]> { get }
+    var errorMessageOutput: Signal<KakaoMapError> { get }
     
     //Input
     var querySearch: AnyObserver<String> { get }
@@ -23,6 +24,7 @@ class KakaoMapViewModel: KakaoMapViewModelType {
     
     //Ouput
     let searchResultOutput: Driver<[KakaoMapLocation]>
+    let errorMessageOutput: Signal<KakaoMapError>
     
     //Input
     let querySearch: AnyObserver<String>
@@ -32,15 +34,17 @@ class KakaoMapViewModel: KakaoMapViewModelType {
         
         let querySearchRelay = BehaviorSubject<String>(value: "")
         let searchResultRelay = BehaviorRelay<[KakaoMapLocation]>(value: [])
+        let errorMessageSubject = PublishRelay<KakaoMapError>()
         
         querySearch = querySearchRelay.asObserver()
         searchResultOutput = searchResultRelay.asDriver(onErrorJustReturn: [])
+        errorMessageOutput = errorMessageSubject.asSignal(onErrorJustReturn: .customError("KakaoMapViewModel called - errorMessageSubject error occured"))
         
         querySearchRelay.subscribe(onNext: { query in
             print("query = \(query)")
         }).disposed(by: disposeBag)
         
-        let querySearchResult = querySearchRelay.filter{ $0.count != 0 }.distinctUntilChanged().flatMap(usecase.fetchLocationWithKeyword(query:))
+        let querySearchResult = querySearchRelay.filter{ $0.count != 0 }.distinctUntilChanged().flatMapLatest(usecase.fetchLocationWithKeyword(query:)).share()
         
         let querySearchSuccess = querySearchResult.map { result -> [KakaoMapLocation]? in
             guard case .success(let kakaoMapLocations) = result else { return nil }
@@ -56,5 +60,10 @@ class KakaoMapViewModel: KakaoMapViewModelType {
             guard case .failure(let mapError) = result else { return nil }
             return mapError
         }
+        
+        querySearchFailure.subscribe(onNext: { error in
+            guard let error = error else { return }
+            errorMessageSubject.accept(error)
+        }).disposed(by: disposeBag)
     }
 }

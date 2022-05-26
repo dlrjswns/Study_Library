@@ -15,7 +15,7 @@ class KakaoMapSearchViewController: UIViewController {
     
     var disposeBag = DisposeBag()
     
-    let tabLabelNames = ["My Home", "My School", "My GYM", "Jamsil Station"]
+    let tabLabelNames = ["My Home", "My School", "My GYM", "Jamsil"]
     
     let tabMapLocations = [
         MapLocation(latitude: 37.50129, longitude: 127.12865),
@@ -48,6 +48,14 @@ class KakaoMapSearchViewController: UIViewController {
         return collectionView
     }()
     
+    private let informationTableView: UITableView = {
+       let tableView = UITableView()
+        tableView.register(KakaoMapInforTableViewCell.self, forCellReuseIdentifier: KakaoMapInforTableViewCell.identifier)
+        tableView.estimatedRowHeight = UITableView.automaticDimension
+        tableView.rowHeight = 100
+        return tableView
+    }()
+    
     private let searchBar: UISearchBar = {
        let searchBar = UISearchBar()
         searchBar.placeholder = "장소를 검색"
@@ -60,12 +68,11 @@ class KakaoMapSearchViewController: UIViewController {
         return vw
     }()
     
-    private let myPoint: MTMapPOIItem = {
+    private let myMapPOIItem: MTMapPOIItem = {
        let point = MTMapPOIItem()
         point.itemName = "건준이의 집입니당핡"
         point.markerType = MTMapPOIItemMarkerType.customImage
         point.customImage = UIImage(systemName: "heart.fill")
-        
         return point
     }()
     
@@ -82,6 +89,11 @@ class KakaoMapSearchViewController: UIViewController {
         mapView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(view.frame.height / 3)).isActive = true
         
+        informationTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        informationTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        informationTableView.topAnchor.constraint(equalTo: mapView.bottomAnchor).isActive = true
+        informationTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
     }
     
     override func viewDidLoad() {
@@ -93,22 +105,24 @@ class KakaoMapSearchViewController: UIViewController {
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
-//        view.addSubview(highlightView)
-//        highlightView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(informationTableView)
+        informationTableView.translatesAutoresizingMaskIntoConstraints = false
         
-        myPoint.mapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: 37.50129, longitude: 127.12865))
-        mapView.addPOIItems([myPoint])
+        myMapPOIItem.mapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: 37.50129, longitude: 127.12865))
+
+        mapView.addPOIItems([myMapPOIItem])
         mapView.setMapCenter(MTMapPoint(geoCoord: MTMapPointGeo(latitude: 40.50129, longitude: 127.12865)), zoomLevel: 4, animated: true)
     
         self.navigationItem.titleView = searchBar
         collectionView.delegate = self
         collectionView.dataSource = self
+        informationTableView.delegate = self
         initialTappdCollectionView()
         bind()
     }
     
     private func setMarker(markerName: String, mapLocation: MapLocation) {
-        myPoint.itemName = markerName
+        myMapPOIItem.itemName = markerName
         mapView.setMapCenter(MTMapPoint(geoCoord: .init(latitude: mapLocation.latitude, longitude: mapLocation.longitude)), animated: true)
     }
     
@@ -122,8 +136,12 @@ class KakaoMapSearchViewController: UIViewController {
         searchBar.rx.text.orEmpty.debounce(.seconds(1), scheduler: ConcurrentDispatchQueueScheduler.init(qos: .default)).bind(to: viewModel.querySearch)
             .disposed(by: disposeBag)
         
-        viewModel.searchResultOutput.drive(onNext: { result in
-            print("result = \(result)")
+        viewModel.searchResultOutput.asObservable().bind(to: informationTableView.rx.items(cellIdentifier: KakaoMapInforTableViewCell.identifier, cellType: KakaoMapInforTableViewCell.self)) { index, item, cell in
+            cell.configureCell(with: item)
+        }.disposed(by: disposeBag)
+        
+        viewModel.errorMessageOutput.emit(onNext: { error in
+            print("error = \(error.errorMessage)")
         }).disposed(by: disposeBag)
     }
 }
@@ -161,10 +179,17 @@ extension KakaoMapSearchViewController: UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let mapLocation = tabMapLocations[indexPath.row]
         let markerName = tabLabelNames[indexPath.row]
+        print("markerName = \(markerName)")
         setMarker(markerName: markerName, mapLocation: mapLocation)
 //        let mapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: mapLocation.latitude, longitude: mapLocation.longitude))
 //        mapView.setMapCenter(mapPoint, animated: true)
     }
 }
 
-
+extension KakaoMapSearchViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let cell = tableView.cellForRow(at: indexPath) as! KakaoMapInforTableViewCell
+        print("maplocation = \(cell.currentMapLocation)")
+    }
+}

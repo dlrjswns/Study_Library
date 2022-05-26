@@ -62,6 +62,11 @@ class KakaoMapTabViewCell: UICollectionViewCell {
         
         contentView.addSubview(highlightView)
         highlightView.translatesAutoresizingMaskIntoConstraints = false
+        
+        layer.cornerRadius = 20
+        layer.borderColor = UIColor.systemYellow.cgColor
+        layer.borderWidth = 1
+        clipsToBounds = true
     }
     
     override func layoutSubviews() {

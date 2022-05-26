@@ -50,6 +50,15 @@ class KakaoMapRepositoryImpl: KakaoMapRepository {
 enum KakaoMapError: Error {
     case decodeError
     case urlError
+    case customError(String)
+    
+    var errorMessage: String {
+        switch self {
+            case .customError(let errorMessage): return errorMessage
+            case .decodeError: return "Decode 에러가 발생하였습니다"
+            case .urlError: return "URL을 확인해주세요 !!"
+        }
+    }
 }
 
 extension KakaoMapRepositoryImpl {
