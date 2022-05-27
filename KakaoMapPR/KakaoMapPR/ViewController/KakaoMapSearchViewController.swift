@@ -133,7 +133,7 @@ class KakaoMapSearchViewController: UIViewController {
     }
     
     private func bind() {
-        searchBar.rx.text.orEmpty.debounce(.seconds(1), scheduler: ConcurrentDispatchQueueScheduler.init(qos: .default)).bind(to: viewModel.querySearch)
+        searchBar.rx.text.orEmpty.debounce(.seconds(1), scheduler: ConcurrentDispatchQueueScheduler(qos: .default)).bind(to: viewModel.querySearch)
             .disposed(by: disposeBag)
         
         viewModel.searchResultOutput.asObservable().bind(to: informationTableView.rx.items(cellIdentifier: KakaoMapInforTableViewCell.identifier, cellType: KakaoMapInforTableViewCell.self)) { index, item, cell in
@@ -142,6 +142,11 @@ class KakaoMapSearchViewController: UIViewController {
         
         viewModel.errorMessageOutput.emit(onNext: { error in
             print("error = \(error.errorMessage)")
+        }).disposed(by: disposeBag)
+        
+        viewModel.mapLocationOutput.drive(onNext: { [weak self] mapLocation in
+            print("mapLocation = \(mapLocation)")
+            self?.setMarker(markerName: "", mapLocation: mapLocation)
         }).disposed(by: disposeBag)
     }
 }
@@ -189,7 +194,14 @@ extension KakaoMapSearchViewController: UICollectionViewDelegate, UICollectionVi
 extension KakaoMapSearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let cell = tableView.cellForRow(at: indexPath) as! KakaoMapInforTableViewCell
-        print("maplocation = \(cell.currentMapLocation)")
+        guard let cell = tableView.cellForRow(at: indexPath) as? KakaoMapInforTableViewCell,
+              let currentLocation = cell.currentMapLocation else { return }
+        
+        if let latitude = Double(currentLocation.y),
+           let longitude = Double(currentLocation.x) {
+            let mapLocation = MapLocation(latitude: latitude, longitude: longitude)
+            viewModel.mapLocationInput.onNext(mapLocation)
+        }
+//        setMarker(markerName: cell.currentMapLocation!.placeName, mapLocation: mapLocation)
     }
 }

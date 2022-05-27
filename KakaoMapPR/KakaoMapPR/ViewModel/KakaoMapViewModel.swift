@@ -12,9 +12,11 @@ protocol KakaoMapViewModelType {
     //Ouput
     var searchResultOutput: Driver<[KakaoMapLocation]> { get }
     var errorMessageOutput: Signal<KakaoMapError> { get }
+    var mapLocationOutput: Driver<MapLocation> { get }
     
     //Input
     var querySearch: AnyObserver<String> { get }
+    var mapLocationInput: AnyObserver<MapLocation> { get }
 }
 
 class KakaoMapViewModel: KakaoMapViewModelType {
@@ -25,9 +27,11 @@ class KakaoMapViewModel: KakaoMapViewModelType {
     //Ouput
     let searchResultOutput: Driver<[KakaoMapLocation]>
     let errorMessageOutput: Signal<KakaoMapError>
+    let mapLocationOutput: Driver<MapLocation>
     
     //Input
     let querySearch: AnyObserver<String>
+    let mapLocationInput: AnyObserver<MapLocation>
     
     init(usecase: KakaoMapUsecase) {
         self.usecase = usecase
@@ -35,10 +39,13 @@ class KakaoMapViewModel: KakaoMapViewModelType {
         let querySearchRelay = BehaviorSubject<String>(value: "")
         let searchResultRelay = BehaviorRelay<[KakaoMapLocation]>(value: [])
         let errorMessageSubject = PublishRelay<KakaoMapError>()
+        let mapLocationRelay = BehaviorSubject<MapLocation>(value: MapLocation(latitude: 37.50129, longitude: 127.12865))
         
         querySearch = querySearchRelay.asObserver()
         searchResultOutput = searchResultRelay.asDriver(onErrorJustReturn: [])
         errorMessageOutput = errorMessageSubject.asSignal(onErrorJustReturn: .customError("KakaoMapViewModel called - errorMessageSubject error occured"))
+        mapLocationOutput = mapLocationRelay.asDriver(onErrorJustReturn: MapLocation(latitude: 37.50129, longitude: 127.12865))
+        mapLocationInput = mapLocationRelay.asObserver()
         
         querySearchRelay.subscribe(onNext: { query in
             print("query = \(query)")

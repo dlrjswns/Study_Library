@@ -32,12 +32,7 @@ class KakaoMapInforTableViewCell: UITableViewCell {
     
     override var isSelected: Bool {
         didSet {
-            print("ttttt")
-            if isSelected == true {
-                if let currentMapLocation = currentMapLocation {
-                    delegate?.didTappdCell(kakaoMapLocation: currentMapLocation)
-                }
-            }
+            isSelected ? print("tapped") : print("no tapped")
         }
     }
     
