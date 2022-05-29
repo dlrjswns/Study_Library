@@ -32,7 +32,9 @@ class RootViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        guard let data = UIImage(named: "image1")?.pngData() else { return }
+//        let imageString = data.base64EncodedString(options: .endLineWithCarriageReturn)
+//        print("imageString = \(imageString)")
         collection.delegate = self
         collection.dataSource = self
         collection.register(WaterCollectionViewCell.self, forCellWithReuseIdentifier: WaterCollectionViewCell.identifier)
