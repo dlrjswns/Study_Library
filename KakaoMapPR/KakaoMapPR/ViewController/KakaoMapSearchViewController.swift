@@ -202,6 +202,10 @@ extension KakaoMapSearchViewController: UITableViewDelegate {
             let mapLocation = MapLocation(latitude: latitude, longitude: longitude)
             viewModel.mapLocationInput.onNext(mapLocation)
         }
+        
+        let popUpVC = BottomPopupViewController()
+        popUpVC.modalPresentationStyle = .overFullScreen
+        self.present(popUpVC, animated: true)
 //        setMarker(markerName: cell.currentMapLocation!.placeName, mapLocation: mapLocation)
     }
 }

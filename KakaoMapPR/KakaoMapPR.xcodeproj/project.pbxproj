@@ -81,6 +81,7 @@
 		70CB89F5283B4E3700C4293A /* KakaoMapSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CB89F4283B4E3700C4293A /* KakaoMapSearchViewController.swift */; };
 		70CB89F8283B711500C4293A /* KakaoMapTabViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CB89F7283B711500C4293A /* KakaoMapTabViewCell.swift */; };
 		70CB89FA283CD51900C4293A /* KakaoMapInforTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CB89F9283CD51900C4293A /* KakaoMapInforTableViewCell.swift */; };
+		70CB8A1E2844CF0F00C4293A /* BottomPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CB8A1D2844CF0F00C4293A /* BottomPopupViewController.swift */; };
 		C13F623DF8E1FBF44E7905EE /* Pods_KakaoMapPR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B95F2D7E1D806CC5B76B50D6 /* Pods_KakaoMapPR.framework */; };
 /* End PBXBuildFile section */
 
@@ -180,6 +181,7 @@
 		70CB89F4283B4E3700C4293A /* KakaoMapSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoMapSearchViewController.swift; sourceTree = "<group>"; };
 		70CB89F7283B711500C4293A /* KakaoMapTabViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoMapTabViewCell.swift; sourceTree = "<group>"; };
 		70CB89F9283CD51900C4293A /* KakaoMapInforTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoMapInforTableViewCell.swift; sourceTree = "<group>"; };
+		70CB8A1D2844CF0F00C4293A /* BottomPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomPopupViewController.swift; sourceTree = "<group>"; };
 		B95F2D7E1D806CC5B76B50D6 /* Pods_KakaoMapPR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KakaoMapPR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6A396EE070DD190EEEE9B0F /* Pods-KakaoMapPR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KakaoMapPR.debug.xcconfig"; path = "Target Support Files/Pods-KakaoMapPR/Pods-KakaoMapPR.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -423,6 +425,7 @@
 			isa = PBXGroup;
 			children = (
 				70CB89F4283B4E3700C4293A /* KakaoMapSearchViewController.swift */,
+				70CB8A1D2844CF0F00C4293A /* BottomPopupViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -610,6 +613,7 @@
 				70CB89F8283B711500C4293A /* KakaoMapTabViewCell.swift in Sources */,
 				70CB89F0283B1B4200C4293A /* KakaoMapViewModel.swift in Sources */,
 				70CB89FA283CD51900C4293A /* KakaoMapInforTableViewCell.swift in Sources */,
+				70CB8A1E2844CF0F00C4293A /* BottomPopupViewController.swift in Sources */,
 				70CB89392839F8C300C4293A /* AppDelegate.swift in Sources */,
 				70CB89E7283B0B0D00C4293A /* KakaoMapRepositoryImpl.swift in Sources */,
 				70CB893B2839F8C300C4293A /* SceneDelegate.swift in Sources */,

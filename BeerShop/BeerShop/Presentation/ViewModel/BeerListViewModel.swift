@@ -9,6 +9,10 @@ import RxSwift
 import RxCocoa
 
 protocol BeerListViewModelType {
+    //Input
+    var pageInput: AnyObserver<String> { get }
+    
+    //Output
     var disposeBag: DisposeBag { get set }
     var beerListModelOutput: Driver<[Beer]> { get }
     var beerListErrorOutput: Observable<BeerError> { get }
@@ -23,6 +27,7 @@ class BeerListViewModel: BeerListViewModelType {
     var disposeBag: DisposeBag = DisposeBag()
     
     //Input
+    let pageInput: AnyObserver<String>
     
     //Output
     let beerListModelOutput: Driver<[Beer]>
@@ -37,13 +42,27 @@ class BeerListViewModel: BeerListViewModelType {
         let beerListError = PublishSubject<BeerError>()
         let currentBeerCount = BehaviorRelay<IndexPath>(value: IndexPath(row: 0, section: 0))
         let beerNetworkRelay = BehaviorRelay<Bool>(value: false)
+        let pageSubject = BehaviorSubject<String>(value: "1")
         
         beerListModelOutput = beerListModel.asDriver(onErrorJustReturn: [])
         beerListErrorOutput = beerListError.asObservable()
         currentBeerCountOutput = currentBeerCount.asObservable()
         beerNetworkOutput = beerNetworkRelay.asDriver(onErrorJustReturn: false)
+        pageInput = pageSubject.asObserver()
         
-        usecase.fetchBeers(page: "1").subscribe(onNext: { result in
+//        usecase.fetchBeers(page: "1").subscribe(onNext: { result in
+//            switch result {
+//                case .success(let beers):
+//                    beerNetworkRelay.accept(true)
+//                    beerListModel.accept(beers)
+//                    currentBeerCount.accept(IndexPath(row: beers.count - 1, section: 0))
+//                case .failure(let error):
+//                    beerNetworkRelay.accept(false)
+//                    beerListError.onNext(error)
+//            }
+//        }).disposed(by: disposeBag)
+        
+        pageSubject.flatMap(usecase.fetchBeers(page:)).subscribe(onNext: { result in
             switch result {
                 case .success(let beers):
                     beerNetworkRelay.accept(true)

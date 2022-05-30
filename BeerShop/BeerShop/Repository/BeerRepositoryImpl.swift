@@ -62,7 +62,7 @@ class BeerRepositoryImpl: BeerRepository {
             case .beer:
                 router = Router.oneBeer(id)
             case .beers:
-            router = Router.beerList(["page": page, "per_page": "25"])
+                router = Router.beerList(["page": page, "per_page": "25"])
             case .randomBeer:
                 router = Router.randomBeer
         }

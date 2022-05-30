@@ -136,4 +136,11 @@ extension BeerListViewController: UITableViewDelegate {
         
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let position = scrollView.contentOffset.y
+        if position > scrollView.contentSize.height - scrollView.frame.height {
+            viewModel.pageInput.onNext("2")
+        }
+    }
+    
 }
