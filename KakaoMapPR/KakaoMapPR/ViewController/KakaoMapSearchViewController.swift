@@ -205,6 +205,11 @@ extension KakaoMapSearchViewController: UITableViewDelegate {
         
         let popUpVC = BottomPopupViewController()
         popUpVC.modalPresentationStyle = .overFullScreen
+        UIView.animate(withDuration: 3) {
+            popUpVC.dimmedView.alpha = 0.7
+            popUpVC.bottomSheetView.topAnchor.constraint(equalTo: popUpVC.view.bottomAnchor, constant: -180).isActive = true
+//            popUpVC.bottomSheetView.layoutIfNeeded()
+        }
         self.present(popUpVC, animated: true)
 //        setMarker(markerName: cell.currentMapLocation!.placeName, mapLocation: mapLocation)
     }

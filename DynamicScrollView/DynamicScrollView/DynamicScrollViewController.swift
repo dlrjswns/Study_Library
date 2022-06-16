@@ -8,6 +8,20 @@
 import UIKit
 import SnapKit
 
+struct Student: Equatable {
+    let name: String
+    let age: Int
+    
+//    static func == (lhs: Self, rhs: Self) -> Bool {
+//        if self.init(name: <#T##String#>, age: <#T##Int#>)
+//        return true
+//    }
+}
+
+enum Person: CaseIterable {
+    case a, b, c, d, e
+}
+
 class DynamicScrollViewController: UIViewController {
     
     private var datas = ["이건준", "이상준", "문진우", "신범철"] {
@@ -15,6 +29,7 @@ class DynamicScrollViewController: UIViewController {
             tableView.reloadData()
         }
     }
+    
     
     
     private let scrollView: UIScrollView = {
@@ -68,6 +83,10 @@ class DynamicScrollViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let a = Student(name: "dlrjswns", age: 1)
+        let b = Student(name: "dlrjswns", age: 1)
+        print("safs = \(a == b)")
         
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
