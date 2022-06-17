@@ -115,3 +115,48 @@
 	2. NMFNaverMapView
 		1. NMFNaverMapView는 NMFMapView와 동일하지만 해당 지도를 다룰 수 있는 몇가지 기능이 추가되어진다
 		2. 허나 해당 View는 기존에 해당 객체에 제공되어지는 인터페이스만을 사용하기에 커스텀할 수 없다는 단점이 존재한다
+
+# ReactorKitTutorial
+## 라이브러리
+* ReactorKit
+
+	-> ReactorKit은 기본적으로 Action을 보내면 이를 mutate에서 Mutation으로 변경하고 이 Mutataion을 다시 reduce를 만나 State으로 변경되어 View에 뿌려주는 방식이다
+	1. ViewInput -> Action 
+	```Swift
+	func bind(reactor: FruitReactor) {
+        // Input
+        appleButton.rx.tap.map { FruitReactor.Action.apple }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        bananaButton.rx.tap.map { FruitReactor.Action.banana }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        grapeButton.rx.tap.map { FruitReactor.Action.grapes }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        // Output
+        reactor.state.map{ $0.fruitName }
+            .distinctUntilChanged()
+            .map{ $0 }
+            .subscribe(onNext: { val in
+                self.selectedLabel.text = val
+            })
+            .disposed(by: disposeBag)
+        
+        reactor.state.map{ $0.isLoading }
+            .distinctUntilChanged()
+            .map{ $0 }
+            .subscribe(onNext: { val in
+                if val == true {
+                    self.selectedLabel.text = "로딩중입니다"
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+	```
+	2. mutate -> Mutation 
+	3. reduce -> State
+	
