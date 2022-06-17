@@ -8,10 +8,13 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import FloatingPanel
 
 class KakaoMapSearchViewController: UIViewController {
     
     private let viewModel: KakaoMapViewModelType
+    
+    private lazy var floatingPanelVC: FloatingPanelController = FloatingPanelController()
     
     var disposeBag = DisposeBag()
     
@@ -109,7 +112,7 @@ class KakaoMapSearchViewController: UIViewController {
         informationTableView.translatesAutoresizingMaskIntoConstraints = false
         
         myMapPOIItem.mapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: 37.50129, longitude: 127.12865))
-
+        
         mapView.addPOIItems([myMapPOIItem])
         mapView.setMapCenter(MTMapPoint(geoCoord: MTMapPointGeo(latitude: 40.50129, longitude: 127.12865)), zoomLevel: 4, animated: true)
     
@@ -119,6 +122,16 @@ class KakaoMapSearchViewController: UIViewController {
         informationTableView.delegate = self
         initialTappdCollectionView()
         bind()
+        
+        
+        
+        floatingPanelVC.delegate = self
+        let bottomVC = BottomPopupVC()
+        floatingPanelVC.set(contentViewController: bottomVC)
+        floatingPanelVC.addPanel(toParent: self)
+        let floatingLayout = MyFloatingPanelLayout()
+        floatingPanelVC.layout = floatingLayout
+        floatingPanelVC.show()
     }
     
     private func setMarker(markerName: String, mapLocation: MapLocation) {
@@ -194,6 +207,7 @@ extension KakaoMapSearchViewController: UICollectionViewDelegate, UICollectionVi
 extension KakaoMapSearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+//        floatingPanelVC.removePanelFromParent(animated: true)
         guard let cell = tableView.cellForRow(at: indexPath) as? KakaoMapInforTableViewCell,
               let currentLocation = cell.currentMapLocation else { return }
         
@@ -203,14 +217,38 @@ extension KakaoMapSearchViewController: UITableViewDelegate {
             viewModel.mapLocationInput.onNext(mapLocation)
         }
         
-        let popUpVC = BottomPopupViewController()
-        popUpVC.modalPresentationStyle = .overFullScreen
-        UIView.animate(withDuration: 3) {
-            popUpVC.dimmedView.alpha = 0.7
-            popUpVC.bottomSheetView.topAnchor.constraint(equalTo: popUpVC.view.bottomAnchor, constant: -180).isActive = true
-//            popUpVC.bottomSheetView.layoutIfNeeded()
-        }
-        self.present(popUpVC, animated: true)
-//        setMarker(markerName: cell.currentMapLocation!.placeName, mapLocation: mapLocation)
+       
     }
+}
+
+extension KakaoMapSearchViewController: FloatingPanelControllerDelegate {
+    func floatingPanelDidChangeState(_ fpc: FloatingPanelController) {
+
+        if fpc.state == .tip { // FloatingPanel을 완전히 내렸을때 사라지기위한 코드
+            floatingPanelVC.removePanelFromParent(animated: true)
+        }
+//        if fpc.layout.position == .top {
+//            print("toptop")
+//        }
+    }
+}
+
+class MyFloatingPanelLayout: FloatingPanelLayout {
+    var position: FloatingPanelPosition { // FloatingPanel의 위치, 위에서 끌어올것인지 아래에서 끌어올릴것인지
+        return .bottom
+    }
+    
+    var initialState: FloatingPanelState {
+        return .half
+    }
+    
+    var anchors: [FloatingPanelState : FloatingPanelLayoutAnchoring] {
+        return [
+                    .full: FloatingPanelLayoutAnchor(absoluteInset: 16.0, edge: .top, referenceGuide: .safeArea),
+                    .half: FloatingPanelLayoutAnchor(absoluteInset: 292, edge: .bottom, referenceGuide: .safeArea),
+                    .tip: FloatingPanelLayoutAnchor(absoluteInset: 1.0, edge: .bottom, referenceGuide: .safeArea)
+                ]
+    }
+    
+    
 }

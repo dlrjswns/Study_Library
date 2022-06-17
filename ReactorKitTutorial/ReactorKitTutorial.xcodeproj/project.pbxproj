@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		6734CE00952C8FB17C6EA0FF /* Pods_ReactorKitTutorial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFB3CEBBF352C51428F74E77 /* Pods_ReactorKitTutorial.framework */; };
+		706092BA285C4EDD002C1B5D /* FruitReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706092B9285C4EDD002C1B5D /* FruitReactor.swift */; };
 		70CB8AC5285B981700C4293A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CB8AC4285B981700C4293A /* AppDelegate.swift */; };
 		70CB8AC7285B981700C4293A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CB8AC6285B981700C4293A /* SceneDelegate.swift */; };
 		70CB8ACE285B981D00C4293A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70CB8ACD285B981D00C4293A /* Assets.xcassets */; };
 		70CB8AD1285B981D00C4293A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70CB8ACF285B981D00C4293A /* LaunchScreen.storyboard */; };
+		70CB8AD9285C4C2900C4293A /* FruitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CB8AD8285C4C2900C4293A /* FruitViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		17B729DE8C74504CEED63995 /* Pods-ReactorKitTutorial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactorKitTutorial.release.xcconfig"; path = "Target Support Files/Pods-ReactorKitTutorial/Pods-ReactorKitTutorial.release.xcconfig"; sourceTree = "<group>"; };
+		706092B9285C4EDD002C1B5D /* FruitReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitReactor.swift; sourceTree = "<group>"; };
 		70CB8AC1285B981700C4293A /* ReactorKitTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactorKitTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70CB8AC4285B981700C4293A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		70CB8AC6285B981700C4293A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		70CB8ACD285B981D00C4293A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		70CB8AD0285B981D00C4293A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		70CB8AD2285B981D00C4293A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		70CB8AD8285C4C2900C4293A /* FruitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitViewController.swift; sourceTree = "<group>"; };
 		AFB3CEBBF352C51428F74E77 /* Pods_ReactorKitTutorial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReactorKitTutorial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC80AB4335C59E5F9FB5E825 /* Pods-ReactorKitTutorial.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactorKitTutorial.debug.xcconfig"; path = "Target Support Files/Pods-ReactorKitTutorial/Pods-ReactorKitTutorial.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -44,7 +48,6 @@
 				EC80AB4335C59E5F9FB5E825 /* Pods-ReactorKitTutorial.debug.xcconfig */,
 				17B729DE8C74504CEED63995 /* Pods-ReactorKitTutorial.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -74,6 +77,8 @@
 				70CB8ACD285B981D00C4293A /* Assets.xcassets */,
 				70CB8ACF285B981D00C4293A /* LaunchScreen.storyboard */,
 				70CB8AD2285B981D00C4293A /* Info.plist */,
+				70CB8AD8285C4C2900C4293A /* FruitViewController.swift */,
+				706092B9285C4EDD002C1B5D /* FruitReactor.swift */,
 			);
 			path = ReactorKitTutorial;
 			sourceTree = "<group>";
@@ -202,6 +207,8 @@
 			files = (
 				70CB8AC5285B981700C4293A /* AppDelegate.swift in Sources */,
 				70CB8AC7285B981700C4293A /* SceneDelegate.swift in Sources */,
+				70CB8AD9285C4C2900C4293A /* FruitViewController.swift in Sources */,
+				706092BA285C4EDD002C1B5D /* FruitReactor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,5 +8,6 @@ target 'KakaoMapPR' do
   # Pods for KakaoMapPR
   pod 'RxSwift'
   pod 'RxCocoa'
-
+  pod 'ReactorKit'
+  pod 'FloatingPanel'
 end

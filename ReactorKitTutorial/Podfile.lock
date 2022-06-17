@@ -1,24 +1,38 @@
 PODS:
+  - FloatingPanel (2.5.3)
   - ReactorKit (3.2.0):
     - RxSwift (~> 6.0)
     - WeakMapTable (~> 1.1)
+  - RxCocoa (6.5.0):
+    - RxRelay (= 6.5.0)
+    - RxSwift (= 6.5.0)
+  - RxRelay (6.5.0):
+    - RxSwift (= 6.5.0)
   - RxSwift (6.5.0)
   - WeakMapTable (1.2.0)
 
 DEPENDENCIES:
+  - FloatingPanel
   - ReactorKit
+  - RxCocoa
 
 SPEC REPOS:
   trunk:
+    - FloatingPanel
     - ReactorKit
+    - RxCocoa
+    - RxRelay
     - RxSwift
     - WeakMapTable
 
 SPEC CHECKSUMS:
+  FloatingPanel: 3cee815e9ded75b632543fa73ab655a1ef941452
   ReactorKit: e8b11d6b9c415405f381669b095c154a05b59eca
+  RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
+  RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: 37d31675188887190f9e3c00c0b0398675b335d2
+PODFILE CHECKSUM: d52cc9179d720d624e72980af029eef7c4741f18
 
 COCOAPODS: 1.11.2

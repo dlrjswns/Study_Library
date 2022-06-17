@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		706092BC285C8D5B002C1B5D /* BottomPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706092BB285C8D5B002C1B5D /* BottomPopupVC.swift */; };
 		70CB89392839F8C300C4293A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CB89382839F8C300C4293A /* AppDelegate.swift */; };
 		70CB893B2839F8C300C4293A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CB893A2839F8C300C4293A /* SceneDelegate.swift */; };
 		70CB89422839F8C600C4293A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70CB89412839F8C600C4293A /* Assets.xcassets */; };
@@ -87,6 +88,7 @@
 
 /* Begin PBXFileReference section */
 		0CB78B527A2C52CD8844B131 /* Pods-KakaoMapPR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KakaoMapPR.release.xcconfig"; path = "Target Support Files/Pods-KakaoMapPR/Pods-KakaoMapPR.release.xcconfig"; sourceTree = "<group>"; };
+		706092BB285C8D5B002C1B5D /* BottomPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomPopupVC.swift; sourceTree = "<group>"; };
 		70CB89352839F8C300C4293A /* KakaoMapPR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KakaoMapPR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70CB89382839F8C300C4293A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		70CB893A2839F8C300C4293A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -426,6 +428,7 @@
 			children = (
 				70CB89F4283B4E3700C4293A /* KakaoMapSearchViewController.swift */,
 				70CB8A1D2844CF0F00C4293A /* BottomPopupViewController.swift */,
+				706092BB285C8D5B002C1B5D /* BottomPopupVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -617,6 +620,7 @@
 				70CB89392839F8C300C4293A /* AppDelegate.swift in Sources */,
 				70CB89E7283B0B0D00C4293A /* KakaoMapRepositoryImpl.swift in Sources */,
 				70CB893B2839F8C300C4293A /* SceneDelegate.swift in Sources */,
+				706092BC285C8D5B002C1B5D /* BottomPopupVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
