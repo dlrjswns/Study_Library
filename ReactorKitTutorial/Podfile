@@ -8,5 +8,5 @@ target 'ReactorKitTutorial' do
   # Pods for ReactorKitTutorial
   pod 'ReactorKit'
   pod 'RxCocoa'
-  pod 'FloatingPanel'
+  
 end

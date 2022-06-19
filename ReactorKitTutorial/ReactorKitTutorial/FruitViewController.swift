@@ -100,6 +100,7 @@ class FruitViewController: UIViewController {
                 }
             })
             .disposed(by: disposeBag)
+        
     }
     
 }

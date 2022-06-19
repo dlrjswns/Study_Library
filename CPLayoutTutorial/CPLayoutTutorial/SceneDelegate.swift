@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  ReactorKitTutorial
+//  CPLayoutTutorial
 //
-//  Created by 이건준 on 2022/06/17.
+//  Created by 이건준 on 2022/06/19.
 //
 
 import UIKit
@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-        window?.rootViewController = CalculateViewController(reactor: CalculateReactor())
+        window?.rootViewController = RootViewController()
         window?.makeKeyAndVisible()
     }
 
