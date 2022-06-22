@@ -20,6 +20,12 @@ class CollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
+    private let titleLabel: UILabel = {
+       let label = UILabel()
+        label.font = .systemFont(ofSize: 15, weight: .semibold)
+        return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -36,21 +42,29 @@ class CollectionViewCell: UICollectionViewCell {
         imageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         imageView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
         imageView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
-        imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        
+        titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10).isActive = true
+        titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
         imageView.image = nil
+        titleLabel.text = nil
     }
     
     private func configureCell() {
         contentView.addSubview(imageView)
+        contentView.addSubview(titleLabel)
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
     }
     
     public func configureCell(with model: String) {
         imageView.image = UIImage(systemName: model)
+        titleLabel.text = model
     }
 }
