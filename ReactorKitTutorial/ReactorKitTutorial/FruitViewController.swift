@@ -9,7 +9,8 @@ import UIKit
 import ReactorKit
 import RxCocoa
 
-class FruitViewController: UIViewController {
+class FruitViewController: UIViewController, View {
+    
     
     // MARK: Properties
     private lazy var appleButton: UIButton = {
@@ -46,7 +47,7 @@ class FruitViewController: UIViewController {
     }()
     
     // MARK: Binding Properties
-    let disposeBag = DisposeBag()
+    var disposeBag: DisposeBag = DisposeBag()
     let fruitReactor = FruitReactor()
     
     

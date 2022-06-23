@@ -15,6 +15,8 @@
 		706ECB1A285F238A00DEE6A7 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706ECB19285F238A00DEE6A7 /* CollectionViewCell.swift */; };
 		706ECB2A28620D6800DEE6A7 /* ChartHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706ECB2928620D6800DEE6A7 /* ChartHeaderView.swift */; };
 		706ECB2C2863225600DEE6A7 /* MusicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706ECB2B2863225600DEE6A7 /* MusicCollectionViewCell.swift */; };
+		706ECB302863322A00DEE6A7 /* MyData.json in Resources */ = {isa = PBXBuildFile; fileRef = 706ECB2F2863322A00DEE6A7 /* MyData.json */; };
+		706ECB33286333C400DEE6A7 /* MusicRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706ECB32286333C400DEE6A7 /* MusicRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		706ECB19285F238A00DEE6A7 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		706ECB2928620D6800DEE6A7 /* ChartHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartHeaderView.swift; sourceTree = "<group>"; };
 		706ECB2B2863225600DEE6A7 /* MusicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCollectionViewCell.swift; sourceTree = "<group>"; };
+		706ECB2F2863322A00DEE6A7 /* MyData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MyData.json; sourceTree = "<group>"; };
+		706ECB32286333C400DEE6A7 /* MusicRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,7 @@
 		706ECB02285F214400DEE6A7 /* CPLayoutTutorial */ = {
 			isa = PBXGroup;
 			children = (
+				706ECB31286333B800DEE6A7 /* Repository */,
 				706ECB03285F214400DEE6A7 /* AppDelegate.swift */,
 				706ECB05285F214400DEE6A7 /* SceneDelegate.swift */,
 				706ECB0C285F214500DEE6A7 /* Assets.xcassets */,
@@ -69,8 +74,17 @@
 				706ECB19285F238A00DEE6A7 /* CollectionViewCell.swift */,
 				706ECB2928620D6800DEE6A7 /* ChartHeaderView.swift */,
 				706ECB2B2863225600DEE6A7 /* MusicCollectionViewCell.swift */,
+				706ECB2F2863322A00DEE6A7 /* MyData.json */,
 			);
 			path = CPLayoutTutorial;
+			sourceTree = "<group>";
+		};
+		706ECB31286333B800DEE6A7 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				706ECB32286333C400DEE6A7 /* MusicRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,6 +147,7 @@
 			files = (
 				706ECB10285F214500DEE6A7 /* LaunchScreen.storyboard in Resources */,
 				706ECB0D285F214500DEE6A7 /* Assets.xcassets in Resources */,
+				706ECB302863322A00DEE6A7 /* MyData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +161,7 @@
 				706ECB04285F214400DEE6A7 /* AppDelegate.swift in Sources */,
 				706ECB06285F214400DEE6A7 /* SceneDelegate.swift in Sources */,
 				706ECB2A28620D6800DEE6A7 /* ChartHeaderView.swift in Sources */,
+				706ECB33286333C400DEE6A7 /* MusicRepository.swift in Sources */,
 				706ECB1A285F238A00DEE6A7 /* CollectionViewCell.swift in Sources */,
 				706ECB2C2863225600DEE6A7 /* MusicCollectionViewCell.swift in Sources */,
 				706ECB18285F216600DEE6A7 /* RootViewController.swift in Sources */,

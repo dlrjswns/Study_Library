@@ -11,6 +11,12 @@
 		706092BA285C4EDD002C1B5D /* FruitReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706092B9285C4EDD002C1B5D /* FruitReactor.swift */; };
 		706092BE285DDEA1002C1B5D /* CalculateReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706092BD285DDEA1002C1B5D /* CalculateReactor.swift */; };
 		706092C0285DE435002C1B5D /* CalculateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706092BF285DE435002C1B5D /* CalculateViewController.swift */; };
+		706ECB352863340700DEE6A7 /* MyData.json in Resources */ = {isa = PBXBuildFile; fileRef = 706ECB342863340700DEE6A7 /* MyData.json */; };
+		706ECB382863343000DEE6A7 /* MusicRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706ECB372863343000DEE6A7 /* MusicRepository.swift */; };
+		706ECB3B2863361100DEE6A7 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706ECB3A2863361100DEE6A7 /* Music.swift */; };
+		706ECB3E286338E000DEE6A7 /* MusicUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706ECB3D286338E000DEE6A7 /* MusicUsecase.swift */; };
+		706ECB4128633A0A00DEE6A7 /* MusicReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706ECB4028633A0A00DEE6A7 /* MusicReactor.swift */; };
+		706ECB442864943A00DEE6A7 /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706ECB432864943A00DEE6A7 /* MusicViewController.swift */; };
 		70CB8AC5285B981700C4293A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CB8AC4285B981700C4293A /* AppDelegate.swift */; };
 		70CB8AC7285B981700C4293A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CB8AC6285B981700C4293A /* SceneDelegate.swift */; };
 		70CB8ACE285B981D00C4293A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70CB8ACD285B981D00C4293A /* Assets.xcassets */; };
@@ -23,6 +29,12 @@
 		706092B9285C4EDD002C1B5D /* FruitReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitReactor.swift; sourceTree = "<group>"; };
 		706092BD285DDEA1002C1B5D /* CalculateReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateReactor.swift; sourceTree = "<group>"; };
 		706092BF285DE435002C1B5D /* CalculateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateViewController.swift; sourceTree = "<group>"; };
+		706ECB342863340700DEE6A7 /* MyData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MyData.json; sourceTree = "<group>"; };
+		706ECB372863343000DEE6A7 /* MusicRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicRepository.swift; sourceTree = "<group>"; };
+		706ECB3A2863361100DEE6A7 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
+		706ECB3D286338E000DEE6A7 /* MusicUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicUsecase.swift; sourceTree = "<group>"; };
+		706ECB4028633A0A00DEE6A7 /* MusicReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicReactor.swift; sourceTree = "<group>"; };
+		706ECB432864943A00DEE6A7 /* MusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
 		70CB8AC1285B981700C4293A /* ReactorKitTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactorKitTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70CB8AC4285B981700C4293A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		70CB8AC6285B981700C4293A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +67,46 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		706ECB362863342900DEE6A7 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				706ECB372863343000DEE6A7 /* MusicRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		706ECB392863360800DEE6A7 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				706ECB3A2863361100DEE6A7 /* Music.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		706ECB3C286338D800DEE6A7 /* Usecase */ = {
+			isa = PBXGroup;
+			children = (
+				706ECB3D286338E000DEE6A7 /* MusicUsecase.swift */,
+			);
+			path = Usecase;
+			sourceTree = "<group>";
+		};
+		706ECB3F28633A0200DEE6A7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				706ECB4028633A0A00DEE6A7 /* MusicReactor.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		706ECB422864943200DEE6A7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				706ECB432864943A00DEE6A7 /* MusicViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		70CB8AB8285B981700C4293A = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +128,11 @@
 		70CB8AC3285B981700C4293A /* ReactorKitTutorial */ = {
 			isa = PBXGroup;
 			children = (
+				706ECB422864943200DEE6A7 /* Controller */,
+				706ECB3F28633A0200DEE6A7 /* ViewModel */,
+				706ECB3C286338D800DEE6A7 /* Usecase */,
+				706ECB392863360800DEE6A7 /* Entity */,
+				706ECB362863342900DEE6A7 /* Repository */,
 				70CB8AC4285B981700C4293A /* AppDelegate.swift */,
 				70CB8AC6285B981700C4293A /* SceneDelegate.swift */,
 				70CB8ACD285B981D00C4293A /* Assets.xcassets */,
@@ -85,6 +142,7 @@
 				706092B9285C4EDD002C1B5D /* FruitReactor.swift */,
 				706092BD285DDEA1002C1B5D /* CalculateReactor.swift */,
 				706092BF285DE435002C1B5D /* CalculateViewController.swift */,
+				706ECB342863340700DEE6A7 /* MyData.json */,
 			);
 			path = ReactorKitTutorial;
 			sourceTree = "<group>";
@@ -159,6 +217,7 @@
 			files = (
 				70CB8AD1285B981D00C4293A /* LaunchScreen.storyboard in Resources */,
 				70CB8ACE285B981D00C4293A /* Assets.xcassets in Resources */,
+				706ECB352863340700DEE6A7 /* MyData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,9 +273,14 @@
 				70CB8AC5285B981700C4293A /* AppDelegate.swift in Sources */,
 				70CB8AC7285B981700C4293A /* SceneDelegate.swift in Sources */,
 				70CB8AD9285C4C2900C4293A /* FruitViewController.swift in Sources */,
+				706ECB382863343000DEE6A7 /* MusicRepository.swift in Sources */,
 				706092BA285C4EDD002C1B5D /* FruitReactor.swift in Sources */,
+				706ECB442864943A00DEE6A7 /* MusicViewController.swift in Sources */,
 				706092BE285DDEA1002C1B5D /* CalculateReactor.swift in Sources */,
+				706ECB4128633A0A00DEE6A7 /* MusicReactor.swift in Sources */,
 				706092C0285DE435002C1B5D /* CalculateViewController.swift in Sources */,
+				706ECB3E286338E000DEE6A7 /* MusicUsecase.swift in Sources */,
+				706ECB3B2863361100DEE6A7 /* Music.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
