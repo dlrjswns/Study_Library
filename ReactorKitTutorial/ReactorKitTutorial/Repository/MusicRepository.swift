@@ -9,6 +9,7 @@ import RxSwift
 
 protocol MusicRepository {
     func fetchMusic() -> Observable<Result<[MusicData], Error>>
+    func fetchData() -> [MusicData]
 }
 
 class MusicRepositoryImpl: MusicRepository {
@@ -24,6 +25,7 @@ class MusicRepositoryImpl: MusicRepository {
             guard let path = Bundle.main.path(forResource: "MyData", ofType: "json") else { return [] }
             guard let data = try String(contentsOfFile: path).data(using: .utf8) else { return [] }
             let musicData = try JSONDecoder().decode(Music.self, from: data)
+            print("dfsdfsdf = \(musicData.musics)")
             return musicData.musics
         }
         catch {

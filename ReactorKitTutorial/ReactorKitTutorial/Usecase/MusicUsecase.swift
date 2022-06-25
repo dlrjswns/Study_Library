@@ -9,6 +9,7 @@ import RxSwift
 
 protocol MusicUsecase {
     func fetchMusic() -> Observable<Result<[MusicData], Error>>
+    func fetchData() -> [MusicData]
 }
 
 class MusicUsecaseImpl: MusicUsecase {
@@ -16,6 +17,10 @@ class MusicUsecaseImpl: MusicUsecase {
     
     init(repository: MusicRepository) {
         self.repository = repository
+    }
+    
+    func fetchData() -> [MusicData] {
+        return repository.fetchData()
     }
     
     func fetchMusic() -> Observable<Result<[MusicData], Error>> {

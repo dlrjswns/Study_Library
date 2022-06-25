@@ -25,7 +25,6 @@ class MusicReactor: Reactor {
     }
     
     var initialState: State {
-        usecase.fetchMusic()
         return State(music: [])
     }
     
@@ -45,26 +44,33 @@ class MusicReactor: Reactor {
         var state: State = state
         switch mutation {
         case .initialMusicData:
-            let fetchResult = usecase.fetchMusic()
-            let fetchSuccess = fetchResult.map { result -> [MusicData]? in
-                guard case .success(let musicDatas) = result else { return nil }
-                return musicDatas
-            }
-            
-            fetchSuccess.subscribe(onNext: { musicDatas in
-                guard let musicDatas = musicDatas else { return }
-                state.music = musicDatas
-            }).disposed(by: disposeBag)
-            
-            let fetchFailure = fetchResult.map { result -> Error? in
-                guard case .failure(let error) = result else { return nil }
-                return error
-            }
-            
-            fetchFailure.subscribe(onNext: { error in
-                print("erro = \(error)")
-            })
-            .disposed(by: disposeBag)
+            state.music = usecase.fetchData()
+//            let fetchResult = usecase.fetchMusic()
+//
+//            fetchResult.subscribe(onNext: { data in
+//                print("sdfdsaf = \(data)")
+//            }).disposed(by: disposeBag)
+//
+//            let fetchSuccess = fetchResult.map { result -> [MusicData]? in
+//                guard case .success(let musicDatas) = result else { return nil }
+//                return musicDatas
+//            }
+//
+//            fetchSuccess.subscribe(onNext: { musicDatas in
+//                guard let musicDatas = musicDatas else { return }
+//                state.music = musicDatas
+//                print("dsfdsf = \(musicDatas)")
+//            }).disposed(by: disposeBag)
+//
+//            let fetchFailure = fetchResult.map { result -> Error? in
+//                guard case .failure(let error) = result else { return nil }
+//                return error
+//            }
+//
+//            fetchFailure.subscribe(onNext: { error in
+//                print("erro = \(error)")
+//            })
+//            .disposed(by: disposeBag)
         }
 //        switch mutation {
 //            case .initialMusicData:
