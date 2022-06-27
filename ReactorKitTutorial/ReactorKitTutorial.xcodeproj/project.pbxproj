@@ -18,6 +18,7 @@
 		706ECB4128633A0A00DEE6A7 /* MusicReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706ECB4028633A0A00DEE6A7 /* MusicReactor.swift */; };
 		706ECB442864943A00DEE6A7 /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706ECB432864943A00DEE6A7 /* MusicViewController.swift */; };
 		706ECB46286796F600DEE6A7 /* MusicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706ECB45286796F600DEE6A7 /* MusicTableViewCell.swift */; };
+		706ECB482869692200DEE6A7 /* MusicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706ECB472869692200DEE6A7 /* MusicCollectionViewCell.swift */; };
 		70CB8AC5285B981700C4293A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CB8AC4285B981700C4293A /* AppDelegate.swift */; };
 		70CB8AC7285B981700C4293A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CB8AC6285B981700C4293A /* SceneDelegate.swift */; };
 		70CB8ACE285B981D00C4293A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70CB8ACD285B981D00C4293A /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 		706ECB4028633A0A00DEE6A7 /* MusicReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicReactor.swift; sourceTree = "<group>"; };
 		706ECB432864943A00DEE6A7 /* MusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
 		706ECB45286796F600DEE6A7 /* MusicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTableViewCell.swift; sourceTree = "<group>"; };
+		706ECB472869692200DEE6A7 /* MusicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCollectionViewCell.swift; sourceTree = "<group>"; };
 		70CB8AC1285B981700C4293A /* ReactorKitTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactorKitTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70CB8AC4285B981700C4293A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		70CB8AC6285B981700C4293A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				706092BF285DE435002C1B5D /* CalculateViewController.swift */,
 				706ECB342863340700DEE6A7 /* MyData.json */,
 				706ECB45286796F600DEE6A7 /* MusicTableViewCell.swift */,
+				706ECB472869692200DEE6A7 /* MusicCollectionViewCell.swift */,
 			);
 			path = ReactorKitTutorial;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				70CB8AC7285B981700C4293A /* SceneDelegate.swift in Sources */,
 				70CB8AD9285C4C2900C4293A /* FruitViewController.swift in Sources */,
 				706ECB382863343000DEE6A7 /* MusicRepository.swift in Sources */,
+				706ECB482869692200DEE6A7 /* MusicCollectionViewCell.swift in Sources */,
 				706092BA285C4EDD002C1B5D /* FruitReactor.swift in Sources */,
 				706ECB442864943A00DEE6A7 /* MusicViewController.swift in Sources */,
 				706092BE285DDEA1002C1B5D /* CalculateReactor.swift in Sources */,

@@ -14,6 +14,23 @@ class MusicViewController: UIViewController, View {
     
     private let reactor: MusicReactor
     
+    private let collectionView: UICollectionView = {
+        let layout = UICollectionViewCompositionalLayout{ section, env -> NSCollectionLayoutSection? in
+            switch section {
+                case 0:
+                    return MusicViewController.sectionOneLayout()
+                case 1:
+                    return MusicViewController.sectionTwoLayout()
+                default:
+                    return MusicViewController.sectionThreeLayout()
+            }
+        }
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.layer.borderWidth = 1
+        collectionView.layer.borderColor = UIColor.systemPink.cgColor
+        return collectionView
+    }()
+    
     private let tableView: UITableView = {
        let tableView = UITableView()
         return tableView
@@ -52,18 +69,52 @@ class MusicViewController: UIViewController, View {
         setTableView()
     }
     
+    static func sectionOneLayout() -> NSCollectionLayoutSection {
+        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(2/3),
+            heightDimension: .fractionalHeight(1/4)))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .fractionalHeight(1/3)), subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPaging
+        return section
+    }
+    
+    static func sectionTwoLayout() -> NSCollectionLayoutSection {
+        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .fractionalHeight(1/4)))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .fractionalHeight(1/3)), subitems: [item])
+        return NSCollectionLayoutSection(group: group)
+    }
+    
+    static func sectionThreeLayout() -> NSCollectionLayoutSection {
+        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .fractionalHeight(1/4)))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .fractionalHeight(1/3)), subitems: [item])
+        return NSCollectionLayoutSection(group: group)
+    }
+    
     private func setTableView() {
-        tableView.register(MusicTableViewCell.self, forCellReuseIdentifier: MusicTableViewCell.identifier)
+        collectionView.register(MusicCollectionViewCell.self,
+                                forCellWithReuseIdentifier: MusicCollectionViewCell.identifier)
+//        collectionView.dataSource = self
     }
     
     private func configureUI() {
         view.backgroundColor = .systemBackground
-        view.addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        view.addSubview(collectionView)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        collectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        collectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
 //        view.addSubview(button)
 //        button.translatesAutoresizingMaskIntoConstraints = false
 //        button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -71,7 +122,7 @@ class MusicViewController: UIViewController, View {
     }
     
     func bind(reactor: MusicReactor) {
-        reactor.state.map{$0.music}.bind(to: tableView.rx.items(cellIdentifier: MusicTableViewCell.identifier, cellType: MusicTableViewCell.self)) { index, item, cell in
+        reactor.state.map{$0.music}.bind(to: collectionView.rx.items(cellIdentifier: MusicCollectionViewCell.identifier, cellType: MusicCollectionViewCell.self)) { index, item, cell in
             print("item = \(item)")
             cell.configureUI(with: item)
         }.disposed(by: disposeBag)
@@ -85,3 +136,8 @@ class MusicViewController: UIViewController, View {
         .disposed(by: disposeBag)
     }
 }
+//extension MusicViewController: UICollectionViewDataSource {
+//    func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        return 3
+//    }
+//}
