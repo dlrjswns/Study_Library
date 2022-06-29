@@ -71,11 +71,19 @@ class KakaoMapSearchViewController: UIViewController {
         return vw
     }()
     
-    private let myMapPOIItem: MTMapPOIItem = {
+    private let customView: UIView = {
+        let vw = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        vw.backgroundColor = .systemYellow
+        return vw
+    }()
+    
+    private lazy var myMapPOIItem: MTMapPOIItem = {
        let point = MTMapPOIItem()
         point.itemName = "건준이의 집입니당핡"
         point.markerType = MTMapPOIItemMarkerType.customImage
         point.customImage = UIImage(systemName: "heart.fill")
+        point.customCalloutBalloonView = customView
+//        point.customHighlightedCalloutBalloonView = customView
         return point
     }()
     
@@ -101,6 +109,14 @@ class KakaoMapSearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let circle = MTMapCircle()
+        circle.circleCenterPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: 37.6674216564204, longitude: 126.903526840599))
+        circle.circleLineWidth = 100
+        circle.circleFillColor = .systemBlue
+        circle.circleLineWidth = 1
+        circle.circleLineColor = .systemRed
+        circle.circleRadius = 500
+        mapView.addCircle(circle)
         view.backgroundColor = .systemBackground
         view.addSubview(mapView)
         mapView.translatesAutoresizingMaskIntoConstraints = false
@@ -113,15 +129,17 @@ class KakaoMapSearchViewController: UIViewController {
         
         myMapPOIItem.mapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: 37.50129, longitude: 127.12865))
         
+
         mapView.addPOIItems([myMapPOIItem])
-        mapView.setMapCenter(MTMapPoint(geoCoord: MTMapPointGeo(latitude: 40.50129, longitude: 127.12865)), zoomLevel: 4, animated: true)
+        mapView.setZoomLevel(3, animated: true)
+        mapView.setMapCenter(MTMapPoint(geoCoord: MTMapPointGeo(latitude: 37.6674216564204, longitude: 126.903526840599)), zoomLevel: 4, animated: true)
     
         self.navigationItem.titleView = searchBar
         collectionView.delegate = self
         collectionView.dataSource = self
         informationTableView.delegate = self
-        initialTappdCollectionView()
-        bind()
+//        initialTappdCollectionView()
+//        bind()
         
         
         
@@ -244,7 +262,7 @@ class MyFloatingPanelLayout: FloatingPanelLayout {
     
     var anchors: [FloatingPanelState : FloatingPanelLayoutAnchoring] {
         return [
-                    .full: FloatingPanelLayoutAnchor(absoluteInset: 16.0, edge: .top, referenceGuide: .safeArea),
+//                    .full: FloatingPanelLayoutAnchor(absoluteInset: 16.0, edge: .top, referenceGuide: .safeArea),
                     .half: FloatingPanelLayoutAnchor(absoluteInset: 292, edge: .bottom, referenceGuide: .safeArea),
                     .tip: FloatingPanelLayoutAnchor(absoluteInset: 1.0, edge: .bottom, referenceGuide: .safeArea)
                 ]
