@@ -9,12 +9,19 @@ import UIKit
 import RxSwift
 import RxCocoa
 import FloatingPanel
+import CoreLocation
 
 class KakaoMapSearchViewController: UIViewController {
     
     private let viewModel: KakaoMapViewModelType
     
     private lazy var floatingPanelVC: FloatingPanelController = FloatingPanelController()
+    
+    private let locationManager: CLLocationManager = {
+       let manager = CLLocationManager()
+        
+        return manager
+    }()
     
     var disposeBag = DisposeBag()
     
@@ -129,10 +136,14 @@ class KakaoMapSearchViewController: UIViewController {
         
         myMapPOIItem.mapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: 37.50129, longitude: 127.12865))
         
-
+        
+        
         mapView.addPOIItems([myMapPOIItem])
         mapView.setZoomLevel(3, animated: true)
+        mapView.showCurrentLocationMarker = true
+        mapView.currentLocationTrackingMode = .onWithHeading
         mapView.setMapCenter(MTMapPoint(geoCoord: MTMapPointGeo(latitude: 37.6674216564204, longitude: 126.903526840599)), zoomLevel: 4, animated: true)
+        mapView.delegate = self
     
         self.navigationItem.titleView = searchBar
         collectionView.delegate = self
@@ -142,6 +153,17 @@ class KakaoMapSearchViewController: UIViewController {
 //        bind()
         
         
+        locationManager.delegate = self
+                locationManager.desiredAccuracy = kCLLocationAccuracyBest
+                locationManager.requestWhenInUseAuthorization()
+                
+                if CLLocationManager.locationServicesEnabled() {
+                    print("위치 서비스 On 상태")
+                    locationManager.startUpdatingLocation()
+                    print(locationManager.location?.coordinate)
+                } else {
+                    print("위치 서비스 Off 상태")
+                }
         
         floatingPanelVC.delegate = self
         let bottomVC = BottomPopupVC()
@@ -150,6 +172,10 @@ class KakaoMapSearchViewController: UIViewController {
         let floatingLayout = MyFloatingPanelLayout()
         floatingPanelVC.layout = floatingLayout
         floatingPanelVC.show()
+        locationManager.delegate = self
+//        locationManager.requestWhenInUseAuthorization()
+//        locationManager.startUpdatingLocation()
+        
     }
     
     private func setMarker(markerName: String, mapLocation: MapLocation) {
@@ -217,6 +243,7 @@ extension KakaoMapSearchViewController: UICollectionViewDelegate, UICollectionVi
         let markerName = tabLabelNames[indexPath.row]
         print("markerName = \(markerName)")
         setMarker(markerName: markerName, mapLocation: mapLocation)
+        getLocationUsagePermission()
 //        let mapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: mapLocation.latitude, longitude: mapLocation.longitude))
 //        mapView.setMapCenter(mapPoint, animated: true)
     }
@@ -270,3 +297,36 @@ class MyFloatingPanelLayout: FloatingPanelLayout {
     
     
 }
+
+extension KakaoMapSearchViewController: CLLocationManagerDelegate {
+    func getLocationUsagePermission() {
+        self.locationManager.requestLocation()
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        switch manager.authorizationStatus {
+        case .authorizedAlways, .authorizedWhenInUse:
+            print("GPS 권한 설정됨")
+        case .restricted, .notDetermined:
+            print("GPS 권한 설정되지 않음")
+            getLocationUsagePermission()
+        case .denied:
+            print("denied")
+            getLocationUsagePermission()
+        default:
+            print("GPS: Default")
+        }
+    }
+}
+
+extension KakaoMapSearchViewController: MTMapViewDelegate {
+    func mapView(_ mapView: MTMapView!, updateCurrentLocation location: MTMapPoint!, withAccuracy accuracy: MTMapLocationAccuracy) {
+        print("dsfasdf")
+    }
+    
+    func mapView(_ mapView: MTMapView!, updateDeviceHeading headingAngle: MTMapRotationAngle) {
+        print("Sfafa")
+    }
+}
+
+

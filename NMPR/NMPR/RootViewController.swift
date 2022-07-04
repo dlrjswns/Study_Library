@@ -10,6 +10,13 @@ import NMapsMap
 
 class RootViewController: UIViewController {
     
+    private lazy var label: UILabel = {
+       let label = UILabel()
+        label.text = "안녕하세요 카메라"
+        label.font = .systemFont(ofSize: 30, weight: .bold)
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -33,25 +40,41 @@ class RootViewController: UIViewController {
             }
         })
         
-        let marker = NMFMarker(position: NMGLatLng(lat: 37.5670135, lng: 126.9783740)) // NMFMarker에 대한 좌표를 초기화
+        let marker = NMFMarker(position: NMGLatLng(lat: 37.5666102, lng: 126.9783881)) // NMFMarker에 대한 좌표를 초기화
         marker.touchHandler = { (overlay) in // NMFMarker를 클릭했을때의 액션 코드
             print("마커 클릭됨")
             return true
         }
+        marker.iconImage = NMFOverlayImage(image: UIImage(systemName: "heart.fill")!)
+//        marker.set
         marker.mapView = mapView; // 지정해준 NMFMarker를 NJFMapView에 찍어주는 코드
+//        marker.iconImage =
         mapView.mapType = .basic
-        mapView.mapType = .hybrid
-        mapView.mapType = .navi
-        mapView.mapType = .none
-        mapView.mapType = .satellite
-        mapView.mapType = .terrain
+        let vw = view(with: marker)
+        vw.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.centerXAnchor.constraint(equalTo: vw.centerXAnchor).isActive = true
+        label.centerYAnchor.constraint(equalTo: vw.centerYAnchor).isActive = true
+//        mapView.mapType = .hybrid
+//        mapView.mapType = .navi
+//        mapView.mapType = .none
+//        mapView.mapType = .satellite
+//        mapView.mapType = .terrain
         
-        let mv = NMFNaverMapView(frame: view.frame)
+//        let mv = NMFNaverMapView(frame: view.frame)
 //        marker.mapView = mv
         
 //        marker.mapView = mv
         
 //        marker.mapView = NMFNaverMapView()
         
+    }
+}
+
+extension RootViewController: NMFOverlayImageDataSource {
+    func view(with overlay: NMFOverlay) -> UIView {
+        let vw = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
+        vw.backgroundColor = .systemBlue
+        return vw
     }
 }
