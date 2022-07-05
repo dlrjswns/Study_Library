@@ -12,7 +12,7 @@ class MovieController: UIViewController, View {
     
     var disposeBag: DisposeBag = DisposeBag()
     
-    private let reactor: MovieReactor
+//    private let reactor: MovieReactor
     
     private var movieModel: [PopularMovie] = [] {
         didSet {
@@ -21,8 +21,8 @@ class MovieController: UIViewController, View {
     }
     
     init(reactor: MovieReactor) {
-        self.reactor = reactor
         super.init(nibName: nil, bundle: nil)
+        self.reactor = reactor
     }
     
     required init?(coder: NSCoder) {
@@ -47,7 +47,6 @@ class MovieController: UIViewController, View {
         super.viewDidLoad()
         configureUI()
         setCollectionView(collectionView)
-        bind(reactor: reactor)
     }
     
     private func configureUI() {
@@ -61,9 +60,14 @@ class MovieController: UIViewController, View {
     }
     
     func bind(reactor: MovieReactor) {
-        reactor.initialState.popularMovies.map { [weak self] popularMovies in
-            self?.movieModel = popularMovies
-        }
+        Observable.just(MovieReactor.Action.viewDidLoad)
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map{ $0.popularMovies }
+            .subscribe(onNext: { popularMovies in
+                print("popularMovies = \(popularMovies)")
+            }).disposed(by: disposeBag)
     }
 }
 

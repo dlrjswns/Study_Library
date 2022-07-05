@@ -13,43 +13,53 @@ class MovieReactor: Reactor {
     
     var disposeBag = DisposeBag()
     
+    let initialState: State = State(popularMovies: [])
+    
     init(usecase: MovieUsecase) {
         self.usecase = usecase
     }
     
     enum Action {
-        
+        case viewDidLoad
     }
     
     enum Mutation {
-        
+        case fetchPopularMovie([PopularMovie]?)
     }
     
     struct State {
-        let popularMovies: [PopularMovie]?
-        let movieError: MovieError?
+        var popularMovies: [PopularMovie]?
+//        let movieError: MovieError?
     }
     
-    var initialState: State {
-        var popularMovieList: [PopularMovie]?
-        var movieError: MovieError?
-        usecase.getMoviePopular().subscribe(onNext: { result in
-            switch result {
-                case .success(let popularMovie):
-                    popularMovieList = popularMovie.popularMovieList
-                case .failure(let error):
-                    movieError = error
+    func mutate(action: Action) -> Observable<Mutation> {
+        switch action {
+        case .viewDidLoad:
+            let moviePopularResult = usecase.getMoviePopular()
+            
+            let popularMoviesSuccess = moviePopularResult.map { result -> [PopularMovie]? in
+                guard case .success(let popularMovies) = result else { return nil }
+                return popularMovies.popularMovieList
             }
-        }).disposed(by: disposeBag)
-        
-        return State(popularMovies: popularMovieList, movieError: movieError)
+            
+            return popularMoviesSuccess.map { popularMovies -> Mutation in
+                return Mutation.fetchPopularMovie(popularMovies)
+            }
+            
+//            let popularMoviewFailure = moviePopularResult.map { result -> MovieError? in
+//                guard case .failure(let error) = result else { return nil }
+//                return error
+//            }
+        }
     }
-    
-//    func mutate(action: Action) -> Observable<Mutation> {
-//        <#code#>
-//    }
-//
-//    func reduce(state: State, mutation: Mutation) -> State {
-//        <#code#>
-//    }
+
+    func reduce(state: State, mutation: Mutation) -> State {
+        var newState = state
+        switch mutation {
+            case .fetchPopularMovie(let popularMovies):
+            newState.popularMovies = popularMovies
+            }
+        print("state = \(newState)")
+        return newState
+    }
 }

@@ -11,6 +11,16 @@ import RxCocoa
 
 class FruitViewController: UIViewController, View {
     
+    private let reactor: FruitReactor
+    
+    init(reactor: FruitReactor) {
+        self.reactor = reactor
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: Properties
     private lazy var appleButton: UIButton = {
@@ -48,14 +58,13 @@ class FruitViewController: UIViewController, View {
     
     // MARK: Binding Properties
     var disposeBag: DisposeBag = DisposeBag()
-    let fruitReactor = FruitReactor()
+//    let fruitReactor = FruitReactor()
     
     
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        bind(reactor: fruitReactor)
     }
     
     // MARK: Configure
