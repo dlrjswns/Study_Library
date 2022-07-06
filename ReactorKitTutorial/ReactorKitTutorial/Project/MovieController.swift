@@ -16,7 +16,9 @@ class MovieController: UIViewController, View {
     
     private var movieModel: [PopularMovie] = [] {
         didSet {
-            collectionView.reloadData()
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
         }
     }
     
@@ -34,7 +36,7 @@ class MovieController: UIViewController, View {
             if section == 0 {
                 return self?.sectionOneLayout()
             } else if section == 1 {
-                return self?.sectionOneLayout()
+                return self?.sectionTwoLayout()
             } else {
                 return self?.sectionOneLayout()
             }
@@ -49,14 +51,25 @@ class MovieController: UIViewController, View {
         setCollectionView(collectionView)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        collectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        collectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
+    
     private func configureUI() {
-        
+        view.backgroundColor = .systemBackground
+        view.addSubview(collectionView)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func setCollectionView(_ collectionView: UICollectionView) {
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(MovieOneViewCell.self, forCellWithReuseIdentifier: MovieOneViewCell.identifier)
+        collectionView.register(MovieTwoViewCell.self, forCellWithReuseIdentifier: MovieTwoViewCell.identifier)
     }
     
     func bind(reactor: MovieReactor) {
@@ -65,8 +78,9 @@ class MovieController: UIViewController, View {
             .disposed(by: disposeBag)
         
         reactor.state.map{ $0.popularMovies }
-            .subscribe(onNext: { popularMovies in
-                print("popularMovies = \(popularMovies)")
+            .subscribe(onNext: { [weak self] popularMovies in
+                guard let popularMovies = popularMovies else { return }
+                self?.movieModel = popularMovies
             }).disposed(by: disposeBag)
     }
 }
@@ -75,14 +89,37 @@ extension MovieController {
     func sectionOneLayout() -> NSCollectionLayoutSection {
         let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1/5))
         let item = NSCollectionLayoutItem(layoutSize: layoutSize)
+        
         let group = NSCollectionLayoutGroup.vertical(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1),
-                heightDimension: .fractionalHeight(1/5)
+                heightDimension: .fractionalHeight(1/3)
             ),
             subitems: [item]
         )
-        return NSCollectionLayoutSection(group: group)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPaging
+        
+        return section
+    }
+    
+    func sectionTwoLayout() -> NSCollectionLayoutSection {
+        let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: layoutSize)
+        
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1),
+                heightDimension: .fractionalHeight(1/3)
+            ),
+            subitems: [item]
+        )
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPaging
+        
+        return section
     }
 }
 
@@ -96,7 +133,24 @@ extension MovieController: UICollectionViewDelegate, UICollectionViewDataSource 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        return cell
+        if indexPath.section == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieOneViewCell.identifier, for: indexPath) as? MovieOneViewCell ?? MovieOneViewCell()
+            cell.configureUI(with: movieModel[indexPath.row])
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieTwoViewCell.identifier, for: indexPath) as? MovieTwoViewCell ?? MovieTwoViewCell()
+            cell.configureUI(with: movieModel[indexPath.row])
+            return cell
+        }
+        
+//        if indexPath.section == 0 {
+//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieOneViewCell.identifier, for: indexPath) as? MovieOneViewCell ?? MovieOneViewCell()
+//            cell.configureUI(with: movieModel[indexPath.row])
+//            return cell
+//        } else if indexPath.section == 1 {
+//            return UICollectionViewCell()
+//        } else {
+//            return UICollectionViewCell()
+//        }
     }
 }

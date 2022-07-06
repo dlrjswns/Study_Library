@@ -26,12 +26,12 @@ struct PopularMovie: Decodable {
     let originalTitle: String?
     let overview: String?
     let popularity: Double?
-    let posterPath: String?
+    let posterPath: String
     let releaseDate: String?
-    let title: String?
+    let title: String
     let video: Bool?
-    let voteAverage: Float?
-    let voteCount: Int?
+    let voteAverage: Float
+    let voteCount: Int
     
     enum CodingKeys: String, CodingKey {
         case adult, id, overview, popularity, title, video
@@ -56,12 +56,12 @@ struct PopularMovie: Decodable {
         self.originalTitle = try? values.decode(String.self, forKey: .originalTitle)
         self.overview = try? values.decode(String.self, forKey: .overview)
         self.popularity = try? values.decode(Double.self, forKey: .popularity)
-        self.posterPath = try? values.decode(String.self, forKey: .posterPath)
+        self.posterPath = (try? values.decode(String.self, forKey: .posterPath)) ?? ""
         self.releaseDate = try? values.decode(String.self, forKey: .releaseDate)
-        self.title = try? values.decode(String.self, forKey: .title)
+        self.title = (try? values.decode(String.self, forKey: .title)) ?? ""
         self.video = try? values.decode(Bool.self, forKey: .video)
-        self.voteAverage = try? values.decode(Float.self, forKey: .voteAverage)
-        self.voteCount = try? values.decode(Int.self, forKey: .voteCount)
+        self.voteAverage = (try? values.decode(Float.self, forKey: .voteAverage)) ?? 0
+        self.voteCount = (try? values.decode(Int.self, forKey: .voteCount)) ?? 0
     }
 }
 

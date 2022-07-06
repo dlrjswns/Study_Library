@@ -25,6 +25,9 @@
 		706ECC052872AB4A00DEE6A7 /* MovieUsecaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706ECC042872AB4A00DEE6A7 /* MovieUsecaseImpl.swift */; };
 		706ECC072872ABF300DEE6A7 /* MovieReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706ECC062872ABF300DEE6A7 /* MovieReactor.swift */; };
 		706ECC092872B03E00DEE6A7 /* MovieController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706ECC082872B03E00DEE6A7 /* MovieController.swift */; };
+		706ECC0B28750BDA00DEE6A7 /* MovieOneViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706ECC0A28750BDA00DEE6A7 /* MovieOneViewCell.swift */; };
+		706ECC0D28752A3600DEE6A7 /* MovieTwoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706ECC0C28752A3600DEE6A7 /* MovieTwoViewCell.swift */; };
+		706ECC0F28752BA900DEE6A7 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706ECC0E28752BA900DEE6A7 /* CacheManager.swift */; };
 		70CB8AC5285B981700C4293A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CB8AC4285B981700C4293A /* AppDelegate.swift */; };
 		70CB8AC7285B981700C4293A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CB8AC6285B981700C4293A /* SceneDelegate.swift */; };
 		70CB8ACE285B981D00C4293A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70CB8ACD285B981D00C4293A /* Assets.xcassets */; };
@@ -51,6 +54,9 @@
 		706ECC042872AB4A00DEE6A7 /* MovieUsecaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieUsecaseImpl.swift; sourceTree = "<group>"; };
 		706ECC062872ABF300DEE6A7 /* MovieReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieReactor.swift; sourceTree = "<group>"; };
 		706ECC082872B03E00DEE6A7 /* MovieController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieController.swift; sourceTree = "<group>"; };
+		706ECC0A28750BDA00DEE6A7 /* MovieOneViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieOneViewCell.swift; sourceTree = "<group>"; };
+		706ECC0C28752A3600DEE6A7 /* MovieTwoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTwoViewCell.swift; sourceTree = "<group>"; };
+		706ECC0E28752BA900DEE6A7 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		70CB8AC1285B981700C4293A /* ReactorKitTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactorKitTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70CB8AC4285B981700C4293A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		70CB8AC6285B981700C4293A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +138,9 @@
 				706ECC042872AB4A00DEE6A7 /* MovieUsecaseImpl.swift */,
 				706ECC062872ABF300DEE6A7 /* MovieReactor.swift */,
 				706ECC082872B03E00DEE6A7 /* MovieController.swift */,
+				706ECC0A28750BDA00DEE6A7 /* MovieOneViewCell.swift */,
+				706ECC0C28752A3600DEE6A7 /* MovieTwoViewCell.swift */,
+				706ECC0E28752BA900DEE6A7 /* CacheManager.swift */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -304,8 +313,11 @@
 			files = (
 				706ECC032872A06300DEE6A7 /* PopularMovieList.swift in Sources */,
 				70CB8AC5285B981700C4293A /* AppDelegate.swift in Sources */,
+				706ECC0B28750BDA00DEE6A7 /* MovieOneViewCell.swift in Sources */,
 				70CB8AC7285B981700C4293A /* SceneDelegate.swift in Sources */,
+				706ECC0D28752A3600DEE6A7 /* MovieTwoViewCell.swift in Sources */,
 				706ECC092872B03E00DEE6A7 /* MovieController.swift in Sources */,
+				706ECC0F28752BA900DEE6A7 /* CacheManager.swift in Sources */,
 				70CB8AD9285C4C2900C4293A /* FruitViewController.swift in Sources */,
 				706ECC012872A04E00DEE6A7 /* MovieList.swift in Sources */,
 				706ECB382863343000DEE6A7 /* MusicRepository.swift in Sources */,
