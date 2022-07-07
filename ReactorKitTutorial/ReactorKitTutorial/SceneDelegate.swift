@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
 //        window?.rootViewController = CalculateViewController(reactor: CalculateReactor())
 //        window?.rootViewController = MusicViewController(reactor: MusicReactor(usecase: MusicUsecaseImpl(repository: MusicRepositoryImpl())))
-        window?.rootViewController = MovieController(reactor: MovieReactor(usecase: MovieUsecaseImpl(repository: MovieRepositoryImpl())))
+        window?.rootViewController = UINavigationController(rootViewController: MovieController(reactor: MovieReactor(usecase: MovieUsecaseImpl(repository: MovieRepositoryImpl()))))
 //        let fruitController = FruitViewController()
 //        fruitController.reactor = FruitReactor()
 //        window?.rootViewController = FruitViewController(reactor: FruitReactor())

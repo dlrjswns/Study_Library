@@ -12,12 +12,24 @@ class MovieController: UIViewController, View {
     
     var disposeBag: DisposeBag = DisposeBag()
     
-//    private let reactor: MovieReactor
+    private lazy var movieSearchBar: UISearchBar = {
+       let searchBar = UISearchBar()
+        searchBar.placeholder = "영화를 검색해주세요"
+        return searchBar
+    }()
     
     private var movieModel: [PopularMovie] = [] {
         didSet {
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
+            DispatchQueue.main.async { [weak self] in
+                self?.collectionView.reloadData()
+            }
+        }
+    }
+    
+    private var searchMovieModel: [Movie] = [] {
+        didSet {
+            DispatchQueue.main.async { [weak self] in
+                self?.collectionView.reloadData()
             }
         }
     }
@@ -49,6 +61,7 @@ class MovieController: UIViewController, View {
         super.viewDidLoad()
         configureUI()
         setCollectionView(collectionView)
+        self.navigationItem.titleView = movieSearchBar
     }
     
     override func viewDidLayoutSubviews() {
@@ -70,17 +83,30 @@ class MovieController: UIViewController, View {
         collectionView.dataSource = self
         collectionView.register(MovieOneViewCell.self, forCellWithReuseIdentifier: MovieOneViewCell.identifier)
         collectionView.register(MovieTwoViewCell.self, forCellWithReuseIdentifier: MovieTwoViewCell.identifier)
+        collectionView.register(MovieThreeViewCell.self, forCellWithReuseIdentifier: MovieThreeViewCell.identifier)
     }
     
     func bind(reactor: MovieReactor) {
+        //Action
         Observable.just(MovieReactor.Action.viewDidLoad)
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
+        movieSearchBar.rx.text.orEmpty.filter{ $0.count != 0 }.distinctUntilChanged().map{ Reactor.Action.searchMovie($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        //State
         reactor.state.map{ $0.popularMovies }
             .subscribe(onNext: { [weak self] popularMovies in
                 guard let popularMovies = popularMovies else { return }
                 self?.movieModel = popularMovies
+            }).disposed(by: disposeBag)
+        
+        reactor.state.map{ $0.searchMovies }
+            .subscribe(onNext: { [weak self] searchMovies in
+                guard let searchMovies = searchMovies else { return }
+                self?.searchMovieModel = searchMovies
             }).disposed(by: disposeBag)
     }
 }
@@ -129,7 +155,11 @@ extension MovieController: UICollectionViewDelegate, UICollectionViewDataSource 
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movieModel.count
+        if section == 2 {
+            return searchMovieModel.count
+        } else {
+            return movieModel.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -137,9 +167,13 @@ extension MovieController: UICollectionViewDelegate, UICollectionViewDataSource 
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieOneViewCell.identifier, for: indexPath) as? MovieOneViewCell ?? MovieOneViewCell()
             cell.configureUI(with: movieModel[indexPath.row])
             return cell
-        } else {
+        } else if indexPath.section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieTwoViewCell.identifier, for: indexPath) as? MovieTwoViewCell ?? MovieTwoViewCell()
             cell.configureUI(with: movieModel[indexPath.row])
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieThreeViewCell.identifier, for: indexPath) as? MovieThreeViewCell ?? MovieThreeViewCell()
+            cell.configureCell(with: searchMovieModel[indexPath.row])
             return cell
         }
         

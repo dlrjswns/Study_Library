@@ -21,35 +21,47 @@ class MovieReactor: Reactor {
     
     enum Action {
         case viewDidLoad
+        case searchMovie(String)
     }
     
     enum Mutation {
         case fetchPopularMovie([PopularMovie]?)
+        case fetchSearchMovie([Movie]?)
     }
     
     struct State {
         var popularMovies: [PopularMovie]?
-//        let movieError: MovieError?
+        var searchMovies: [Movie]?
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case .viewDidLoad:
-            let moviePopularResult = usecase.getMoviePopular()
-            
-            let popularMoviesSuccess = moviePopularResult.map { result -> [PopularMovie]? in
-                guard case .success(let popularMovies) = result else { return nil }
-                return popularMovies.popularMovieList
+            case .viewDidLoad:
+                let moviePopularResult = usecase.getMoviePopular()
+                
+                let popularMoviesSuccess = moviePopularResult.map { result -> [PopularMovie]? in
+                    guard case .success(let popularMovies) = result else { return nil }
+                    return popularMovies.popularMovieList
+                }
+                
+                return popularMoviesSuccess.map { popularMovies -> Mutation in
+                    return Mutation.fetchPopularMovie(popularMovies)
+                }
+                
+    //            let popularMoviewFailure = moviePopularResult.map { result -> MovieError? in
+    //                guard case .failure(let error) = result else { return nil }
+    //                return error
+    //            }
+        case .searchMovie(let query):
+            let movieSearchResult = usecase.getMovieList(keyword: query)
+            let movieSearchSuccess = movieSearchResult.map { result -> [Movie]? in
+                guard case .success(let movieSearch) = result else { return nil }
+                return movieSearch.items
             }
             
-            return popularMoviesSuccess.map { popularMovies -> Mutation in
-                return Mutation.fetchPopularMovie(popularMovies)
+            return movieSearchSuccess.map { movies in
+                return Mutation.fetchSearchMovie(movies)
             }
-            
-//            let popularMoviewFailure = moviePopularResult.map { result -> MovieError? in
-//                guard case .failure(let error) = result else { return nil }
-//                return error
-//            }
         }
     }
 
@@ -57,7 +69,9 @@ class MovieReactor: Reactor {
         var newState = state
         switch mutation {
             case .fetchPopularMovie(let popularMovies):
-            newState.popularMovies = popularMovies
+                newState.popularMovies = popularMovies
+            case .fetchSearchMovie(let movies):
+                    newState.searchMovies = movies
             }
         print("state = \(newState)")
         return newState
