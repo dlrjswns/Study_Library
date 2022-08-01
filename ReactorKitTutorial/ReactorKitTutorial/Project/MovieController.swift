@@ -62,6 +62,8 @@ class MovieController: UIViewController, View {
         configureUI()
         setCollectionView(collectionView)
         self.navigationItem.titleView = movieSearchBar
+        
+        var set = Set([1, 2, 3])
     }
     
     override func viewDidLayoutSubviews() {

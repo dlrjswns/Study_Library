@@ -48,10 +48,6 @@ class MovieReactor: Reactor {
                     return Mutation.fetchPopularMovie(popularMovies)
                 }
                 
-    //            let popularMoviewFailure = moviePopularResult.map { result -> MovieError? in
-    //                guard case .failure(let error) = result else { return nil }
-    //                return error
-    //            }
         case .searchMovie(let query):
             let movieSearchResult = usecase.getMovieList(keyword: query)
             let movieSearchSuccess = movieSearchResult.map { result -> [Movie]? in

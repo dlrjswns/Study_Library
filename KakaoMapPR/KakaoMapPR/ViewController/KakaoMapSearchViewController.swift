@@ -149,8 +149,8 @@ class KakaoMapSearchViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         informationTableView.delegate = self
-//        initialTappdCollectionView()
-//        bind()
+        initialTappdCollectionView()
+        bind()
         
         
         locationManager.delegate = self
