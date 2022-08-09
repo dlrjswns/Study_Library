@@ -159,4 +159,163 @@
 	```
 	2. mutate -> Mutation 
 	3. reduce -> State
+	```Swift
+	func reduce(state: State, mutation: Mutation) -> State {
+        var state = state
+        switch mutation {
+        case .changeLabelApple:
+            state.fruitName = "사과"
+        case .changeLabelBanana:
+            state.fruitName = "바나나"
+        case .changeLabelGrapes:
+            state.fruitName = "포도"
+        case .setLoading(let val):
+            state.isLoading = val
+        }
+        
+        return state
+    	}
+        ```
+	* 여기서 reduce함수는 각각의 Action에 따라 반환된 Mutation들을 새로운 State로 반환해주는 함수인데 이때 이 함수의 인자로 이전 상태값인 state와 해당 mutation을 인자로 받아온다
 	
+## Unit Test 맛보기
+```Swift 
+override func setUpWithError() throws {
+    	try super.setUpWithError()
+        sut = BullsEyeGame()
+    }
+
+    override func tearDownWithError() throws {
+	sut = nil
+	try super.tearDownWithError()
+    }
+    
+    func testExample() throws {
+        
+    }
+
+    func testPerformanceExample() throws {
+        measure {
+            
+        }
+    }
+```
+* Unit Test를 추가하면 기본적으로 setUpWithError, tearDownWithError, testExample, testPerformanceExample가 생성 
+	1. setUpWithError() -> 테스트 메소드가 실행되기 전 모든 상태를 reset합니다 (초기화 코드)
+	2. tearDownWithError() -> 테스트 동작이 끝난 후 모든 상태를 clean up합니다 (해체 코드)
+	3. testExample() -> 테스트해볼 수 있는 기본적으로 제공해주는 함수, 내가 원하는 test함수를 생성하여 사용해도 됨
+	4. testPerformanceExample() -> 테스트 성능을 확인해볼 수 있는 
+	
+```Swift
+var sut: BullsEyeGame!
+```
+* 나는 테스트를 원하는 객체를 정의할 것이고 이 sut를 이용하여 BullysEyeGame객체가 가지고있는 코드를 이용해 테스트코드를 작성해보자
+
+```Swift
+func testScoreIsComputedWhenGuessIsHigherThanTarget() {
+      // given
+    let guess = sut.targetValue - 5
+    
+    // when
+    sut.check(guess: guess)
+    
+    // then
+    XCTAssertEqual(sut.scoreRound, 95, "Score computed from guess is wrong")
+  }
+```
+* 테스트를 하기위한 함수의 이름은 test를 시작으로 정의한다 
+* XCTAssertEqual를 이용하여 추측한 점수가 95인지 아닌지를 판별하여 테스트코드가 성공인지 실패인지를 
+
+### 비동기 테스트해보기 
+```Swift 
+func testApiCallCompletes() throws {
+  // given
+  let urlString = "http://www.randomnumberapi.com/test"
+  let url = URL(string: urlString)!
+  let promise = expectation(description: "Completion handler invoked")
+  var statusCode: Int?
+  var responseError: Error?
+
+  // when
+  let dataTask = sut.dataTask(with: url) { _, response, error in
+    statusCode = (response as? HTTPURLResponse)?.statusCode
+    responseError = error
+    promise.fulfill()
+  }
+  dataTask.resume()
+  wait(for: [promise], timeout: 5)
+
+  // then
+  XCTAssertNil(responseError)
+  XCTAssertEqual(statusCode, 200)
+}
+```
+* expectation(description:)는 일어날 것으로 예상되는 것을 설명
+* wait(for:, timeout:) 모든 기대치가 충족되거나 간격이 끝날때까지 테스트를 계속 실행, 예상될것으로 충족될것을 timeout에 정의된 시간까지 대기하는것 
+* promise.fulfill() 이 코드가 앞서 예상했던 expectation을 충족됨을 플래그하는 코드
+* 만약에 XCTAssertNil와 XCTAssertEqual이 존재하지않는다면 비동기인 코드에서 URL의 옳고그름과 상관없이 wait로 인해 timeout시간만큼 기다려야하는 단점이 존재 
+* 위 코드를 사용함으로써 URL이 옳지않을시 XCTAssertEqual(statusCode, 200)에서 걸리기때문에 필요치않은 시간을 기다릴 필요없다
+
+```Swift
+let networkMonitor = NetworkMonitor.shared
+try XCTSkipUnless(networkMonitor.isReachable,
+                      "Network connectivity needed for this test.") 
+```
+* XCTSkipUnless(_:_:)는 네트워크에 연결할 수 없는 경우 테스트를 건너뜁니다, 애초에 네트워크가 연결되있지않으면 알아서 실패되겠지만 연결이 안되었는데 테스트를 하는 자체를 막을 수 있음
+
+## FloatingPanel 
+* Connect 개발을 하던 와중에 터치한 오버레이에 따라 다른 bottomView를 띄어줘야했고 이를 위해 FloatingPanel이라는 라이브러리를 사용하였다
+# 기본 사용법
+```Swift
+private lazy var floatingPanelVC = FloatingPanelController()
+private func showFloatingPanel(contentViewController: UIViewController, _ floatingPanelVC: FloatingPanelController) {
+        guard let contentViewController = contentViewController as? MapFloatingPanelViewController else { return }
+        let layout = MapFloatingPanelLayout(floatingType: contentViewController.floatingType)
+        floatingPanelVC.layout = layout
+        floatingPanelVC.delegate = self
+        floatingPanelVC.addPanel(toParent: self)
+        floatingPanelVC.set(contentViewController: contentViewController)
+        floatingPanelVC.show()
+    }
+```
+* FloatingPanelController 객체를 만들어 내가 보여주길 원하는 화면을 contentViewController에 집어넣어 보여주는 형식이다 
+
+```Swift
+func floatingPanelDidChangeState(_ fpc: FloatingPanelController) {
+        if fpc.state == .hidden {
+            floatingPanelVC.removePanelFromParent(animated: true)
+        }
+    }
+
+class MapFloatingPanelLayout: FloatingPanelLayout {
+    
+    init(floatingType: FloatingType) { // FloatingType에 따라 다른 initialState를 갖게 함
+        switch floatingType {
+            case .who, .study:
+                initialState = .half
+            case .searchResult:
+                initialState = .tip
+        }
+    }
+    
+    var position: FloatingPanelPosition {
+        return .bottom
+    }
+    
+    let initialState: FloatingPanelState
+    
+    var anchors: [FloatingPanelState : FloatingPanelLayoutAnchoring] {
+        return [
+                    .full: FloatingPanelLayoutAnchor(fractionalInset: 1, edge: .bottom, referenceGuide: .safeArea),
+                    .half: FloatingPanelLayoutAnchor(fractionalInset: 0.48, edge: .bottom, referenceGuide: .safeArea),
+                    .tip: FloatingPanelLayoutAnchor(fractionalInset: 0.3, edge: .bottom, referenceGuide: .safeArea), // tabbar에 가려져서 이에 맞춘 크기가 20이 적당하다생각
+                    .hidden: FloatingPanelLayoutAnchor(absoluteInset: 20, edge: .bottom, referenceGuide: .safeArea)
+                ]
+    }
+}
+```
+* FloatingPanel에 대한 delegate함수를 이용해 .hidden 상태값이 될 경우 사라지게 하였다 
+* FloatingPanel을 이용하여 layout을 지정하여 좀 더 유연하게 코드도 가능한데 
+  위 코드처럼 FloatingType에 따라서 다른 초기상태값을 집어넣어 보여주게 하였다 
+
+* FloatingPanel의 상태값은 anchors를 이용하여 fractionalInset 혹은 absoluteInset을 이용하여 원하는 크기를 조절해줄 수 있다
