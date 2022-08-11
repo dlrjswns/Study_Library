@@ -18,6 +18,9 @@
 		7078E6F728A29E27003A299F /* HomeTabCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7078E6F628A29E27003A299F /* HomeTabCollectionViewCell.swift */; };
 		7078E6F928A32496003A299F /* HomeTabHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7078E6F828A32496003A299F /* HomeTabHeader.swift */; };
 		7078E6FB28A38B29003A299F /* FirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7078E6FA28A38B29003A299F /* FirstVC.swift */; };
+		7078E70028A52ECD003A299F /* TabPracticeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7078E6FF28A52ECD003A299F /* TabPracticeVC.swift */; };
+		7078E70228A52FAC003A299F /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7078E70128A52FAC003A299F /* MainCollectionViewCell.swift */; };
+		7078E70428A530DD003A299F /* CustomTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7078E70328A530DD003A299F /* CustomTabbar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,9 @@
 		7078E6F628A29E27003A299F /* HomeTabCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabCollectionViewCell.swift; sourceTree = "<group>"; };
 		7078E6F828A32496003A299F /* HomeTabHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabHeader.swift; sourceTree = "<group>"; };
 		7078E6FA28A38B29003A299F /* FirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstVC.swift; sourceTree = "<group>"; };
+		7078E6FF28A52ECD003A299F /* TabPracticeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabPracticeVC.swift; sourceTree = "<group>"; };
+		7078E70128A52FAC003A299F /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
+		7078E70328A530DD003A299F /* CustomTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabbar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +118,9 @@
 				7078E6F628A29E27003A299F /* HomeTabCollectionViewCell.swift */,
 				7078E6F828A32496003A299F /* HomeTabHeader.swift */,
 				7078E6FA28A38B29003A299F /* FirstVC.swift */,
+				7078E6FF28A52ECD003A299F /* TabPracticeVC.swift */,
+				7078E70128A52FAC003A299F /* MainCollectionViewCell.swift */,
+				7078E70328A530DD003A299F /* CustomTabbar.swift */,
 			);
 			path = "StackView&ContainerView";
 			sourceTree = "<group>";
@@ -264,7 +273,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7078E6C528A29156003A299F /* AppDelegate.swift in Sources */,
+				7078E70028A52ECD003A299F /* TabPracticeVC.swift in Sources */,
 				7078E6FB28A38B29003A299F /* FirstVC.swift in Sources */,
+				7078E70428A530DD003A299F /* CustomTabbar.swift in Sources */,
+				7078E70228A52FAC003A299F /* MainCollectionViewCell.swift in Sources */,
 				7078E6F928A32496003A299F /* HomeTabHeader.swift in Sources */,
 				7078E6F728A29E27003A299F /* HomeTabCollectionViewCell.swift in Sources */,
 				7078E6F528A2917E003A299F /* ContainerViewController.swift in Sources */,
