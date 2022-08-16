@@ -13,6 +13,8 @@ class RootTableViewCell: UITableViewCell {
     
     private let userNameLabel: UILabel = {
        let label = UILabel()
+        label.font = .systemFont(ofSize: 15, weight: .bold)
+        label.numberOfLines = 0
         return label
     }()
     
@@ -32,7 +34,14 @@ class RootTableViewCell: UITableViewCell {
     }
     
     private func configureUI() {
-        
+        contentView.addSubview(userNameLabel)
+        userNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        userNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        userNameLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        userNameLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        userNameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+//        userNameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+//        userNameLabel.widthAnchor.constraint(lessThanOrEqualTo: contentView.widthAnchor).isActive = true
     }
     
     public func configureUI(with model: String) {

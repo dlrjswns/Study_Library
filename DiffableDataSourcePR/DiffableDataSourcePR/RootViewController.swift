@@ -70,14 +70,26 @@ class RootViewController: UIViewController {
         
         //MARK: - 데이터 소스 설정
         dataSource = UITableViewDiffableDataSource<Section, Feed>(tableView: tableView, cellProvider: { (tableView: UITableView, indexPath: IndexPath, identifier: Feed) -> UITableViewCell? in
-            let cell = tableView.dequeueReusableCell(withIdentifier: RootTableViewCell.identifier, for: indexPath) as? RootTableViewCell 
+            let cell = tableView.dequeueReusableCell(withIdentifier: RootTableViewCell.identifier, for: indexPath) as? RootTableViewCell ?? RootTableViewCell()
+            cell.configureUI(with: self.feedArray[indexPath.row].content)
             return cell
         })
+        
+        snapShot = NSDiffableDataSourceSnapshot<Section, Feed>()
+        snapShot.appendSections([.feed])
+        snapShot.appendItems(feedArray, toSection: .feed)
+        
+        dataSource.apply(snapShot)
     }
     
     private func configureUI() {
+        view.backgroundColor = .systemBackground
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
 }
 
