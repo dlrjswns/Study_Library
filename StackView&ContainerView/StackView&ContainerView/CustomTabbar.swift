@@ -37,6 +37,7 @@ class CustomTabbar: UIView {
         super.init(frame: frame)
         configureUI()
         setCollectionViewResister(collectionView)
+        
     }
     
     required init?(coder: NSCoder) {
@@ -134,5 +135,12 @@ class CustomTabbarCollectionViewCell: UICollectionViewCell {
     
     public func configureUI(with model: String) {
         tabLabel.text = model
+    }
+}
+
+
+class A {
+    func configure<T>(_ :T) {
+        
     }
 }

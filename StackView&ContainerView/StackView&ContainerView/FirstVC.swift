@@ -22,6 +22,9 @@ class FirstVC: UIViewController {
         vw.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(vw)
         vw.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        vw.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        vw.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        vw.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
     override func viewWillLayoutSubviews() {

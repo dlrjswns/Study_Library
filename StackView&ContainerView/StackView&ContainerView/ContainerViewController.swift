@@ -26,6 +26,8 @@ class ContainerViewController: UIViewController {
         return vw
     }()
     
+    private let customTabbar = CustomTabbar()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,8 +41,9 @@ class ContainerViewController: UIViewController {
         addChild(secondVC)
         view.addSubview(firstVC.view)
         view.addSubview(secondVC.view)
-        firstVC.view.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-        secondVC.view.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        firstVC.view.frame = CGRect(x: 200, y: 200, width: 50, height: 50)
+        secondVC.view.frame = CGRect(x: 200, y: 200, width: 50, height: 50)
+        firstVC.didMove(toParent: self)
     }
     
     override func viewDidLayoutSubviews() {
@@ -133,6 +136,7 @@ extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeTabCollectionViewCell.identifier, for: indexPath) as? HomeTabCollectionViewCell ?? HomeTabCollectionViewCell()
         cell.configureUI(with: tabModel[indexPath.row])
+        cell.delegate = self
         return cell
     }
     
@@ -142,7 +146,16 @@ extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.didMove(toParent: self)
+        guard let cell = collectionView.cellForItem(at: indexPath) as? HomeTabCollectionViewCell else { return }
+        let rowNum = indexPath.row
+        
+        if rowNum == 0 {
+            
+        } else if rowNum == 1 {
+            
+        } else {
+            
+        }
 //        guard let cell = collectionView.cellForItem(at: indexPath) as? HomeTabCollectionViewCell else { return }
 //        UIView.animate(withDuration: 2.0) { [weak self] in
 //            guard let `self` = self else { return }
@@ -157,4 +170,10 @@ extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDat
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 //        return CGSize(width: 100, height: 100)
 //    }
+}
+
+extension ContainerViewController: HomeTabCollectionViewCellDelegate {
+    func didTappedHomeTabCollectionViewCell() {
+        print("tapped")
+    }
 }
