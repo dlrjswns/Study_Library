@@ -71,6 +71,7 @@ class RootViewController: UIViewController {
         //MARK: - 데이터 소스 설정
         dataSource = UITableViewDiffableDataSource<Section, Feed>(tableView: tableView, cellProvider: { (tableView: UITableView, indexPath: IndexPath, identifier: Feed) -> UITableViewCell? in
             let cell = tableView.dequeueReusableCell(withIdentifier: RootTableViewCell.identifier, for: indexPath) as? RootTableViewCell ?? RootTableViewCell()
+            print("identifier = \(identifier)")
             cell.configureUI(with: self.feedArray[indexPath.row].content)
             return cell
         })
@@ -79,7 +80,9 @@ class RootViewController: UIViewController {
         snapShot.appendSections([.feed])
         snapShot.appendItems(feedArray, toSection: .feed)
         
-        dataSource.apply(snapShot)
+//        tableView.dataSource = dataSource
+            self.dataSource.apply(snapShot)
+        
     }
     
     private func configureUI() {

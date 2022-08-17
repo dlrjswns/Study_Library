@@ -319,3 +319,27 @@ class MapFloatingPanelLayout: FloatingPanelLayout {
   위 코드처럼 FloatingType에 따라서 다른 초기상태값을 집어넣어 보여주게 하였다 
 
 * FloatingPanel의 상태값은 anchors를 이용하여 fractionalInset 혹은 absoluteInset을 이용하여 원하는 크기를 조절해줄 수 있다
+
+##UITableViewDiffableDataSource 
+##기본사용법
+```Swift
+var dataSource: UITableViewDiffableDataSource<Section, Feed>!
+var snapShot: NSDiffableDataSourceSnapshot<Section, Feed>!
+	dataSource = UITableViewDiffableDataSource<Section, Feed>(tableView: tableView, cellProvider: { (tableView: UITableView, indexPath: IndexPath, identifier: Feed) -> UITableViewCell? in
+            let cell = tableView.dequeueReusableCell(withIdentifier: RootTableViewCell.identifier, for: indexPath) as? RootTableViewCell ?? RootTableViewCell()
+            print("identifier = \(identifier)")
+            cell.configureUI(with: self.feedArray[indexPath.row].content)
+            return cell
+        })
+        
+        snapShot = NSDiffableDataSourceSnapshot<Section, Feed>()
+        snapShot.appendSections([.feed])
+        snapShot.appendItems(feedArray, toSection: .feed)
+        
+        self.dataSource.apply(snapShot)
+```
+* 일반적인 방법으로 UITableView나 UICollectionView를 구성할때는 delegate와 dataSource를 이용하여 구성하였다 
+* 이때 UITableView나 UICollectionView를 구성하는 부분을 건들때 delete나 insert 등등에 해당하는 메소드를 사용하게 되는데 
+  이를 위해 beginUpdates, endUpdates, performBatch와 같음을 이용하며 구성해줘야하는 복잡함이 있다 
+* 위와 같은 단점을 보완한 부분이 바로 DiffableDataSource이다, apply메소드 하나만으로 위 과정을 이행가능하다 
+* 또한 DiffableDataSource를 이용해 UITableView나 UICollectionView를 구성하는 장점은 애니메이션 효과이다, reloadData를 사용하기엔 딱딱한 느낌이 있어 사용자 경험이 적다는 단점이 있고 

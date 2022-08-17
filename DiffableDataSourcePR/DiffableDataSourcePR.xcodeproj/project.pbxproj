@@ -16,6 +16,7 @@
 		7078E73928ABAC07003A299F /* DiffableDataSourcePRUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7078E73828ABAC07003A299F /* DiffableDataSourcePRUITestsLaunchTests.swift */; };
 		7078E74628ABAD1C003A299F /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7078E74528ABAD1C003A299F /* RootViewController.swift */; };
 		7078E74828ABAFA8003A299F /* RootTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7078E74728ABAFA8003A299F /* RootTableViewCell.swift */; };
+		7078E74A28AC6CC0003A299F /* RootViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7078E74928AC6CC0003A299F /* RootViewController1.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		7078E73828ABAC07003A299F /* DiffableDataSourcePRUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableDataSourcePRUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7078E74528ABAD1C003A299F /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		7078E74728ABAFA8003A299F /* RootTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTableViewCell.swift; sourceTree = "<group>"; };
+		7078E74928AC6CC0003A299F /* RootViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController1.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				7078E72328ABAC06003A299F /* Info.plist */,
 				7078E74528ABAD1C003A299F /* RootViewController.swift */,
 				7078E74728ABAFA8003A299F /* RootTableViewCell.swift */,
+				7078E74928AC6CC0003A299F /* RootViewController1.swift */,
 			);
 			path = DiffableDataSourcePR;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				7078E71628ABAC04003A299F /* AppDelegate.swift in Sources */,
 				7078E74828ABAFA8003A299F /* RootTableViewCell.swift in Sources */,
 				7078E71828ABAC04003A299F /* SceneDelegate.swift in Sources */,
+				7078E74A28AC6CC0003A299F /* RootViewController1.swift in Sources */,
 				7078E74628ABAD1C003A299F /* RootViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
