@@ -10,6 +10,22 @@ import RxSwift
 
 class BeerRepositoryImpl: BeerRepository {
     
+    public func fetchBeer<T>() -> Observable<Result<T, BeerError>> where T: Decodable {
+        guard let url = URL(string: "") else {
+            return .just(.failure(BeerError.customError("")))
+        }
+        
+        return URLSession.shared.rx.data(request: URLRequest(url: url)).map { data in
+            do {
+                let successData = try JSONDecoder().decode(T.self, from: data)
+                return .success(successData)
+            } catch {
+                return .failure(BeerError.customError(""))
+            }
+            
+        }
+    }
+    
     public func fetchOneBeer(id: String) -> Observable<Result<[Beer], BeerError>> {
         return Observable.create { [weak self] emitter -> Disposable in
             self?.fetchPunkBeer(id: id, type: .beer) { result in

@@ -8,6 +8,7 @@
 import RxSwift
 
 protocol BeerRepository {
+    func fetchBeer<T>() -> Observable<Result<T, BeerError>> where T: Decodable
     func fetchOneBeer(id: String) -> Observable<Result<[Beer], BeerError>>
     func fetchBeers(page: String) -> Observable<Result<[Beer], BeerError>>
     func fetchRandomBeer() -> Observable<Result<[Beer], BeerError>>

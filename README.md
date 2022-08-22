@@ -339,7 +339,10 @@ var snapShot: NSDiffableDataSourceSnapshot<Section, Feed>!
         self.dataSource.apply(snapShot)
 ```
 * 일반적인 방법으로 UITableView나 UICollectionView를 구성할때는 delegate와 dataSource를 이용하여 구성하였다 
+
+## reloadData vs performBatchUpdates, beginUpdates, endUpdates, DiffableDataSource
 * 이때 UITableView나 UICollectionView를 구성하는 부분을 건들때 delete나 insert 등등에 해당하는 메소드를 사용하게 되는데 
   이를 위해 beginUpdates, endUpdates, performBatch와 같음을 이용하며 구성해줘야하는 복잡함이 있다 
 * 위와 같은 단점을 보완한 부분이 바로 DiffableDataSource이다, apply메소드 하나만으로 위 과정을 이행가능하다 
-* 또한 DiffableDataSource를 이용해 UITableView나 UICollectionView를 구성하는 장점은 애니메이션 효과이다, reloadData를 사용하기엔 딱딱한 느낌이 있어 사용자 경험이 적다는 단점이 있고 
+* 또한 DiffableDataSource를 이용해 UITableView나 UICollectionView를 구성하는 장점은 애니메이션 효과이다, reloadData를 사용하기엔 딱딱한 느낌이 있어 사용자 경험이 적다는 단점이 있다 
+* 사실 애니메이션 효과만 본다면 performBatchUpdates나 beginUpdates, endUpdaes를 사용해줄 수 있다, 하지만 DiffableDataSource는 apply메소드만 사용해주면 간단히 구성이 가능하고 IndexPath로 접근하여 의도치않은 오류를 범할 위험이 없고 dataSource의 itemIdentifier를 이용하여 좀 더 안전하게 접근가능하다는 장점이 있다 

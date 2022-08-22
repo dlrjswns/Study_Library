@@ -30,7 +30,11 @@ class ContainerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
         
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        }
         view.backgroundColor = .systemBackground
         configureUI()
         setCollectionViewRegister(collectionView)
@@ -54,6 +58,11 @@ class ContainerViewController: UIViewController {
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
+//    private func example<T>() -> T {
+//        var str: T
+//        return str
+//    }
+    
     private func configureUI() {
         view.backgroundColor = .systemBackground
         collectionView.delegate = self
@@ -63,6 +72,8 @@ class ContainerViewController: UIViewController {
         view.addSubview(bottomLineView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         bottomLineView.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.navigationController?.setToolbarHidden(false, animated: true)
     }
     
     private func setCollectionViewRegister(_ collectionView: UICollectionView) {

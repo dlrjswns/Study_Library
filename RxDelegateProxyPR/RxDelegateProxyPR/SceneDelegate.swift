@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  StackView&ContainerView
+//  RxDelegateProxyPR
 //
-//  Created by 이건준 on 2022/08/09.
+//  Created by 이건준 on 2022/08/22.
 //
 
 import UIKit
@@ -18,8 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-        
-        window?.rootViewController = UINavigationController(rootViewController: ContainerViewController())
+        window?.rootViewController = RootViewController()
         window?.makeKeyAndVisible()
     }
 
