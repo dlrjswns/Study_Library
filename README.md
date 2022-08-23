@@ -320,7 +320,7 @@ class MapFloatingPanelLayout: FloatingPanelLayout {
 
 * FloatingPanel의 상태값은 anchors를 이용하여 fractionalInset 혹은 absoluteInset을 이용하여 원하는 크기를 조절해줄 수 있다
 
-##UITableViewDiffableDataSource 
+###UITableViewDiffableDataSource 
 ##기본사용법
 ```Swift
 var dataSource: UITableViewDiffableDataSource<Section, Feed>!
@@ -346,3 +346,49 @@ var snapShot: NSDiffableDataSourceSnapshot<Section, Feed>!
 * 위와 같은 단점을 보완한 부분이 바로 DiffableDataSource이다, apply메소드 하나만으로 위 과정을 이행가능하다 
 * 또한 DiffableDataSource를 이용해 UITableView나 UICollectionView를 구성하는 장점은 애니메이션 효과이다, reloadData를 사용하기엔 딱딱한 느낌이 있어 사용자 경험이 적다는 단점이 있다 
 * 사실 애니메이션 효과만 본다면 performBatchUpdates나 beginUpdates, endUpdaes를 사용해줄 수 있다, 하지만 DiffableDataSource는 apply메소드만 사용해주면 간단히 구성이 가능하고 IndexPath로 접근하여 의도치않은 오류를 범할 위험이 없고 dataSource의 itemIdentifier를 이용하여 좀 더 안전하게 접근가능하다는 장점이 있다 
+
+###RxDelegateProxyPR
+##RxDelegateProxy
+* Connect 앱 개발을 하게되면서 RxCocoa를 이용하여 UI에서 받아온 데이터들을 ViewModel에 넘겨주는 작업을 해오다 UI의 delegate로 받아온 데이터들에 대해서도 Rx를 이용해야하는 상황이 생겼는데 RxCocoa에서 제공해주지않은 부분들은 해당 delegate메소드안에서 Observable.just를 이용해야만 하는 줄 알았다 
+* 그러다 RxDelegateProxy를 이용하면 좀더 편리하게 코드상 이쁘게 작업할 수 있다는 점을 알게 되었다 
+```Swift
+extension Reactive where Base: UITextField {
+    var delegate: DelegateProxy<UITextField, UITextFieldDelegate> {
+        return RxTextFieldDelegateProxy.proxy(for: self.base)
+    }
+    
+    var shouldChangeCharactersIn: Observable<Bool> {
+        return delegate.methodInvoked(#selector(UITextFieldDelegate.textField(_:shouldChangeCharactersIn:replacementString:))).map { parameters in
+            return parameters[1] as? Bool ?? false
+        }
+    }
+}
+
+class RxTextFieldDelegateProxy: DelegateProxy<UITextField, UITextFieldDelegate>, DelegateProxyType, UITextFieldDelegate {
+    static func registerKnownImplementations() {
+        self.register { textField -> RxTextFieldDelegateProxy in
+            return RxTextFieldDelegateProxy(parentObject: textField, delegateProxy: self)
+        }
+    }
+    
+    static func currentDelegate(for object: UITextField) -> UITextFieldDelegate? {
+        return object.delegate
+    }
+    
+    static func setCurrentDelegate(_ delegate: UITextFieldDelegate?, to object: UITextField) {
+        object.delegate = delegate
+    }
+}
+
+textField.rx.shouldChangeCharactersIn.asObservable().subscribe(onNext: { isChange in
+            print("dsfsadf = \(isChange)")
+        }).disposed(by: disposeBag)
+```
+* DelegateProxyType 프로토콜에 대한 메소드를 위처럼 정의해준 이후 extension을 이용해 원하는 Observable을 반환해주면 된다 
+* 이후 기존에 RxCocoa를 사용했던 것처럼 rx로 접근하여 사용해주면 된다
+
+##adjustContentInset
+* UIScrollView에는 기본적으로 contentInset를 조절할 수 있다, 이는 해당 스크롤뷰의 padding를 조절하는것과 비슷한 효과를 보인다. 
+* 허나 UIScrollView를 사용하다보면은 해당 앵커를 부모 뷰의 top, left, right, bottom에 걸었는데도 불구하고 safeArea에 맞춰 콘텐츠가 보이는점을 확인했을 것이다 
+* 그 이유는 해당 UIScrollView의 adjustContentInset이라는 것이 앞서 말한 contentInset + systemInset의 결과값이기 때문인데 우리가 contentInset을 따로 건들어주지않아도 systemInset이 해당 Inset을 조절해준 것이다 
+* 그리고 이 systemInset을 건들어줄 수 있는 것이 adjustContentInsetBehavior이다, adjustContentInset은 Read-only 프로퍼티이다

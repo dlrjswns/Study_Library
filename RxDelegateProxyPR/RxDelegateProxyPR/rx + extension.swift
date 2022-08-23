@@ -19,12 +19,6 @@ extension Reactive where Base: UITextField {
             return parameters[1] as? Bool ?? false
         }
     }
-    
-    var anonymousText: Observable<String> {
-        return delegate.methodInvoked(#selector(UITextFieldDelegate.textFieldDidBeginEditing(_:))).map { parameters in
-            return parameters as? String ?? ""
-        }
-    }
 }
 
 class RxTextFieldDelegateProxy: DelegateProxy<UITextField, UITextFieldDelegate>, DelegateProxyType, UITextFieldDelegate {
@@ -41,7 +35,5 @@ class RxTextFieldDelegateProxy: DelegateProxy<UITextField, UITextFieldDelegate>,
     static func setCurrentDelegate(_ delegate: UITextFieldDelegate?, to object: UITextField) {
         object.delegate = delegate
     }
-    
-    
 }
 

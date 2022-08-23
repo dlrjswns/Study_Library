@@ -21,6 +21,7 @@ class RootViewController: UIViewController {
     private let textView: UITextView = {
        let textView = UITextView()
         textView.backgroundColor = .systemPink
+        textView.contentInsetAdjustmentBehavior = .always
         textView.text = """
                                 dsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsaddfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsadfsadfsadfasfdsafsadfsafsadfsadfdsfsdafsadfsafdsdfsdfasdfasfsa
         """
@@ -42,9 +43,9 @@ class RootViewController: UIViewController {
         textView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
 //        textField.delegate = self
-//        textField.rx.shouldChangeCharactersIn.asObservable().subscribe(onNext: { isChange in
-//            print("dsfsadf = \(isChange)")
-//        }).disposed(by: disposeBag)
+        textField.rx.shouldChangeCharactersIn.asObservable().subscribe(onNext: { isChange in
+            print("dsfsadf = \(isChange)")
+        }).disposed(by: disposeBag)
 //
 //        textField.rx.anonymousText.subscribe(onNext: { text in
 //            print("text = \(text)")
