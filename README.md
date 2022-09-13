@@ -392,3 +392,23 @@ textField.rx.shouldChangeCharactersIn.asObservable().subscribe(onNext: { isChang
 * 허나 UIScrollView를 사용하다보면은 해당 앵커를 부모 뷰의 top, left, right, bottom에 걸었는데도 불구하고 safeArea에 맞춰 콘텐츠가 보이는점을 확인했을 것이다 
 * 그 이유는 해당 UIScrollView의 adjustContentInset이라는 것이 앞서 말한 contentInset + systemInset의 결과값이기 때문인데 우리가 contentInset을 따로 건들어주지않아도 systemInset이 해당 Inset을 조절해준 것이다 
 * 그리고 이 systemInset을 건들어줄 수 있는 것이 adjustContentInsetBehavior이다, adjustContentInset은 Read-only 프로퍼티이다
+
+#StackView&ContainerView
+## ContainerView 
+* 우리는 기본적으로 하나의 콘텐츠를 담기위한 contentsViewController를 사용한다, 이외에 UINavigationController, UITabbarContoroller처럼 앞서 말한 contentsViewController를 담아 화면에 보여주기위한 containerViewController가 존재한다 
+
+### addSubView vs addChild
+* 보통 하나의 뷰 컨트롤러에는 단 하나의 루트뷰만을 가지고 이를 담당하게 된다, 그렇기에 addSubView는 해당 루트뷰에 서브뷰를 두어 관리하기위한 함수인것이다 
+
+* 우리는 하나의 뷰 컨트롤러에서 다른 뷰 컨트롤러의 뷰를 관리하고싶을 수도 있을 것이다, 이때 아마 떠오르는 키워드가 containerViewController일 것이다 
+
+* 즉 하나의 containerViewController의 역할을 하기위한 것을 하나두고 이 컨테이너 뷰 컨트롤러에 contentsViewController를 추가해주는 것이다, 그리고 이때 필요한 함수가 바로 addChild이다
+
+```Swift
+    self.addChild(childViewController)
+    self.view.addSubview(childViewController.view)
+    childViewController.view.frame = CGRect(x: 180, y: 180, width: 200, height: 200)
+```
+* 위 코드에서처럼 addChild를 이용해 childViewController를 containerViewController역할을 하고자하는 뷰 컨트롤러에 추가해주고 
+
+* 이 childViewController의 루트뷰를 addSubView로 추가해주는것이다

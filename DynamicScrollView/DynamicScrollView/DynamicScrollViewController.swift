@@ -34,8 +34,10 @@ class DynamicScrollViewController: UIViewController {
     
     private let scrollView: UIScrollView = {
        let scrollView = UIScrollView()
+        scrollView.showsHorizontalScrollIndicator = true
         scrollView.alwaysBounceVertical = true
         scrollView.backgroundColor = .systemBlue
+        scrollView.contentInset = .init(top: 20, left: 20, bottom: 20, right: 20)
 //        scrollView.contentOffset = CGPoint(x: 70, y: 70)
 //        scrollView.setContentOffset(CGPoint(x: 70, y: 70), animated: true)
         return scrollView
@@ -57,7 +59,7 @@ class DynamicScrollViewController: UIViewController {
     private let imageView: UIImageView = {
        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        let config = UIImage.SymbolConfiguration(pointSize: 40)
+        let config = UIImage.SymbolConfiguration(pointSize: 200)
         imageView.image = UIImage(systemName: "heart.fill")?.withConfiguration(config)
         imageView.tintColor = .systemRed
         return imageView
@@ -81,19 +83,35 @@ class DynamicScrollViewController: UIViewController {
         return imageView
     }()
     
+    private let vw: UIView = {
+       let vw = UIView()
+        vw.backgroundColor = .systemRed
+        return vw
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let a = Student(name: "dlrjswns", age: 1)
-        let b = Student(name: "dlrjswns", age: 1)
-        print("safs = \(a == b)")
+        view.backgroundColor = .systemBackground
+//        view.addSubview(tableView)
+//        tableView.snp.makeConstraints { make in
+//            make.edges.equalToSuperview()
+//        }
+//
+//        tableView.dataSource = self
         
-        view.addSubview(tableView)
-        tableView.snp.makeConstraints { make in
+        view.addSubview(scrollView)
+        scrollView.addSubview(vw)
+        
+        scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+
         
-        tableView.dataSource = self
+//        scrollView.contentOffset = .init(x: 300, y: 300)
+//        scrollView.contentOffset.y = newOffsetY + 500
+        
+        scrollView.delegate = self
         
 //        view.addSubview(scrollView)
 //        scrollView.snp.makeConstraints { make in
@@ -133,6 +151,16 @@ class DynamicScrollViewController: UIViewController {
 //            print("offset = \(self?.scrollView.contentOffset)")
 //        }
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        vw.snp.makeConstraints { make in
+//            make.width.height.equalTo(100)
+            make.edges.equalToSuperview()
+        }
+//        let newOffset = scrollView.contentOffset.y
+//        scrollView.contentOffset = CGPoint(x: scrollView.contentOffset.x, y: newOffset + 100)
+    }
 }
 
 
@@ -153,9 +181,9 @@ extension DynamicScrollViewController: UITableViewDataSource, UITableViewDelegat
     }
 }
 
-extension DynamicScrollViewController {
+extension DynamicScrollViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("frame = \(scrollView.frame)")
+        print("offset = \(scrollView.contentOffset)")
         if scrollView.contentOffset.y > scrollView.contentSize.height - scrollView.bounds.height {
             // 이 경우는 스크롤이 다 되고나서 오버하러할때를 의미
 //            scrollView.contentOffset.y += 1

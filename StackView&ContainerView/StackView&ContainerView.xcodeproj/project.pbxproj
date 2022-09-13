@@ -14,13 +14,7 @@
 		7078E6DC28A29158003A299F /* StackView_ContainerViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7078E6DB28A29158003A299F /* StackView_ContainerViewTests.swift */; };
 		7078E6E628A29158003A299F /* StackView_ContainerViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7078E6E528A29158003A299F /* StackView_ContainerViewUITests.swift */; };
 		7078E6E828A29158003A299F /* StackView_ContainerViewUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7078E6E728A29158003A299F /* StackView_ContainerViewUITestsLaunchTests.swift */; };
-		7078E6F528A2917E003A299F /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7078E6F428A2917E003A299F /* ContainerViewController.swift */; };
-		7078E6F728A29E27003A299F /* HomeTabCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7078E6F628A29E27003A299F /* HomeTabCollectionViewCell.swift */; };
-		7078E6F928A32496003A299F /* HomeTabHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7078E6F828A32496003A299F /* HomeTabHeader.swift */; };
-		7078E6FB28A38B29003A299F /* FirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7078E6FA28A38B29003A299F /* FirstVC.swift */; };
-		7078E70028A52ECD003A299F /* TabPracticeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7078E6FF28A52ECD003A299F /* TabPracticeVC.swift */; };
-		7078E70228A52FAC003A299F /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7078E70128A52FAC003A299F /* MainCollectionViewCell.swift */; };
-		7078E70428A530DD003A299F /* CustomTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7078E70328A530DD003A299F /* CustomTabbar.swift */; };
+		7083D20128D01C84007C8E1E /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7083D20028D01C84007C8E1E /* ContainerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,13 +46,7 @@
 		7078E6E128A29158003A299F /* StackView&ContainerViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "StackView&ContainerViewUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7078E6E528A29158003A299F /* StackView_ContainerViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView_ContainerViewUITests.swift; sourceTree = "<group>"; };
 		7078E6E728A29158003A299F /* StackView_ContainerViewUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView_ContainerViewUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		7078E6F428A2917E003A299F /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
-		7078E6F628A29E27003A299F /* HomeTabCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabCollectionViewCell.swift; sourceTree = "<group>"; };
-		7078E6F828A32496003A299F /* HomeTabHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabHeader.swift; sourceTree = "<group>"; };
-		7078E6FA28A38B29003A299F /* FirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstVC.swift; sourceTree = "<group>"; };
-		7078E6FF28A52ECD003A299F /* TabPracticeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabPracticeVC.swift; sourceTree = "<group>"; };
-		7078E70128A52FAC003A299F /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
-		7078E70328A530DD003A299F /* CustomTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabbar.swift; sourceTree = "<group>"; };
+		7083D20028D01C84007C8E1E /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,13 +102,7 @@
 				7078E6CD28A29158003A299F /* Assets.xcassets */,
 				7078E6CF28A29158003A299F /* LaunchScreen.storyboard */,
 				7078E6D228A29158003A299F /* Info.plist */,
-				7078E6F428A2917E003A299F /* ContainerViewController.swift */,
-				7078E6F628A29E27003A299F /* HomeTabCollectionViewCell.swift */,
-				7078E6F828A32496003A299F /* HomeTabHeader.swift */,
-				7078E6FA28A38B29003A299F /* FirstVC.swift */,
-				7078E6FF28A52ECD003A299F /* TabPracticeVC.swift */,
-				7078E70128A52FAC003A299F /* MainCollectionViewCell.swift */,
-				7078E70328A530DD003A299F /* CustomTabbar.swift */,
+				7083D20028D01C84007C8E1E /* ContainerViewController.swift */,
 			);
 			path = "StackView&ContainerView";
 			sourceTree = "<group>";
@@ -273,13 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7078E6C528A29156003A299F /* AppDelegate.swift in Sources */,
-				7078E70028A52ECD003A299F /* TabPracticeVC.swift in Sources */,
-				7078E6FB28A38B29003A299F /* FirstVC.swift in Sources */,
-				7078E70428A530DD003A299F /* CustomTabbar.swift in Sources */,
-				7078E70228A52FAC003A299F /* MainCollectionViewCell.swift in Sources */,
-				7078E6F928A32496003A299F /* HomeTabHeader.swift in Sources */,
-				7078E6F728A29E27003A299F /* HomeTabCollectionViewCell.swift in Sources */,
-				7078E6F528A2917E003A299F /* ContainerViewController.swift in Sources */,
+				7083D20128D01C84007C8E1E /* ContainerViewController.swift in Sources */,
 				7078E6C728A29156003A299F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
