@@ -55,7 +55,7 @@ class RootViewController: UIViewController {
         let mapView = NMFMapView(frame: view.frame)
         view.addSubview(mapView)
         
-        locationManager.delegate = self
+//        locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         
