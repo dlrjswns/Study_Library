@@ -37,14 +37,19 @@ class RootViewController: UIViewController {
         button.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
         button.addTarget(self, action: #selector(didTappdButton), for: .touchUpInside)
-        NotificationCenter.default.rx.notification(.myPractice).subscribe(onNext: { notification in
-            print("notification= \(notification)")
-        }).disposed(by: disposeBag)
+        NotificationCenter.default.addObserver(self, selector: #selector(notificationObserver), name: .myPractice, object: nil)
+//        NotificationCenter.default.rx.notification(.myPractice).subscribe(onNext: { notification in
+//            print("notification= \(notification)")
+//        }).disposed(by: disposeBag)
         
 //        NotificationCenter.default.rx.notification(UIApplication., object: <#T##AnyObject?#>)
     }
     
     @objc private func didTappdButton() {
         NotificationCenter.default.post(name: .myPractice, object: nil)
+    }
+    
+    @objc func notificationObserver() {
+        print("안녕하세요")
     }
 }
