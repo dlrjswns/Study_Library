@@ -74,6 +74,7 @@ class BeerListViewController: UIViewController {
     
     private func bind() {
         viewModel.beerListModelOutput.asObservable().bind(to: tableView.rx.items(cellIdentifier: BeerListCell.identifier, cellType: BeerListCell.self)) { index, item, cell in
+            print("item = \(item)")
             cell.configureCell(with: item)
         }.disposed(by: disposeBag)
         
@@ -84,6 +85,21 @@ class BeerListViewController: UIViewController {
         viewModel.beerNetworkOutput.drive(onNext: { [weak self] networking in
             self?.noNetworkView.isHidden = networking
         }).disposed(by: disposeBag)
+        
+        tableView.rx.didScroll
+            .observe(on: MainScheduler.asyncInstance)
+            .subscribe(onNext: { [weak self] _ in
+            guard let `self` = self else { return }
+            
+            let contentHeight = self.tableView.contentSize.height
+            let contentOffsetY = self.tableView.contentOffset.y
+            if contentOffsetY > contentHeight - self.tableView.frame.size.height {
+                print("scoll!!!!")
+                self.viewModel.fetchInput.onNext(())
+            }
+        }).disposed(by: disposeBag)
+        
+//        tableView.rx.pre
         
 //        viewModel.currentBeerCountOutput.subscribe(onNext: { [weak self] lastBeerIndexPath in
 //            self?.lastBeerIndexPath = lastBeerIndexPath

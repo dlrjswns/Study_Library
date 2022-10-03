@@ -14,13 +14,13 @@ class BeerUsecaseImpl: BeerUsecase {
     init(repository: BeerRepository) {
         self.repository = repository
         
-        repository.fetchBeer().subscribe(onNext: { (result: Result<[Beer], BeerError>) in
-            switch case {
-                .success(let beers):
-                .failure(let error):
-            }
-        })
-        .disposed(by: disposeBag)
+//        repository.fetchBeer().subscribe(onNext: { (result: Result<[Beer], BeerError>) in
+//            switch case {
+//                .success(let beers):
+//                .failure(let error):
+//            }
+//        })
+//        .disposed(by: disposeBag)
         
         
     }

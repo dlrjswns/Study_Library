@@ -69,7 +69,7 @@ class ContainerViewController: UIViewController {
         configureUI()
         _ = vcModels.map { vc in
             if let firstVC = vc as? FirstViewController {
-                firstVC.dataSource = self
+//                firstVC.dataSource = self
             }
         }
         print("text = \("안녕    하세요".trimmingCharacters(in: .whitespaces))")
@@ -100,9 +100,9 @@ class ContainerViewController: UIViewController {
     }
 }
 
-extension ContainerViewController: FirstViewControllerDataSource {
-    let title: String = ""
-}
+//extension ContainerViewController: FirstViewControllerDataSource {
+//    let title: String = ""
+//}
 
 extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
