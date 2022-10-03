@@ -1,0 +1,742 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7085675128EB12C7008047DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7085675028EB12C7008047DC /* AppDelegate.swift */; };
+		7085675328EB12C7008047DC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7085675228EB12C7008047DC /* SceneDelegate.swift */; };
+		7085675A28EB12C9008047DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7085675928EB12C9008047DC /* Assets.xcassets */; };
+		7085675D28EB12C9008047DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7085675B28EB12C9008047DC /* LaunchScreen.storyboard */; };
+		7085676828EB12C9008047DC /* TabmanPRTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7085676728EB12C9008047DC /* TabmanPRTests.swift */; };
+		7085677228EB12C9008047DC /* TabmanPRUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7085677128EB12C9008047DC /* TabmanPRUITests.swift */; };
+		7085677428EB12C9008047DC /* TabmanPRUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7085677328EB12C9008047DC /* TabmanPRUITestsLaunchTests.swift */; };
+		7085678128EB12EC008047DC /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7085678028EB12EC008047DC /* RootViewController.swift */; };
+		88349CB34E9AE7EB56C90F13 /* Pods_TabmanPRTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F01706630D13E52EFA5AC3 /* Pods_TabmanPRTests.framework */; };
+		BB88B5F2EF9B3FA5D2D49BA2 /* Pods_TabmanPR_TabmanPRUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEFB56BD97D234CDA5D115C6 /* Pods_TabmanPR_TabmanPRUITests.framework */; };
+		E5939380C76DC78C47526E84 /* Pods_TabmanPR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E44ED95DA66A80CD700641A /* Pods_TabmanPR.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7085676428EB12C9008047DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7085674528EB12C7008047DC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7085674C28EB12C7008047DC;
+			remoteInfo = TabmanPR;
+		};
+		7085676E28EB12C9008047DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7085674528EB12C7008047DC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7085674C28EB12C7008047DC;
+			remoteInfo = TabmanPR;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		26507ED9773AAC156620D8A5 /* Pods-TabmanPR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TabmanPR.release.xcconfig"; path = "Target Support Files/Pods-TabmanPR/Pods-TabmanPR.release.xcconfig"; sourceTree = "<group>"; };
+		3947BD088BCC23EE54ED2716 /* Pods-TabmanPRTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TabmanPRTests.debug.xcconfig"; path = "Target Support Files/Pods-TabmanPRTests/Pods-TabmanPRTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3E44ED95DA66A80CD700641A /* Pods_TabmanPR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TabmanPR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		67F01706630D13E52EFA5AC3 /* Pods_TabmanPRTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TabmanPRTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7085674D28EB12C7008047DC /* TabmanPR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TabmanPR.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7085675028EB12C7008047DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7085675228EB12C7008047DC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		7085675928EB12C9008047DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7085675C28EB12C9008047DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7085675E28EB12C9008047DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7085676328EB12C9008047DC /* TabmanPRTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TabmanPRTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7085676728EB12C9008047DC /* TabmanPRTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabmanPRTests.swift; sourceTree = "<group>"; };
+		7085676D28EB12C9008047DC /* TabmanPRUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TabmanPRUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7085677128EB12C9008047DC /* TabmanPRUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabmanPRUITests.swift; sourceTree = "<group>"; };
+		7085677328EB12C9008047DC /* TabmanPRUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabmanPRUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7085678028EB12EC008047DC /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		79248EC7606992F3FB1B3DB6 /* Pods-TabmanPRTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TabmanPRTests.release.xcconfig"; path = "Target Support Files/Pods-TabmanPRTests/Pods-TabmanPRTests.release.xcconfig"; sourceTree = "<group>"; };
+		927AC7E21B81A55E43142FFD /* Pods-TabmanPR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TabmanPR.debug.xcconfig"; path = "Target Support Files/Pods-TabmanPR/Pods-TabmanPR.debug.xcconfig"; sourceTree = "<group>"; };
+		B0223CDD026B2377DC61A15A /* Pods-TabmanPR-TabmanPRUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TabmanPR-TabmanPRUITests.release.xcconfig"; path = "Target Support Files/Pods-TabmanPR-TabmanPRUITests/Pods-TabmanPR-TabmanPRUITests.release.xcconfig"; sourceTree = "<group>"; };
+		C966FF7DB067B8307C65BD9D /* Pods-TabmanPR-TabmanPRUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TabmanPR-TabmanPRUITests.debug.xcconfig"; path = "Target Support Files/Pods-TabmanPR-TabmanPRUITests/Pods-TabmanPR-TabmanPRUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		DEFB56BD97D234CDA5D115C6 /* Pods_TabmanPR_TabmanPRUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TabmanPR_TabmanPRUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7085674A28EB12C7008047DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5939380C76DC78C47526E84 /* Pods_TabmanPR.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7085676028EB12C9008047DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88349CB34E9AE7EB56C90F13 /* Pods_TabmanPRTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7085676A28EB12C9008047DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB88B5F2EF9B3FA5D2D49BA2 /* Pods_TabmanPR_TabmanPRUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6F2589744D526912A93952C5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3E44ED95DA66A80CD700641A /* Pods_TabmanPR.framework */,
+				DEFB56BD97D234CDA5D115C6 /* Pods_TabmanPR_TabmanPRUITests.framework */,
+				67F01706630D13E52EFA5AC3 /* Pods_TabmanPRTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7085674428EB12C7008047DC = {
+			isa = PBXGroup;
+			children = (
+				7085674F28EB12C7008047DC /* TabmanPR */,
+				7085676628EB12C9008047DC /* TabmanPRTests */,
+				7085677028EB12C9008047DC /* TabmanPRUITests */,
+				7085674E28EB12C7008047DC /* Products */,
+				D110498689ECB442E73F1A8A /* Pods */,
+				6F2589744D526912A93952C5 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		7085674E28EB12C7008047DC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7085674D28EB12C7008047DC /* TabmanPR.app */,
+				7085676328EB12C9008047DC /* TabmanPRTests.xctest */,
+				7085676D28EB12C9008047DC /* TabmanPRUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7085674F28EB12C7008047DC /* TabmanPR */ = {
+			isa = PBXGroup;
+			children = (
+				7085675028EB12C7008047DC /* AppDelegate.swift */,
+				7085675228EB12C7008047DC /* SceneDelegate.swift */,
+				7085675928EB12C9008047DC /* Assets.xcassets */,
+				7085675B28EB12C9008047DC /* LaunchScreen.storyboard */,
+				7085675E28EB12C9008047DC /* Info.plist */,
+				7085678028EB12EC008047DC /* RootViewController.swift */,
+			);
+			path = TabmanPR;
+			sourceTree = "<group>";
+		};
+		7085676628EB12C9008047DC /* TabmanPRTests */ = {
+			isa = PBXGroup;
+			children = (
+				7085676728EB12C9008047DC /* TabmanPRTests.swift */,
+			);
+			path = TabmanPRTests;
+			sourceTree = "<group>";
+		};
+		7085677028EB12C9008047DC /* TabmanPRUITests */ = {
+			isa = PBXGroup;
+			children = (
+				7085677128EB12C9008047DC /* TabmanPRUITests.swift */,
+				7085677328EB12C9008047DC /* TabmanPRUITestsLaunchTests.swift */,
+			);
+			path = TabmanPRUITests;
+			sourceTree = "<group>";
+		};
+		D110498689ECB442E73F1A8A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				927AC7E21B81A55E43142FFD /* Pods-TabmanPR.debug.xcconfig */,
+				26507ED9773AAC156620D8A5 /* Pods-TabmanPR.release.xcconfig */,
+				C966FF7DB067B8307C65BD9D /* Pods-TabmanPR-TabmanPRUITests.debug.xcconfig */,
+				B0223CDD026B2377DC61A15A /* Pods-TabmanPR-TabmanPRUITests.release.xcconfig */,
+				3947BD088BCC23EE54ED2716 /* Pods-TabmanPRTests.debug.xcconfig */,
+				79248EC7606992F3FB1B3DB6 /* Pods-TabmanPRTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7085674C28EB12C7008047DC /* TabmanPR */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7085677728EB12C9008047DC /* Build configuration list for PBXNativeTarget "TabmanPR" */;
+			buildPhases = (
+				8CC6A208446D4D63762E491A /* [CP] Check Pods Manifest.lock */,
+				7085674928EB12C7008047DC /* Sources */,
+				7085674A28EB12C7008047DC /* Frameworks */,
+				7085674B28EB12C7008047DC /* Resources */,
+				B2BBD9EBA9B4AFF02D7C14B4 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TabmanPR;
+			productName = TabmanPR;
+			productReference = 7085674D28EB12C7008047DC /* TabmanPR.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7085676228EB12C9008047DC /* TabmanPRTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7085677A28EB12C9008047DC /* Build configuration list for PBXNativeTarget "TabmanPRTests" */;
+			buildPhases = (
+				D4A23D0753F0A6890E617B10 /* [CP] Check Pods Manifest.lock */,
+				7085675F28EB12C9008047DC /* Sources */,
+				7085676028EB12C9008047DC /* Frameworks */,
+				7085676128EB12C9008047DC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7085676528EB12C9008047DC /* PBXTargetDependency */,
+			);
+			name = TabmanPRTests;
+			productName = TabmanPRTests;
+			productReference = 7085676328EB12C9008047DC /* TabmanPRTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7085676C28EB12C9008047DC /* TabmanPRUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7085677D28EB12C9008047DC /* Build configuration list for PBXNativeTarget "TabmanPRUITests" */;
+			buildPhases = (
+				A0325DB9B6A584AB28E7CD87 /* [CP] Check Pods Manifest.lock */,
+				7085676928EB12C9008047DC /* Sources */,
+				7085676A28EB12C9008047DC /* Frameworks */,
+				7085676B28EB12C9008047DC /* Resources */,
+				0C76943598CAC839F38B9A6C /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7085676F28EB12C9008047DC /* PBXTargetDependency */,
+			);
+			name = TabmanPRUITests;
+			productName = TabmanPRUITests;
+			productReference = 7085676D28EB12C9008047DC /* TabmanPRUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7085674528EB12C7008047DC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1330;
+				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					7085674C28EB12C7008047DC = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
+					7085676228EB12C9008047DC = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = 7085674C28EB12C7008047DC;
+					};
+					7085676C28EB12C9008047DC = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = 7085674C28EB12C7008047DC;
+					};
+				};
+			};
+			buildConfigurationList = 7085674828EB12C7008047DC /* Build configuration list for PBXProject "TabmanPR" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7085674428EB12C7008047DC;
+			productRefGroup = 7085674E28EB12C7008047DC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7085674C28EB12C7008047DC /* TabmanPR */,
+				7085676228EB12C9008047DC /* TabmanPRTests */,
+				7085676C28EB12C9008047DC /* TabmanPRUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7085674B28EB12C7008047DC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7085675D28EB12C9008047DC /* LaunchScreen.storyboard in Resources */,
+				7085675A28EB12C9008047DC /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7085676128EB12C9008047DC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7085676B28EB12C9008047DC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0C76943598CAC839F38B9A6C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TabmanPR-TabmanPRUITests/Pods-TabmanPR-TabmanPRUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TabmanPR-TabmanPRUITests/Pods-TabmanPR-TabmanPRUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TabmanPR-TabmanPRUITests/Pods-TabmanPR-TabmanPRUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8CC6A208446D4D63762E491A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TabmanPR-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A0325DB9B6A584AB28E7CD87 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TabmanPR-TabmanPRUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B2BBD9EBA9B4AFF02D7C14B4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TabmanPR/Pods-TabmanPR-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TabmanPR/Pods-TabmanPR-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TabmanPR/Pods-TabmanPR-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D4A23D0753F0A6890E617B10 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TabmanPRTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7085674928EB12C7008047DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7085675128EB12C7008047DC /* AppDelegate.swift in Sources */,
+				7085675328EB12C7008047DC /* SceneDelegate.swift in Sources */,
+				7085678128EB12EC008047DC /* RootViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7085675F28EB12C9008047DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7085676828EB12C9008047DC /* TabmanPRTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7085676928EB12C9008047DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7085677428EB12C9008047DC /* TabmanPRUITestsLaunchTests.swift in Sources */,
+				7085677228EB12C9008047DC /* TabmanPRUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7085676528EB12C9008047DC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7085674C28EB12C7008047DC /* TabmanPR */;
+			targetProxy = 7085676428EB12C9008047DC /* PBXContainerItemProxy */;
+		};
+		7085676F28EB12C9008047DC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7085674C28EB12C7008047DC /* TabmanPR */;
+			targetProxy = 7085676E28EB12C9008047DC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7085675B28EB12C9008047DC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7085675C28EB12C9008047DC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7085677528EB12C9008047DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7085677628EB12C9008047DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7085677828EB12C9008047DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 927AC7E21B81A55E43142FFD /* Pods-TabmanPR.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TabmanPR/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Jun.TabmanPR;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7085677928EB12C9008047DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26507ED9773AAC156620D8A5 /* Pods-TabmanPR.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TabmanPR/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Jun.TabmanPR;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7085677B28EB12C9008047DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3947BD088BCC23EE54ED2716 /* Pods-TabmanPRTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Jun.TabmanPRTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TabmanPR.app/TabmanPR";
+			};
+			name = Debug;
+		};
+		7085677C28EB12C9008047DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79248EC7606992F3FB1B3DB6 /* Pods-TabmanPRTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Jun.TabmanPRTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TabmanPR.app/TabmanPR";
+			};
+			name = Release;
+		};
+		7085677E28EB12C9008047DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C966FF7DB067B8307C65BD9D /* Pods-TabmanPR-TabmanPRUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Jun.TabmanPRUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TabmanPR;
+			};
+			name = Debug;
+		};
+		7085677F28EB12C9008047DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0223CDD026B2377DC61A15A /* Pods-TabmanPR-TabmanPRUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Jun.TabmanPRUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TabmanPR;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7085674828EB12C7008047DC /* Build configuration list for PBXProject "TabmanPR" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7085677528EB12C9008047DC /* Debug */,
+				7085677628EB12C9008047DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7085677728EB12C9008047DC /* Build configuration list for PBXNativeTarget "TabmanPR" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7085677828EB12C9008047DC /* Debug */,
+				7085677928EB12C9008047DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7085677A28EB12C9008047DC /* Build configuration list for PBXNativeTarget "TabmanPRTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7085677B28EB12C9008047DC /* Debug */,
+				7085677C28EB12C9008047DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7085677D28EB12C9008047DC /* Build configuration list for PBXNativeTarget "TabmanPRUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7085677E28EB12C9008047DC /* Debug */,
+				7085677F28EB12C9008047DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7085674528EB12C7008047DC /* Project object */;
+}
