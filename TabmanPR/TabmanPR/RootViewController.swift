@@ -51,10 +51,10 @@ class RootViewController: TabmanViewController {
         view.backgroundColor = .systemBackground
         view.addSubview(tabView)
         tabView.translatesAutoresizingMaskIntoConstraints = false
-        tabView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        tabView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
         tabView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         tabView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        tabView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+//        tabView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         self.dataSource = self
         let tabbar = TMBar.ButtonBar()
         tabbar.layout.alignment = .centerDistributed

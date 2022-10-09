@@ -78,6 +78,10 @@ class RootViewController: UIViewController {
         pageControl.addTarget(self, action: #selector(pageControlChanged), for: .valueChanged)
     }
     
+    func exampleFunction() async -> String {
+        return ""
+    }
+    
     @objc private func pageControlChanged(_ sender: UIPageControl) {
         print("currnetPage = \(sender.currentPage)")
         let currentPage = sender.currentPage

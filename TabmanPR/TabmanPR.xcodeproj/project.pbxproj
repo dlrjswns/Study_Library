@@ -15,6 +15,7 @@
 		7085677228EB12C9008047DC /* TabmanPRUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7085677128EB12C9008047DC /* TabmanPRUITests.swift */; };
 		7085677428EB12C9008047DC /* TabmanPRUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7085677328EB12C9008047DC /* TabmanPRUITestsLaunchTests.swift */; };
 		7085678128EB12EC008047DC /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7085678028EB12EC008047DC /* RootViewController.swift */; };
+		7085678328EBCAAE008047DC /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7085678228EBCAAE008047DC /* ContainerViewController.swift */; };
 		88349CB34E9AE7EB56C90F13 /* Pods_TabmanPRTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F01706630D13E52EFA5AC3 /* Pods_TabmanPRTests.framework */; };
 		BB88B5F2EF9B3FA5D2D49BA2 /* Pods_TabmanPR_TabmanPRUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEFB56BD97D234CDA5D115C6 /* Pods_TabmanPR_TabmanPRUITests.framework */; };
 		E5939380C76DC78C47526E84 /* Pods_TabmanPR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E44ED95DA66A80CD700641A /* Pods_TabmanPR.framework */; };
@@ -54,6 +55,7 @@
 		7085677128EB12C9008047DC /* TabmanPRUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabmanPRUITests.swift; sourceTree = "<group>"; };
 		7085677328EB12C9008047DC /* TabmanPRUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabmanPRUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7085678028EB12EC008047DC /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		7085678228EBCAAE008047DC /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		79248EC7606992F3FB1B3DB6 /* Pods-TabmanPRTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TabmanPRTests.release.xcconfig"; path = "Target Support Files/Pods-TabmanPRTests/Pods-TabmanPRTests.release.xcconfig"; sourceTree = "<group>"; };
 		927AC7E21B81A55E43142FFD /* Pods-TabmanPR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TabmanPR.debug.xcconfig"; path = "Target Support Files/Pods-TabmanPR/Pods-TabmanPR.debug.xcconfig"; sourceTree = "<group>"; };
 		B0223CDD026B2377DC61A15A /* Pods-TabmanPR-TabmanPRUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TabmanPR-TabmanPRUITests.release.xcconfig"; path = "Target Support Files/Pods-TabmanPR-TabmanPRUITests/Pods-TabmanPR-TabmanPRUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				7085675B28EB12C9008047DC /* LaunchScreen.storyboard */,
 				7085675E28EB12C9008047DC /* Info.plist */,
 				7085678028EB12EC008047DC /* RootViewController.swift */,
+				7085678228EBCAAE008047DC /* ContainerViewController.swift */,
 			);
 			path = TabmanPR;
 			sourceTree = "<group>";
@@ -161,7 +164,6 @@
 				3947BD088BCC23EE54ED2716 /* Pods-TabmanPRTests.debug.xcconfig */,
 				79248EC7606992F3FB1B3DB6 /* Pods-TabmanPRTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -405,6 +407,7 @@
 			files = (
 				7085675128EB12C7008047DC /* AppDelegate.swift in Sources */,
 				7085675328EB12C7008047DC /* SceneDelegate.swift in Sources */,
+				7085678328EBCAAE008047DC /* ContainerViewController.swift in Sources */,
 				7085678128EB12EC008047DC /* RootViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

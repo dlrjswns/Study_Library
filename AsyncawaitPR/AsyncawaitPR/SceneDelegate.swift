@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  TabmanPR
+//  AsyncawaitPR
 //
-//  Created by 이건준 on 2022/10/03.
+//  Created by 이건준 on 2022/10/08.
 //
 
 import UIKit
@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-        window?.rootViewController = ContainerViewController()
+        window?.rootViewController = RootViewController()
         window?.makeKeyAndVisible()
     }
 

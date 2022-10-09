@@ -347,8 +347,8 @@ var snapShot: NSDiffableDataSourceSnapshot<Section, Feed>!
 * 또한 DiffableDataSource를 이용해 UITableView나 UICollectionView를 구성하는 장점은 애니메이션 효과이다, reloadData를 사용하기엔 딱딱한 느낌이 있어 사용자 경험이 적다는 단점이 있다 
 * 사실 애니메이션 효과만 본다면 performBatchUpdates나 beginUpdates, endUpdaes를 사용해줄 수 있다, 하지만 DiffableDataSource는 apply메소드만 사용해주면 간단히 구성이 가능하고 IndexPath로 접근하여 의도치않은 오류를 범할 위험이 없고 dataSource의 itemIdentifier를 이용하여 좀 더 안전하게 접근가능하다는 장점이 있다 
 
-###RxDelegateProxyPR
-##RxDelegateProxy
+### RxDelegateProxyPR
+## RxDelegateProxy
 * Connect 앱 개발을 하게되면서 RxCocoa를 이용하여 UI에서 받아온 데이터들을 ViewModel에 넘겨주는 작업을 해오다 UI의 delegate로 받아온 데이터들에 대해서도 Rx를 이용해야하는 상황이 생겼는데 RxCocoa에서 제공해주지않은 부분들은 해당 delegate메소드안에서 Observable.just를 이용해야만 하는 줄 알았다 
 * 그러다 RxDelegateProxy를 이용하면 좀더 편리하게 코드상 이쁘게 작업할 수 있다는 점을 알게 되었다 
 ```Swift
@@ -393,7 +393,7 @@ textField.rx.shouldChangeCharactersIn.asObservable().subscribe(onNext: { isChang
 * 그 이유는 해당 UIScrollView의 adjustContentInset이라는 것이 앞서 말한 contentInset + systemInset의 결과값이기 때문인데 우리가 contentInset을 따로 건들어주지않아도 systemInset이 해당 Inset을 조절해준 것이다 
 * 그리고 이 systemInset을 건들어줄 수 있는 것이 adjustContentInsetBehavior이다, adjustContentInset은 Read-only 프로퍼티이다
 
-#StackView&ContainerView
+# StackView&ContainerView
 ## ContainerView 
 * 우리는 기본적으로 하나의 콘텐츠를 담기위한 contentsViewController를 사용한다, 이외에 UINavigationController, UITabbarContoroller처럼 앞서 말한 contentsViewController를 담아 화면에 보여주기위한 containerViewController가 존재한다 
 
@@ -412,3 +412,91 @@ textField.rx.shouldChangeCharactersIn.asObservable().subscribe(onNext: { isChang
 * 위 코드에서처럼 addChild를 이용해 childViewController를 containerViewController역할을 하고자하는 뷰 컨트롤러에 추가해주고 
 
 * 이 childViewController의 루트뷰를 addSubView로 추가해주는것이다
+
+### Scroll & Pagination
+* UIScrollView에서 contentSize를 정적으로 지정해준다면 우리가 스크롤하여 해당 화면으로 스크롤가능케하고 그렇지않고 setContentOffset메소드를 이용한다면 마치 tab메뉴를 클릭했을때 pagination되는것처럼 이동한다
+```swift
+func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    collectionView.deselectItem(at: indexPath, animated: true)
+    let currentOffset = scrollView.contentOffset
+    scrollView.setContentOffset(CGPoint(x: currentOffset.x + view.frame.width, y: 0), animated: true)
+}
+```
+* 현재 scrollView 혹은 collectionView의 contentOffset을 가져와서 이동시켜주는 부분이다
+* Pagination을 위한 방법중에서 UIPageControl, UIPageViewController, UICollectionView, ContainerView 크게 4가지를 경험해보았다 
+* 4개 전부 스크롤뷰의 contentOffset을 이용하는것이 공통점이라 느꼈고 이 중 ContainerView만 해당 VC안에 초기화시킨 View를 이용하는것이 아니라 다른 VC의 View를 원하는 VC에서 다루고싶을때 사용할 수 있다는것을 깨달았다
+
+# AsyncawaitPR
+## async & await 
+### Q1. Swift에선 비동기처리를 어떻게 할까 ??
+* 보통 Swift에선 클로저나 completionHandler같은 콜백함수를 통해 비동기코딩을 하게된다 
+```swift 
+let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        if error != nil {
+            print("dfdfdfdfd")
+            return
+        }
+        
+        if let data = data,
+            let image = UIImage(data: data){
+    
+            DispatchQueue.main.async {
+                self.image = image
+            }
+        
+            CacheManager.shared.setObject(image, forKey: key)
+            return
+            }
+    }
+task.resume()
+```
+* completionHandler로 처리하는 가장 대표적인 예시로 URLSession을 이용한 dataTask가 있다
+* URL이나 URLRequest를 이용하여 데이터를 처리하게하고 처리하는동안 스레드 제어권을 넘겨주고 처리가 완료되면 콜백함수로써 data, response, error를 처리하는것이다
+
+### Q2. 그렇다면 이 completionHandler로 작성할때의 문제점은 뭐가 있을까 ?
+* 가장 대표적으로 콜백지옥이 있을 것이다, 나는 실제로 코딩을 할때 이 문제를 겪어보았는데 콜백으로 받은 값을 받아 다시 넘겨 받게되어 코드가 장황해진다 
+* 두번째로 guard문과 같이 올바른 코드가 아닐 경우 return하게되는데 해당 함수를 사용하는 입장에선 올바르게 데이터를 받아왔는지 혹은 어떤 부분이 잘못됬는지 알지못한다 
+
+* 두번째인 경우엔 Swift에선 Result타입을 제공한다, 하지만 이 타입 또한 switch문을 이용한 분기처리를 해주어야하며 return을 해줘야하는 부분이나 completion으로 값을 넘기는 부분을 헷갈리고 넘길 수 있다는 단점이 여전히 존재한다 
+
+### Q3. 그럼 위와 같은 문제를 해결하기위해 존재하는게 async & await 구나 !!
+```swift
+func fetchUsers() async throws {
+    guard let url = url else {
+        throw URLError(.badURL)
+    }
+    
+    let (data, _) = try await URLSession.shared.data(from: url)
+    let json = try JSONSerialization.jsonObject(with: data)
+    
+    print("json = \(json)")
+    
+}
+```
+* 위에서 보이듯이 async는 이 함수는 비동기함수입니다라는 의미입니다 
+* 에러를 던지는 throws는 반드시 async throws 순서대로 작성해야합니다 
+* await는 비동기함수를 호출할때 이는 비동기로 호출해야한다는것을 알리는 역할을 합니다 
+* await를 통해 알리면 해당 코드를 진행시에 스레드의 제어권이 fetchUsers에 있다가 system에게 제어권을 넘겨주고 백그라운드에서 url을 통해 데이터를 받아올때까지 다른 작업을 하다가 끝나면 await한 끝지점으로 이동하여 다음 일을 진행하게 됩니다 
+* 즉, await는 Suspension Point를 지정해주는 역할이다, 이 지점에서 스레드의 제어권을 포기하는것이다 
+* 그리고 난 예시코드에서 몰랐던 부분이였는데 일반적으로 사용했었던 URLSession.shared.dataTask가 아니라는 점을 봐야한다 
+
+```swift
+func data(from url: URL, delegate: URLSessionTaskDelegate? = nil) async throws -> (Data, URLResponse)
+```
+* URLSession.shared.data(from:)을 파보면 위처럼 async키워드가 존재한다, 즉 비동기함수라는것을 의미하는것이고 그렇기에 예시코드에서도 이 함수는 비동기함수이므로 await라는 키워드를 통해서 알려준 것이다
+
+### Q4. 그럼 async를 이용해 만든 비동기함수는 어떻게 사용해야할까 ?
+```swift
+Task {
+    do {
+        try await fetchUsers()
+    } catch {
+        print("catch = \(error)")
+    }
+}
+```
+* 앞서 말했던것처럼 async 함수인 fetchUsers를 사용할때는 await를 사용해줘야하고 do ~catch문을 통해서 throws로 던져주었던 에러들을 처리한다
+* 그리고 새로운 Task라는 것도 보여진다 
+
+### Q5. Task는 무엇일까 ?
+* 위 예시코드는 viewDidLoad함수안에 작성한 코드이다, 즉 async함수를 사용하기위해선 viewDidLoad 또한 함수이기에 async키워드를 붙여주어야하는데 override된 함수이기에 이는 불가능하고 이런 상황때 이 구문은 비동기로써 동작한다는것을 알려주는 역할을 한다 
