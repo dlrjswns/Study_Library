@@ -19,6 +19,7 @@
 		7078E77D28B335EC003A299F /* RxDelegateProxyPRUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7078E77C28B335EC003A299F /* RxDelegateProxyPRUITestsLaunchTests.swift */; };
 		7078E78A28B33605003A299F /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7078E78928B33605003A299F /* RootViewController.swift */; };
 		7078E78C28B336F7003A299F /* rx + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7078E78B28B336F7003A299F /* rx + extension.swift */; };
+		70C4245629702F6D00DECA0D /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C4245529702F6D00DECA0D /* TitleViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		7078E77C28B335EC003A299F /* RxDelegateProxyPRUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxDelegateProxyPRUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7078E78928B33605003A299F /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		7078E78B28B336F7003A299F /* rx + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "rx + extension.swift"; sourceTree = "<group>"; };
+		70C4245529702F6D00DECA0D /* TitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
 		78F03D7CA79B9328B0611B19 /* Pods-RxDelegateProxyPR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxDelegateProxyPR.release.xcconfig"; path = "Target Support Files/Pods-RxDelegateProxyPR/Pods-RxDelegateProxyPR.release.xcconfig"; sourceTree = "<group>"; };
 		984FC5B9013780251831A45B /* Pods-RxDelegateProxyPR-RxDelegateProxyPRUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxDelegateProxyPR-RxDelegateProxyPRUITests.release.xcconfig"; path = "Target Support Files/Pods-RxDelegateProxyPR-RxDelegateProxyPRUITests/Pods-RxDelegateProxyPR-RxDelegateProxyPRUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AF270068DBAA4D9A5615EAA1 /* Pods-RxDelegateProxyPRTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxDelegateProxyPRTests.release.xcconfig"; path = "Target Support Files/Pods-RxDelegateProxyPRTests/Pods-RxDelegateProxyPRTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				7078E76728B335EB003A299F /* Info.plist */,
 				7078E78928B33605003A299F /* RootViewController.swift */,
 				7078E78B28B336F7003A299F /* rx + extension.swift */,
+				70C4245529702F6D00DECA0D /* TitleViewController.swift */,
 			);
 			path = RxDelegateProxyPR;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				7078E78C28B336F7003A299F /* rx + extension.swift in Sources */,
 				7078E75C28B335E8003A299F /* SceneDelegate.swift in Sources */,
 				7078E78A28B33605003A299F /* RootViewController.swift in Sources */,
+				70C4245629702F6D00DECA0D /* TitleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

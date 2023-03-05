@@ -31,6 +31,20 @@ class RootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+      
+      Observable.from([true, true, true, true, true, true, true])
+        .distinctUntilChanged { lhs, rhs in
+          if lhs && rhs {
+            print("lhs = \(lhs)")
+            print("rhs = \(rhs)")
+            return false
+          }
+          return true
+        }
+        .subscribe(onNext: { booi in
+        print("booi = \(booi)")
+        })
+        .disposed(by: disposeBag)
     }
     
     private func configureUI() {
@@ -43,10 +57,10 @@ class RootViewController: UIViewController {
         textView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
 //        textField.delegate = self
-        textField.rx.shouldChangeCharactersIn.asObservable().subscribe(onNext: { isChange in
-            print("dsfsadf = \(isChange)")
-        }).disposed(by: disposeBag)
-//
+//        textField.rx.shouldChangeCharactersIn.asObservable().subscribe(onNext: { isChange in
+//            print("dsfsadf = \(isChange)")
+//        }).disposed(by: disposeBag)
+////
 //        textField.rx.anonymousText.subscribe(onNext: { text in
 //            print("text = \(text)")
 //        }).disposed(by: disposeBag)

@@ -16,6 +16,7 @@
 		7078E6E828A29158003A299F /* StackView_ContainerViewUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7078E6E728A29158003A299F /* StackView_ContainerViewUITestsLaunchTests.swift */; };
 		7083D20128D01C84007C8E1E /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7083D20028D01C84007C8E1E /* ContainerViewController.swift */; };
 		7085674328EAE6EE008047DC /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7085674228EAE6EE008047DC /* RootViewController.swift */; };
+		70BD5F29295B7393002CBA89 /* ContainerPRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BD5F28295B7393002CBA89 /* ContainerPRViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		7078E6E728A29158003A299F /* StackView_ContainerViewUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView_ContainerViewUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7083D20028D01C84007C8E1E /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		7085674228EAE6EE008047DC /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		70BD5F28295B7393002CBA89 /* ContainerPRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerPRViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				7078E6D228A29158003A299F /* Info.plist */,
 				7083D20028D01C84007C8E1E /* ContainerViewController.swift */,
 				7085674228EAE6EE008047DC /* RootViewController.swift */,
+				70BD5F28295B7393002CBA89 /* ContainerPRViewController.swift */,
 			);
 			path = "StackView&ContainerView";
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				7083D20128D01C84007C8E1E /* ContainerViewController.swift in Sources */,
 				7085674328EAE6EE008047DC /* RootViewController.swift in Sources */,
 				7078E6C728A29156003A299F /* SceneDelegate.swift in Sources */,
+				70BD5F29295B7393002CBA89 /* ContainerPRViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
